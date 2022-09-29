@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>코딩테스트공부</title>
+    <style>
+      @font-face {
+        font-family: "Pretendard-Regular";
+        src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+          format("woff");
+        font-weight: 400;
+        font-style: normal;
+      }
+      * {
+        font-family: "Pretendard-Regular", sans-serif;
+      }
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      h3 {
+        font-size: 1.4em;
+        margin-bottom: 20px;
+      }
+      h4 {
+        font-size: 1.2em;
+        margin-bottom: 6px;
+      }
+      p {
+        margin: 2px 0;
+      }
+      .cp_embed_wrapper {
+        margin: 15px 0;
+      }
+      section {
+        padding: 10px 0 30px 0;
+        border-bottom: 1px solid #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <section>
+        <h3>
+          Q. 정수를 담고 있는 배열 arr의 평균값을 return 하는 함수, solution을
+          완성해보세요.
+        </h3>
+        <p>
+          arr은 길이 1이상 100이하인 배열입니다. arr의 원소는 -10,000 이상
+          10,000 이하인 정수입니다.
+        </p>
+        <p style="margin-top: 15px">예시)</p>
+        <p>- arr = [1,2,3,4] / 결과: 2.5</p>
+        <p>- arr = [5,5] / 결과: 5</p>
+
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="js,result"
+          data-slug-hash="KKRQOWz"
+          data-user="hyemin12"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/hyemin12/pen/KKRQOWz"> Untitled</a> by
+            고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
+            <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+        <h4>Arr.reduce()</h4>
+        <p>
+          - 배열의 각 요소에 대해 주어진 **리듀서**(reducer) 함수를 실행하고,
+          하나의 결과값을 반환 <br />
+          - 배열에 있는 값을 모두 더함(누산기)<br />
+          - array1.reduce( (previousValue, currentValue) => previousValue +
+          currentValue)
+        </p>
+      </section>
+      <section>
+        <h3>
+          Q. 프로그래머스 모바일은 개인정보 보호를 위해 고지서를 보낼 때
+          고객들의 전화번호의 일부를 가립니다. 전화번호가 문자열 phone_number로
+          주어졌을 때, 전화번호의 뒷 4자리를 제외한 나머지 숫자를 전부 \*으로
+          가린 문자열을 리턴하는 함수, solution을 완성해주세요.
+        </h3>
+        <p>phone_number는 길이 4 이상, 20이하인 문자열입니다.</p>
+        <p style="margin-top: 15px">예시)</p>
+        <p>- phone_number = "01033334444" / 결과: "**\*\*\***4444"</p>
+        <p>- phone_number = "027778888" / 결과: "**\***8888"</p>
+
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="js,result"
+          data-slug-hash="mdLXNvb"
+          data-user="hyemin12"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/hyemin12/pen/mdLXNvb">
+              코딩테스트공부(slice)</a
+            >
+            by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
+            <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+        <h4>Array.slice(begin, end)</h4>
+        <p>
+          - begin : 0을 시작으로 하는 추출 시작점에 대한 인덱스<br />
+          - end: 추출을 종료할 0 기준 인덱스, end 생략시 배열의 끝까지 추출함<br />
+          - const res = arr.slice(1, 4);<span
+            style="color: green; margin-left: 10px"
+          >
+            // index 2 ~ 4 까지 추출</span
+          ><br />
+          - const res2 = arr.slice(2, -1);<span
+            style="color: green; margin-left: 10px"
+            >//index 2 ~ 끝에서 2번째까지 추출</span
+          >
+        </p>
+      </section>
+      <section>
+        <h3>
+          Q. 정수 num이 짝수일 경우 "Even"을 반환하고 홀수인 경우 "Odd"를
+          반환하는 함수, solution을 완성해주세요
+        </h3>
+        <p>num은 int 범위의 정수입니다. 0은 짝수입니다.</p>
+        <p style="margin-top: 15px">예시)</p>
+        <p>- num = 3 / 결과: "Odd"</p>
+        <p>- num = 4 / 결과: "Even"</p>
+
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="js,result"
+          data-slug-hash="jOxZgjm"
+          data-user="hyemin12"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/hyemin12/pen/jOxZgjm"> Untitled</a> by
+            고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
+            <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+      </section>
+      <section>
+        <h3>
+          Q. 행렬의 덧셈은 행과 열의 크기가 같은 두 행렬의 같은 행, 같은 열의
+          값을 서로 더한 결과가 됩니다. 2개의 행렬 arr1과 arr2를 입력받아, 행렬
+          덧셈의 결과를 반환하는 함수, solution을 완성해주세요.
+        </h3>
+        <p>행렬 arr1, arr2의 행과 열의 길이는 500을 넘지 않습니다.</p>
+        <p style="margin-top: 15px">예시)</p>
+        <p>
+          - arr1 = [[1,2],[2,3]] / arr2= [[3,4],[5,6]] / 결과: [[4,6],[7,9]]
+        </p>
+        <p>- arr1 = [[1],[2]] / arr2= [[3],[4]] / 결과: [[4],[6]]</p>
+
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="js,result"
+          data-slug-hash="jOxZgjm"
+          data-user="hyemin12"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/hyemin12/pen/jOxZgjm"> Untitled</a> by
+            고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
+            <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+        <h4>반복문</h4>
+        <p>
+          arr1 = [[1,2],[2,3]]<br />
+          arr2 = [[3,4],[5,6]]<br />
+          result = [[4,6],[7,9]]<br />
+          <br />
+          arr1[0][0] + arr2[0][0] = result[0][0]
+          <span style="color: green; margin-left: 10px">// 1 + 3 = 4</span
+          ><br />
+          arr1[0][1] + arr2[0][1] = result[0][1]<span
+            style="color: green; margin-left: 10px"
+          >
+            // 2 + 4 = 6</span
+          >
+          <br />
+
+          <br />
+          ...반복
+        </p>
+      </section>
+      <section>
+        <h3>
+          Q. 행렬의 덧셈은 행과 열의 크기가 같은 두 행렬의 같은 행, 같은 열의
+          값을 서로 더한 결과가 됩니다. 2개의 행렬 arr1과 arr2를 입력받아, 행렬
+          덧셈의 결과를 반환하는 함수, solution을 완성해주세요.
+        </h3>
+        <p>행렬 arr1, arr2의 행과 열의 길이는 500을 넘지 않습니다.</p>
+        <p style="margin-top: 15px">예시)</p>
+        <p>
+          - arr1 = [[1,2],[2,3]] / arr2= [[3,4],[5,6]] / 결과: [[4,6],[7,9]]
+        </p>
+        <p>- arr1 = [[1],[2]] / arr2= [[3],[4]] / 결과: [[4],[6]]</p>
+
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="js,result"
+          data-slug-hash="ExLEYPO"
+          data-user="hyemin12"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/hyemin12/pen/ExLEYPO">
+              코딩테스트공부(반복문)</a
+            >
+            by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
+            <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+        <h4>반복문</h4>
+        <p>
+          arr1 = [[1,2],[2,3]]<br />
+          arr2 = [[3,4],[5,6]]<br />
+          result = [[4,6],[7,9]]<br />
+          <br />
+          arr1[0][0] + arr2[0][0] = result[0][0]
+          <span style="color: green; margin-left: 10px">// 1 + 3 = 4</span
+          ><br />
+          arr1[0][1] + arr2[0][1] = result[0][1]<span
+            style="color: green; margin-left: 10px"
+          >
+            // 2 + 4 = 6</span
+          >
+          <br />
+
+          <br />
+          ...반복
+        </p>
+      </section>
+      <section>
+        <h3>
+          Q. 자연수 n이 매개변수로 주어집니다. n을 x로 나눈 나머지가 1이 되도록
+          하는 가장 작은 자연수 x를 return 하도록 solution 함수를 완성해주세요.
+          답이 항상 존재함은 증명될 수 있습니다.
+        </h3>
+        <p>행렬 arr1, arr2의 행과 열의 길이는 500을 넘지 않습니다.</p>
+        <p style="margin-top: 15px">예시)</p>
+        <p>- n = 10 / 결과: 3<br /></p>
+        <p>
+          10을 3으로 나눈 나머지가 1이고, 3보다 작은 자연수 중에서 문제의 조건을
+          만족하는 수가 없으므로, 3을 return 해야 합니다.
+        </p>
+        <p>- n = 12 / 결과: 11</p>
+        <p>
+          12를 11로 나눈 나머지가 1이고, 11보다 작은 자연수 중에서 문제의 조건을
+          만족하는 수가 없으므로, 11을 return 해야 합니다.
+        </p>
+
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="js,result"
+          data-slug-hash="OJZvLbb"
+          data-user="hyemin12"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/hyemin12/pen/OJZvLbb">
+              코딩테스트공부(나머지값구하기)</a
+            >
+            by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
+            <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+        <h4>반복문</h4>
+        <p>
+          - 반복문 돌면서 나머지가 1이 되도록 하는 가장 작은 자연수 구하기<br />-
+          break를 해서 코드를 멈추지 않으면 계속 for문이 실행됨...
+        </p>
+      </section>
+      <section>
+        <h3>
+          Q. 두 정수 a, b가 주어졌을 때 a와 b 사이에 속한 모든 정수의 합을
+          리턴하는 함수, solution을 완성하세요.
+        </h3>
+        <p>행렬 arr1, arr2의 행과 열의 길이는 500을 넘지 않습니다.</p>
+        <p style="margin-top: 15px">예시)</p>
+        <p>
+          예를 들어 a = 3, b = 5인 경우, 3 + 4 + 5 = 12이므로 12를
+          리턴합니다.<br />
+          a와 b가 같은 경우는 둘 중 아무 수나 리턴하세요.<br />
+          a와 b는 -10,000,000 이상 10,000,000 이하인 정수입니다.<br />
+          a와 b의 대소관계는 정해져있지 않습니다.
+        </p>
+        <p>- a =3 / b= 5 / 결과 = 12</p>
+
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="js,result"
+          data-slug-hash="OJZvLxp"
+          data-user="hyemin12"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/hyemin12/pen/OJZvLxp">
+              코딩테스트공부(Math.minmax)</a
+            >
+            by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
+            <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+        <h4>Math.min() , Math.max()</h4>
+        <p>- 주어진 숫자들 중 가장 작은 값/ 큰 값을 반환</p>
+      </section>
+      <section>
+        <h3>
+          Q. 문자열 s에 나타나는 문자를 큰것부터 작은 순으로 정렬해 새로운
+          문자열을 리턴하는 함수, solution을 완성해주세요. s는 영문 대소문자로만
+          구성되어 있으며, 대문자는 소문자보다 작은 것으로 간주합니다.
+        </h3>
+        <p>str은 길이 1 이상인 문자열입니다.</p>
+        <p style="margin-top: 15px">예시)</p>
+        <p>- s ="Zbcdefg" / 결과 = "gfedcbZ</p>
+
+        <p
+          class="codepen"
+          data-height="300"
+          data-default-tab="js,result"
+          data-slug-hash="LYmdPJE"
+          data-user="hyemin12"
+          style="
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            margin: 1em 0;
+            padding: 1em;
+          "
+        >
+          <span
+            >See the Pen
+            <a href="https://codepen.io/hyemin12/pen/LYmdPJE">
+              코딩테스트공부(문자열정렬)</a
+            >
+            by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
+            <a href="https://codepen.io">CodePen</a>.</span
+          >
+        </p>
+        <script
+          async
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        ></script>
+        <h4>문자열 정렬하기 sort()</h4>
+        <p>- sort((a,b)=>{return a - b})<br />- a와 b를 비교해서 정렬하기</p>
+        <p>
+          - 문자열 내림차순: (a,b) => (a＜b) ? 1 : -1 <br />- 문자열 오름차순:
+          (a,b) => (a＜b) ? -1 : 1
+        </p>
+      </section>
+    </div>
+  </body>
+</html>
