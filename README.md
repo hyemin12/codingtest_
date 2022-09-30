@@ -19,25 +19,28 @@
     </ol>
   </div>
   코드팬주소
-  <h4>타이틀</h4>
-  <p>
-    arr1 = [[1,2],[2,3]]<br />
-    arr2 = [[3,4],[5,6]]<br />
-    result = [[4,6],[7,9]]<br />
-    <br />
-    arr1[0][0] + arr2[0][0] = result[0][0]
-    <span style="color: green; margin-left: 10px">// 1 + 3 = 4</span><br />
-    arr1[0][1] + arr2[0][1] = result[0][1]<span
-      style="color: green; margin-left: 10px"
-    >
-      // 2 + 4 = 6</span
-    >
-    <br />
-
-    <br />
-    ...반복
-  </p>
+  <h4>Number()</h4>
+  <p>- 문자열을 숫자로 바꿀 때 사용</p>
+  <h4>replace(a,b)</h4>
+  <p>- a와 일치하는 모든 문자열이 b로 교체됨</p>
 </section>
+```
+
+```html
+<h1 id="result"></h1>
+<h1 id="result2"></h1>
+```
+
+```css
+body {
+  font-family: system-ui;
+  color: #333;
+  text-align: center;
+}
+```
+
+```js
+document.getElementById("result").innerText = `'설명' = ${solution(값)}`;
 ```
 
 <br />
@@ -45,6 +48,8 @@
 <hr />
 
 참고 - https://hw1205.tistory.com/45 <br> - enai.tistory.com<br> - https://velog.io/@ellie12/%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8-%EB%AC%B8%EC%9E%90%EC%97%B4-%EC%A0%95%EB%A0%AC%ED%95%98%EA%B8%B0-sort
+
+- https://salangdung.tistory.com/130?category=899482
 
 ```
 
