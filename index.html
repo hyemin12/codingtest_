@@ -16,10 +16,7 @@
       * {
         font-family: "Pretendard-Regular", sans-serif;
       }
-      .container {
-        max-width: 900px;
-        margin: 0 auto;
-      }
+
       h3 {
         font-size: 1.4em;
         margin-bottom: 20px;
@@ -34,756 +31,1115 @@
       .cp_embed_wrapper {
         margin: 15px 0;
       }
+      .container {
+        display: flex;
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+      }
+      .main {
+        max-width: 900px;
+      }
+      aside {
+        width: 300px;
+        height: 100%;
+        position: relative;
+      }
+      .link {
+        width: 200px;
+        position: fixed;
+      }
+      .link > li {
+        padding: 5px 0;
+      }
       section {
-        padding: 10px 0 30px 0;
+        padding: 40px 0 60px 0;
         border-bottom: 1px solid #ccc;
       }
     </style>
   </head>
   <body>
     <div class="container">
-      <section>
-        <h3>
-          Q. 정수를 담고 있는 배열 arr의 평균값을 return 하는 함수, solution을
-          완성해보세요.
-        </h3>
-        <p>
-          arr은 길이 1이상 100이하인 배열입니다. arr의 원소는 -10,000 이상
-          10,000 이하인 정수입니다.
-        </p>
-        <p style="margin-top: 15px">예시)</p>
-        <p>- arr = [1,2,3,4] / 결과: 2.5</p>
-        <p>- arr = [5,5] / 결과: 5</p>
-        <div style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc">
-          <p style="margin-left: 25px">■ 코드</p>
-          <ol style="margin: 0 0 10px 0">
-            <li>배열의 총합 구하기</li>
-            <li>결과 = 배열의 총합 / 배열의길이</li>
-          </ol>
-        </div>
-        <p
-          class="codepen"
-          data-height="300"
-          data-default-tab="js,result"
-          data-slug-hash="KKRQOWz"
-          data-user="hyemin12"
-          style="
-            height: 300px;
-            box-sizing: border-box;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid;
-            margin: 1em 0;
-            padding: 1em;
-          "
-        >
-          <span
-            >See the Pen
-            <a href="https://codepen.io/hyemin12/pen/KKRQOWz"> Untitled</a> by
-            고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
-            <a href="https://codepen.io">CodePen</a>.</span
+      <aside class="aside">
+        <ul class="link">
+          <li><a href="#평균구하기">평균구하기</a></li>
+          <li><a href="#짝수와홀수">짝수와홀수</a></li>
+          <li><a href="#정수제곱근판별">정수제곱근판별</a></li>
+          <li><a href="#문자열내p와y의개수">문자열내p와y의개수</a></li>
+          <li>
+            <a href="#자연수뒤집어배열로만들기">자연수뒤집어배열로만들기</a>
+          </li>
+          <li><a href="#문자열을정수로바꾸기">문자열을정수로바꾸기</a></li>
+          <li><a href="#"></a></li>
+        </ul>
+      </aside>
+      <div class="main">
+        <section>
+          <a name="평균구하기"> #평균구하기</a>
+          <h3>
+            Q. 정수를 담고 있는 배열 arr의 평균값을 return 하는 함수, solution을
+            완성해보세요.
+          </h3>
+          <p>
+            arr은 길이 1이상 100이하인 배열입니다. arr의 원소는 -10,000 이상
+            10,000 이하인 정수입니다.
+          </p>
+          <p style="margin-top: 15px">예시)</p>
+          <p>- arr = [1,2,3,4] / 결과: 2.5</p>
+          <p>- arr = [5,5] / 결과: 5</p>
+          <div
+            style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
           >
-        </p>
+            <p style="margin-left: 25px">■ 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>배열의 총합 구하기</li>
+              <li>결과 = 배열의 총합 / 배열의길이</li>
+            </ol>
+          </div>
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="js,result"
+            data-slug-hash="KKRQOWz"
+            data-user="hyemin12"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/hyemin12/pen/KKRQOWz"> Untitled</a> by
+              고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
+              <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
 
-        <script
-          async
-          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-        ></script>
-        <h4>Arr.reduce()</h4>
-        <p>
-          - 배열의 각 요소에 대해 주어진 **리듀서**(reducer) 함수를 실행하고,
-          하나의 결과값을 반환 <br />
-          - 배열에 있는 값을 모두 더함(누산기)<br />
-          - array1.reduce( (previousValue, currentValue) => previousValue +
-          currentValue)
-        </p>
-      </section>
-      <section>
-        <h3>
-          Q. 프로그래머스 모바일은 개인정보 보호를 위해 고지서를 보낼 때
-          고객들의 전화번호의 일부를 가립니다. 전화번호가 문자열 phone_number로
-          주어졌을 때, 전화번호의 뒷 4자리를 제외한 나머지 숫자를 전부 \*으로
-          가린 문자열을 리턴하는 함수, solution을 완성해주세요.
-        </h3>
-        <p>phone_number는 길이 4 이상, 20이하인 문자열입니다.</p>
-        <p style="margin-top: 15px">예시)</p>
-        <p>- phone_number = "01033334444" / 결과: "**\*\*\***4444"</p>
-        <p>- phone_number = "027778888" / 결과: "**\***8888"</p>
-        <div style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc">
-          <p style="margin-left: 25px">■ 코드</p>
-          <ol style="margin: 0 0 10px 0">
-            <li>문자열 뒷자리 4자리만 따로 정의하기</li>
-            <li>문자열 뒷자리 4자리를 제외한 길이만큼 * 문자열 추가하기</li>
-            <li>* 문자열과 숫자 4자리 합치기</li>
-          </ol>
-        </div>
-        <p
-          class="codepen"
-          data-height="300"
-          data-default-tab="js,result"
-          data-slug-hash="mdLXNvb"
-          data-user="hyemin12"
-          style="
-            height: 300px;
-            box-sizing: border-box;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid;
-            margin: 1em 0;
-            padding: 1em;
-          "
-        >
-          <span
-            >See the Pen
-            <a href="https://codepen.io/hyemin12/pen/mdLXNvb">
-              코딩테스트공부(slice)</a
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+          <h4>Arr.reduce()</h4>
+          <p>
+            - 배열의 각 요소에 대해 주어진 **리듀서**(reducer) 함수를 실행하고,
+            하나의 결과값을 반환 <br />
+            - 배열에 있는 값을 모두 더함(누산기)<br />
+            - array1.reduce( (previousValue, currentValue) => previousValue +
+            currentValue)
+          </p>
+        </section>
+        <section>
+          <h3>
+            Q. 프로그래머스 모바일은 개인정보 보호를 위해 고지서를 보낼 때
+            고객들의 전화번호의 일부를 가립니다. 전화번호가 문자열
+            phone_number로 주어졌을 때, 전화번호의 뒷 4자리를 제외한 나머지
+            숫자를 전부 \*으로 가린 문자열을 리턴하는 함수, solution을
+            완성해주세요.
+          </h3>
+          <p>phone_number는 길이 4 이상, 20이하인 문자열입니다.</p>
+          <p style="margin-top: 15px">예시)</p>
+          <p>- phone_number = "01033334444" / 결과: "**\*\*\***4444"</p>
+          <p>- phone_number = "027778888" / 결과: "**\***8888"</p>
+          <div
+            style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
+          >
+            <p style="margin-left: 25px">■ 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>문자열 뒷자리 4자리만 따로 정의하기</li>
+              <li>문자열 뒷자리 4자리를 제외한 길이만큼 * 문자열 추가하기</li>
+              <li>* 문자열과 숫자 4자리 합치기</li>
+            </ol>
+          </div>
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="js,result"
+            data-slug-hash="mdLXNvb"
+            data-user="hyemin12"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/hyemin12/pen/mdLXNvb">
+                코딩테스트공부(slice)</a
+              >
+              by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
+              <a href="https://codepen.io">CodePen</a>.</span
             >
-            by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
-            <a href="https://codepen.io">CodePen</a>.</span
-          >
-        </p>
-        <script
-          async
-          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-        ></script>
-        <h4>Array.slice(begin, end)</h4>
-        <p>
-          - begin : 0을 시작으로 하는 추출 시작점에 대한 인덱스<br />
-          - end: 추출을 종료할 0 기준 인덱스, end 생략시 배열의 끝까지 추출함<br />
-          - const res = arr.slice(1, 4);<span
-            style="color: green; margin-left: 10px"
-          >
-            // index 2 ~ 4 까지 추출</span
-          ><br />
-          - const res2 = arr.slice(2, -1);<span
-            style="color: green; margin-left: 10px"
-            >//index 2 ~ 끝에서 2번째까지 추출</span
-          >
-        </p>
-      </section>
-      <section>
-        <h3>
-          Q. 정수 num이 짝수일 경우 "Even"을 반환하고 홀수인 경우 "Odd"를
-          반환하는 함수, solution을 완성해주세요
-        </h3>
-        <p>num은 int 범위의 정수입니다. 0은 짝수입니다.</p>
-        <p style="margin-top: 15px">예시)</p>
-        <p>- num = 3 / 결과: "Odd"</p>
-        <p>- num = 4 / 결과: "Even"</p>
-        <div style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc">
-          <p style="margin-left: 25px">■ 코드</p>
-          <ol style="margin: 0 0 10px 0">
-            <li>n을 2로 나눴을 때 0 인지 아닌지 참 거짓 확인</li>
-            <li>참일 경우 : 짝수, Event</li>
-            <li>거짓일 경우 : 홀수, Odd</li>
-          </ol>
-        </div>
-        <p
-          class="codepen"
-          data-height="300"
-          data-default-tab="js,result"
-          data-slug-hash="jOxZgjm"
-          data-user="hyemin12"
-          style="
-            height: 300px;
-            box-sizing: border-box;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid;
-            margin: 1em 0;
-            padding: 1em;
-          "
-        >
-          <span
-            >See the Pen
-            <a href="https://codepen.io/hyemin12/pen/jOxZgjm"> Untitled</a> by
-            고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
-            <a href="https://codepen.io">CodePen</a>.</span
-          >
-        </p>
-        <script
-          async
-          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-        ></script>
-      </section>
-      <section>
-        <h3>
-          Q. 행렬의 덧셈은 행과 열의 크기가 같은 두 행렬의 같은 행, 같은 열의
-          값을 서로 더한 결과가 됩니다. 2개의 행렬 arr1과 arr2를 입력받아, 행렬
-          덧셈의 결과를 반환하는 함수, solution을 완성해주세요.
-        </h3>
-        <p>행렬 arr1, arr2의 행과 열의 길이는 500을 넘지 않습니다.</p>
-        <p style="margin-top: 15px">예시)</p>
-        <p>
-          - arr1 = [[1,2],[2,3]] / arr2= [[3,4],[5,6]] / 결과: [[4,6],[7,9]]
-        </p>
-        <p>- arr1 = [[1],[2]] / arr2= [[3],[4]] / 결과: [[4],[6]]</p>
-        <div style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc">
-          <p style="margin-left: 25px">■ 코드</p>
-          <ol style="margin: 0 0 10px 0">
-            <li>[[],[]] 중 가장 상단 배열의 길이 만큼 반복하는 반복문 작성</li>
-            <li>
-              반복문 안에 [[배열1],[배열2]] 배열1의 길이만큼 반복하는 반복문
-              작성
-            </li>
-            <li>배열1와 배열2의 값 더하는 로직 작성</li>
-          </ol>
-        </div>
-        <p
-          class="codepen"
-          data-height="300"
-          data-default-tab="js,result"
-          data-slug-hash="ExLEYPO"
-          data-user="hyemin12"
-          style="
-            height: 300px;
-            box-sizing: border-box;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid;
-            margin: 1em 0;
-            padding: 1em;
-          "
-        >
-          <span
-            >See the Pen
-            <a href="https://codepen.io/hyemin12/pen/ExLEYPO">
-              코딩테스트공부(반복문)</a
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+          <h4>Array.slice(begin, end)</h4>
+          <p>
+            - begin : 0을 시작으로 하는 추출 시작점에 대한 인덱스<br />
+            - end: 추출을 종료할 0 기준 인덱스, end 생략시 배열의 끝까지
+            추출함<br />
+            - const res = arr.slice(1, 4);<span
+              style="color: green; margin-left: 10px"
             >
-            by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
-            <a href="https://codepen.io">CodePen</a>.</span
+              // index 2 ~ 4 까지 추출</span
+            ><br />
+            - const res2 = arr.slice(2, -1);<span
+              style="color: green; margin-left: 10px"
+              >//index 2 ~ 끝에서 2번째까지 추출</span
+            >
+          </p>
+        </section>
+        <section>
+          <a name="짝수와홀수">#짝수와홀수</a>
+          <h3>
+            Q. 정수 num이 짝수일 경우 "Even"을 반환하고 홀수인 경우 "Odd"를
+            반환하는 함수, solution을 완성해주세요
+          </h3>
+          <p>num은 int 범위의 정수입니다. 0은 짝수입니다.</p>
+          <p style="margin-top: 15px">예시)</p>
+          <p>- num = 3 / 결과: "Odd"</p>
+          <p>- num = 4 / 결과: "Even"</p>
+          <div
+            style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
           >
-        </p>
-        <script
-          async
-          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-        ></script>
-        <h4>반복문</h4>
-        <p>
-          arr1 = [[1,2],[2,3]]<br />
-          arr2 = [[3,4],[5,6]]<br />
-          result = [[4,6],[7,9]]<br />
-          <br />
-          arr1[0][0] + arr2[0][0] = result[0][0]
-          <span style="color: green; margin-left: 10px">// 1 + 3 = 4</span
-          ><br />
-          arr1[0][1] + arr2[0][1] = result[0][1]<span
-            style="color: green; margin-left: 10px"
+            <p style="margin-left: 25px">■ 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>n을 2로 나눴을 때 0 인지 아닌지 참 거짓 확인</li>
+              <li>참일 경우 : 짝수, Event</li>
+              <li>거짓일 경우 : 홀수, Odd</li>
+            </ol>
+          </div>
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="js,result"
+            data-slug-hash="jOxZgjm"
+            data-user="hyemin12"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
           >
-            // 2 + 4 = 6</span
+            <span
+              >See the Pen
+              <a href="https://codepen.io/hyemin12/pen/jOxZgjm"> Untitled</a> by
+              고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
+              <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </section>
+        <section>
+          <h3>
+            Q. 행렬의 덧셈은 행과 열의 크기가 같은 두 행렬의 같은 행, 같은 열의
+            값을 서로 더한 결과가 됩니다. 2개의 행렬 arr1과 arr2를 입력받아,
+            행렬 덧셈의 결과를 반환하는 함수, solution을 완성해주세요.
+          </h3>
+          <p>행렬 arr1, arr2의 행과 열의 길이는 500을 넘지 않습니다.</p>
+          <p style="margin-top: 15px">예시)</p>
+          <p>
+            - arr1 = [[1,2],[2,3]] / arr2= [[3,4],[5,6]] / 결과: [[4,6],[7,9]]
+          </p>
+          <p>- arr1 = [[1],[2]] / arr2= [[3],[4]] / 결과: [[4],[6]]</p>
+          <div
+            style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
           >
-          <br />
+            <p style="margin-left: 25px">■ 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>
+                [[],[]] 중 가장 상단 배열의 길이 만큼 반복하는 반복문 작성
+              </li>
+              <li>
+                반복문 안에 [[배열1],[배열2]] 배열1의 길이만큼 반복하는 반복문
+                작성
+              </li>
+              <li>배열1와 배열2의 값 더하는 로직 작성</li>
+            </ol>
+          </div>
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="js,result"
+            data-slug-hash="ExLEYPO"
+            data-user="hyemin12"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/hyemin12/pen/ExLEYPO">
+                코딩테스트공부(반복문)</a
+              >
+              by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
+              <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+          <h4>반복문</h4>
+          <p>
+            arr1 = [[1,2],[2,3]]<br />
+            arr2 = [[3,4],[5,6]]<br />
+            result = [[4,6],[7,9]]<br />
+            <br />
+            arr1[0][0] + arr2[0][0] = result[0][0]
+            <span style="color: green; margin-left: 10px">// 1 + 3 = 4</span
+            ><br />
+            arr1[0][1] + arr2[0][1] = result[0][1]<span
+              style="color: green; margin-left: 10px"
+            >
+              // 2 + 4 = 6</span
+            >
+            <br />
 
-          <br />
-          ...반복
-        </p>
-      </section>
+            <br />
+            ...반복
+          </p>
+        </section>
 
-      <section>
-        <h3>
-          Q. 자연수 n이 매개변수로 주어집니다. n을 x로 나눈 나머지가 1이 되도록
-          하는 가장 작은 자연수 x를 return 하도록 solution 함수를 완성해주세요.
-          답이 항상 존재함은 증명될 수 있습니다.
-        </h3>
-        <p>행렬 arr1, arr2의 행과 열의 길이는 500을 넘지 않습니다.</p>
-        <p style="margin-top: 15px">예시)</p>
-        <p>- n = 10 / 결과: 3<br /></p>
-        <p>
-          10을 3으로 나눈 나머지가 1이고, 3보다 작은 자연수 중에서 문제의 조건을
-          만족하는 수가 없으므로, 3을 return 해야 합니다.
-        </p>
-        <p>- n = 12 / 결과: 11</p>
-        <p>
-          12를 11로 나눈 나머지가 1이고, 11보다 작은 자연수 중에서 문제의 조건을
-          만족하는 수가 없으므로, 11을 return 해야 합니다.
-        </p>
-        <div style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc">
-          <p style="margin-left: 25px">■ 코드</p>
-          <ol style="margin: 0 0 10px 0">
-            <li>n을 x로 나눴을 때 나머지가 1이 되도록 하는 조건문</li>
-            <li>
-              1이 아닐 경우 계속 반복해서 계산할 수 있도록 반복문 작성하기
-            </li>
-            <li>※ 나머지가 1일 경우 break를 해서 반복문을 멈춰야함</li>
-          </ol>
-        </div>
+        <section>
+          <h3>
+            Q. 자연수 n이 매개변수로 주어집니다. n을 x로 나눈 나머지가 1이
+            되도록 하는 가장 작은 자연수 x를 return 하도록 solution 함수를
+            완성해주세요. 답이 항상 존재함은 증명될 수 있습니다.
+          </h3>
+          <p>행렬 arr1, arr2의 행과 열의 길이는 500을 넘지 않습니다.</p>
+          <p style="margin-top: 15px">예시)</p>
+          <p>- n = 10 / 결과: 3<br /></p>
+          <p>
+            10을 3으로 나눈 나머지가 1이고, 3보다 작은 자연수 중에서 문제의
+            조건을 만족하는 수가 없으므로, 3을 return 해야 합니다.
+          </p>
+          <p>- n = 12 / 결과: 11</p>
+          <p>
+            12를 11로 나눈 나머지가 1이고, 11보다 작은 자연수 중에서 문제의
+            조건을 만족하는 수가 없으므로, 11을 return 해야 합니다.
+          </p>
+          <div
+            style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
+          >
+            <p style="margin-left: 25px">■ 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>n을 x로 나눴을 때 나머지가 1이 되도록 하는 조건문</li>
+              <li>
+                1이 아닐 경우 계속 반복해서 계산할 수 있도록 반복문 작성하기
+              </li>
+              <li>※ 나머지가 1일 경우 break를 해서 반복문을 멈춰야함</li>
+            </ol>
+          </div>
 
-        <p
-          class="codepen"
-          data-height="300"
-          data-default-tab="js,result"
-          data-slug-hash="OJZvLbb"
-          data-user="hyemin12"
-          style="
-            height: 300px;
-            box-sizing: border-box;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid;
-            margin: 1em 0;
-            padding: 1em;
-          "
-        >
-          <span
-            >See the Pen
-            <a href="https://codepen.io/hyemin12/pen/OJZvLbb">
-              코딩테스트공부(나머지값구하기)</a
-            >
-            by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
-            <a href="https://codepen.io">CodePen</a>.</span
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="js,result"
+            data-slug-hash="OJZvLbb"
+            data-user="hyemin12"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
           >
-        </p>
-        <script
-          async
-          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-        ></script>
-        <h4>반복문</h4>
-        <p>
-          - 반복문 돌면서 나머지가 1이 되도록 하는 가장 작은 자연수 구하기<br />-
-          break를 해서 코드를 멈추지 않으면 계속 for문이 실행됨...
-        </p>
-      </section>
-      <section>
-        <h3>
-          Q. 두 정수 a, b가 주어졌을 때 a와 b 사이에 속한 모든 정수의 합을
-          리턴하는 함수, solution을 완성하세요.
-        </h3>
-        <p>행렬 arr1, arr2의 행과 열의 길이는 500을 넘지 않습니다.</p>
-        <p style="margin-top: 15px">예시)</p>
-        <p>
-          예를 들어 a = 3, b = 5인 경우, 3 + 4 + 5 = 12이므로 12를
-          리턴합니다.<br />
-          a와 b가 같은 경우는 둘 중 아무 수나 리턴하세요.<br />
-          a와 b는 -10,000,000 이상 10,000,000 이하인 정수입니다.<br />
-          a와 b의 대소관계는 정해져있지 않습니다.
-        </p>
-        <p>- a =3 / b= 5 / 결과 = 12</p>
-        <div style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc">
-          <p style="margin-left: 25px">■ 내가 작성한 코드</p>
-          <ol style="margin: 0 0 10px 0">
-            <li>a와 b를 비교해서 min, max 값 정의하기</li>
-            <li>정의된 min, max 사이의 숫자를 구하는 반복문 작성</li>
-            <li>구해진 숫자를 모두 더하기</li>
-          </ol>
-          <p style="margin-left: 25px">■ 더 나은 코드</p>
-          <ol style="margin: 0 0 10px 0">
-            <li>
-              Math.min(a, b)과 Math.max(a,b)를 사용해서 작은 값, 큰 값 반환받기
-            </li>
-            <li>min, max 사이의 숫자를 구하는 반복문 작성</li>
-            <li>구해진 숫자를 모두 더하기</li>
-          </ol>
-        </div>
-        <p
-          class="codepen"
-          data-height="300"
-          data-default-tab="js,result"
-          data-slug-hash="OJZvLxp"
-          data-user="hyemin12"
-          style="
-            height: 300px;
-            box-sizing: border-box;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid;
-            margin: 1em 0;
-            padding: 1em;
-          "
-        >
-          <span
-            >See the Pen
-            <a href="https://codepen.io/hyemin12/pen/OJZvLxp">
-              코딩테스트공부(Math.minmax)</a
+            <span
+              >See the Pen
+              <a href="https://codepen.io/hyemin12/pen/OJZvLbb">
+                코딩테스트공부(나머지값구하기)</a
+              >
+              by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
+              <a href="https://codepen.io">CodePen</a>.</span
             >
-            by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
-            <a href="https://codepen.io">CodePen</a>.</span
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+          <h4>반복문</h4>
+          <p>
+            - 반복문 돌면서 나머지가 1이 되도록 하는 가장 작은 자연수 구하기<br />-
+            break를 해서 코드를 멈추지 않으면 계속 for문이 실행됨...
+          </p>
+        </section>
+        <section>
+          <h3>
+            Q. 두 정수 a, b가 주어졌을 때 a와 b 사이에 속한 모든 정수의 합을
+            리턴하는 함수, solution을 완성하세요.
+          </h3>
+          <p>행렬 arr1, arr2의 행과 열의 길이는 500을 넘지 않습니다.</p>
+          <p style="margin-top: 15px">예시)</p>
+          <p>
+            예를 들어 a = 3, b = 5인 경우, 3 + 4 + 5 = 12이므로 12를
+            리턴합니다.<br />
+            a와 b가 같은 경우는 둘 중 아무 수나 리턴하세요.<br />
+            a와 b는 -10,000,000 이상 10,000,000 이하인 정수입니다.<br />
+            a와 b의 대소관계는 정해져있지 않습니다.
+          </p>
+          <p>- a =3 / b= 5 / 결과 = 12</p>
+          <div
+            style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
           >
-        </p>
-        <script
-          async
-          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-        ></script>
-        <h4>Math.min() , Math.max()</h4>
-        <p>- 주어진 숫자들 중 가장 작은 값/ 큰 값을 반환</p>
-      </section>
-      <section>
-        <h3>
-          Q. 문자열 s에 나타나는 문자를 큰것부터 작은 순으로 정렬해 새로운
-          문자열을 리턴하는 함수, solution을 완성해주세요. s는 영문 대소문자로만
-          구성되어 있으며, 대문자는 소문자보다 작은 것으로 간주합니다.
-        </h3>
-        <p>str은 길이 1 이상인 문자열입니다.</p>
-        <p style="margin-top: 15px">예시)</p>
-        <p>- s ="Zbcdefg" / 결과 = "gfedcbZ</p>
-        <div style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc">
-          <p style="margin-left: 25px">■ 코드</p>
-          <ol style="margin: 0 0 10px 0">
-            <li>문자열을 쪼개서 배열로 만들기</li>
-            <li>배열을 sort 함수를 사용해서 정렬하기</li>
-            <li>정렬된 배열을 합쳐서 문자열로 반환하기</li>
-          </ol>
-        </div>
-        <p
-          class="codepen"
-          data-height="300"
-          data-default-tab="js,result"
-          data-slug-hash="LYmdPJE"
-          data-user="hyemin12"
-          style="
-            height: 300px;
-            box-sizing: border-box;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid;
-            margin: 1em 0;
-            padding: 1em;
-          "
-        >
-          <span
-            >See the Pen
-            <a href="https://codepen.io/hyemin12/pen/LYmdPJE">
-              코딩테스트공부(문자열정렬)</a
+            <p style="margin-left: 25px">■ 내가 작성한 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>a와 b를 비교해서 min, max 값 정의하기</li>
+              <li>정의된 min, max 사이의 숫자를 구하는 반복문 작성</li>
+              <li>구해진 숫자를 모두 더하기</li>
+            </ol>
+            <p style="margin-left: 25px">■ 더 나은 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>
+                Math.min(a, b)과 Math.max(a,b)를 사용해서 작은 값, 큰 값
+                반환받기
+              </li>
+              <li>min, max 사이의 숫자를 구하는 반복문 작성</li>
+              <li>구해진 숫자를 모두 더하기</li>
+            </ol>
+          </div>
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="js,result"
+            data-slug-hash="OJZvLxp"
+            data-user="hyemin12"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/hyemin12/pen/OJZvLxp">
+                코딩테스트공부(Math.minmax)</a
+              >
+              by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
+              <a href="https://codepen.io">CodePen</a>.</span
             >
-            by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
-            <a href="https://codepen.io">CodePen</a>.</span
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+          <h4>Math.min() , Math.max()</h4>
+          <p>- 주어진 숫자들 중 가장 작은 값/ 큰 값을 반환</p>
+        </section>
+        <section>
+          <h3>
+            Q. 문자열 s에 나타나는 문자를 큰것부터 작은 순으로 정렬해 새로운
+            문자열을 리턴하는 함수, solution을 완성해주세요. s는 영문
+            대소문자로만 구성되어 있으며, 대문자는 소문자보다 작은 것으로
+            간주합니다.
+          </h3>
+          <p>str은 길이 1 이상인 문자열입니다.</p>
+          <p style="margin-top: 15px">예시)</p>
+          <p>- s ="Zbcdefg" / 결과 = "gfedcbZ</p>
+          <div
+            style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
           >
-        </p>
-        <script
-          async
-          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-        ></script>
-        <h4>문자열 정렬하기 sort()</h4>
-        <p>- sort((a,b)=>{return a - b})<br />- a와 b를 비교해서 정렬하기</p>
-        <p>
-          - 문자열 내림차순: (a,b) => (a＜b) ? 1 : -1 <br />- 문자열 오름차순:
-          (a,b) => (a＜b) ? -1 : 1
-        </p>
-      </section>
-      <section>
-        <h3>
-          Q. 정수를 저장한 배열, arr 에서 가장 작은 수를 제거한 배열을 리턴하는
-          함수, solution을 완성해주세요. 단, 리턴하려는 배열이 빈 배열인 경우엔
-          배열에 -1을 채워 리턴하세요. 예를들어 arr이 [4,3,2,1]인 경우는
-          [4,3,2]를 리턴 하고, [10]면 [-1]을 리턴 합니다.
-        </h3>
-        <p>
-          arr은 길이 1 이상인 배열입니다.<br />
-          인덱스 i, j에 대해 i ≠ j이면 arr[i] ≠ arr[j] 입니다.
-        </p>
-        <p style="margin-top: 15px">예시)</p>
-        <p>- arr = [4,3,2,1] / 결과: [4,3,2]<br /></p>
-        <p>- arr = [10] / 결과: [-1]<br /></p>
-        <div style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc">
-          <p style="margin-left: 25px">■ 내가 작성한 코드</p>
-          <ol style="margin: 0 0 10px 0">
-            <li>배열을 오름차순으로 정리하고, 배열의 첫번째 index 삭제하기</li>
-            <li>배열의 길이가 0일 경우 [-1]을 리턴하도록</li>
-            <li>
-              ※sort로 정렬하고, 제일 작은 수를 삭제한다면 배열이 달라지기때문에
-              문제 의도와 다른 해결방법
-            </li>
-          </ol>
-          <p style="margin-left: 25px">■ 올바른 코드</p>
-          <ol style="margin: 0 0 10px 0">
-            <li>ndexOf를 사용해서 제일 작은 수의 index를 찾기</li>
-            <li>찾은 index를 삭제하기</li>
-            <li>배열의 길이가 0일 경우 [-1]을 리턴하도록 작성</li>
-          </ol>
-        </div>
-        <p
-          class="codepen"
-          data-height="300"
-          data-default-tab="js,result"
-          data-slug-hash="bGMvbXv"
-          data-user="hyemin12"
-          style="
-            height: 300px;
-            box-sizing: border-box;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid;
-            margin: 1em 0;
-            padding: 1em;
-          "
-        >
-          <span
-            >See the Pen
-            <a href="https://codepen.io/hyemin12/pen/bGMvbXv">
-              코딩테스트공부(가장작은수제거)</a
+            <p style="margin-left: 25px">■ 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>문자열을 쪼개서 배열로 만들기</li>
+              <li>배열을 sort 함수를 사용해서 정렬하기</li>
+              <li>정렬된 배열을 합쳐서 문자열로 반환하기</li>
+            </ol>
+          </div>
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="js,result"
+            data-slug-hash="LYmdPJE"
+            data-user="hyemin12"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/hyemin12/pen/LYmdPJE">
+                코딩테스트공부(문자열정렬)</a
+              >
+              by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
+              <a href="https://codepen.io">CodePen</a>.</span
             >
-            by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
-            <a href="https://codepen.io">CodePen</a>.</span
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+          <h4>문자열 정렬하기 sort()</h4>
+          <p>- sort((a,b)=>{return a - b})<br />- a와 b를 비교해서 정렬하기</p>
+          <p>
+            - 문자열 내림차순: (a,b) => (a＜b) ? 1 : -1 <br />- 문자열 오름차순:
+            (a,b) => (a＜b) ? -1 : 1
+          </p>
+        </section>
+        <section>
+          <h3>
+            Q. 정수를 저장한 배열, arr 에서 가장 작은 수를 제거한 배열을
+            리턴하는 함수, solution을 완성해주세요. 단, 리턴하려는 배열이 빈
+            배열인 경우엔 배열에 -1을 채워 리턴하세요. 예를들어 arr이
+            [4,3,2,1]인 경우는 [4,3,2]를 리턴 하고, [10]면 [-1]을 리턴 합니다.
+          </h3>
+          <p>
+            arr은 길이 1 이상인 배열입니다.<br />
+            인덱스 i, j에 대해 i ≠ j이면 arr[i] ≠ arr[j] 입니다.
+          </p>
+          <p style="margin-top: 15px">예시)</p>
+          <p>- arr = [4,3,2,1] / 결과: [4,3,2]<br /></p>
+          <p>- arr = [10] / 결과: [-1]<br /></p>
+          <div
+            style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
           >
-        </p>
-        <script
-          async
-          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-        ></script>
-        <h4>작은 수 index 찾아서 제거하기</h4>
-        <p>
-          - indexOf를 사용해서 제일 작은 수의 index를 찾고, splice를 사용해서
-          작은 수를 제거하기
-        </p>
-        <p>
-          - sort로 정렬하고, 제일 작은 수를 삭제한다면 배열이 달라지기때문에
-          문제 의도와 다른 해결방법
-        </p>
-      </section>
-      <section>
-        <h3>
-          Q. 문자열 s의 길이가 4 혹은 6이고, 숫자로만 구성돼있는지 확인해주는
-          함수, solution을 완성하세요. 예를 들어 s가 "a234"이면 False를 리턴하고
-          "1234"라면 True를 리턴하면 됩니다.
-        </h3>
-        <p>s는 길이 1 이상, 길이 8 이하인 문자열입니다.</p>
-        <p style="margin-top: 15px">예시)</p>
-        <p>- s = "a234" / 결과: false<br /></p>
-        <p>- s = "1234" / 결과: true<br /></p>
-        <div style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc">
-          <p style="margin-left: 25px">■ 코드</p>
-          <ol style="margin: 0 0 10px 0">
-            <li>s의 길이 4 혹은 6인지 참 거짓 확인</li>
-            <li>s의 길이가 참일 경우 문자로만 구성되어 있는지 참 거짓 확인</li>
-          </ol>
-        </div>
+            <p style="margin-left: 25px">■ 내가 작성한 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>
+                배열을 오름차순으로 정리하고, 배열의 첫번째 index 삭제하기
+              </li>
+              <li>배열의 길이가 0일 경우 [-1]을 리턴하도록</li>
+              <li>
+                ※sort로 정렬하고, 제일 작은 수를 삭제한다면 배열이
+                달라지기때문에 문제 의도와 다른 해결방법
+              </li>
+            </ol>
+            <p style="margin-left: 25px">■ 올바른 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>ndexOf를 사용해서 제일 작은 수의 index를 찾기</li>
+              <li>찾은 index를 삭제하기</li>
+              <li>배열의 길이가 0일 경우 [-1]을 리턴하도록 작성</li>
+            </ol>
+          </div>
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="js,result"
+            data-slug-hash="bGMvbXv"
+            data-user="hyemin12"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/hyemin12/pen/bGMvbXv">
+                코딩테스트공부(가장작은수제거)</a
+              >
+              by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
+              <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+          <h4>작은 수 index 찾아서 제거하기</h4>
+          <p>
+            - indexOf를 사용해서 제일 작은 수의 index를 찾고, splice를 사용해서
+            작은 수를 제거하기
+          </p>
+          <p>
+            - sort로 정렬하고, 제일 작은 수를 삭제한다면 배열이 달라지기때문에
+            문제 의도와 다른 해결방법
+          </p>
+        </section>
+        <section>
+          <h3>
+            Q. 문자열 s의 길이가 4 혹은 6이고, 숫자로만 구성돼있는지 확인해주는
+            함수, solution을 완성하세요. 예를 들어 s가 "a234"이면 False를
+            리턴하고 "1234"라면 True를 리턴하면 됩니다.
+          </h3>
+          <p>s는 길이 1 이상, 길이 8 이하인 문자열입니다.</p>
+          <p style="margin-top: 15px">예시)</p>
+          <p>- s = "a234" / 결과: false<br /></p>
+          <p>- s = "1234" / 결과: true<br /></p>
+          <div
+            style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
+          >
+            <p style="margin-left: 25px">■ 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>s의 길이 4 혹은 6인지 참 거짓 확인</li>
+              <li>
+                s의 길이가 참일 경우 문자로만 구성되어 있는지 참 거짓 확인
+              </li>
+            </ol>
+          </div>
 
-        <p
-          class="codepen"
-          data-height="300"
-          data-default-tab="js,result"
-          data-slug-hash="XWqEaxz"
-          data-user="hyemin12"
-          style="
-            height: 300px;
-            box-sizing: border-box;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid;
-            margin: 1em 0;
-            padding: 1em;
-          "
-        >
-          <span
-            >See the Pen
-            <a href="https://codepen.io/hyemin12/pen/XWqEaxz"> Untitled</a> by
-            고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
-            <a href="https://codepen.io">CodePen</a>.</span
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="js,result"
+            data-slug-hash="XWqEaxz"
+            data-user="hyemin12"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
           >
-        </p>
-        <script
-          async
-          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-        ></script>
-        <h4>정규표현식</h4>
-        <p>- /￦d/ or [0~9] : 숫자인지 아닌지 확인</p>
-        <p>- [^0~9] : 숫자를 제외한 모든 문자 (문자열 시작조건을 주려면 ^)</p>
-        <p>- [a-z] : 알파벳 소문자 확인</p>
-        <p>- [A-Z] : 알파벳 대문자 확인</p>
-        <p>- 자리수를 제한하려면 /[0~9]{자리수}/</p>
-        <p>- 정규표현식.test() : 정규 표현식을 만족하는지 참 거짓 확인</p>
-      </section>
-      <section>
-        <h3>
-          Q. 네오와 프로도가 숫자놀이를 하고 있습니다. 네오가 프로도에게 숫자를
-          건넬 때 일부 자릿수를 영단어로 바꾼 카드를 건네주면 프로도는 원래
-          숫자를 찾는 게임입니다. 다음은 숫자의 일부 자릿수를 영단어로 바꾸는
-          예시입니다.
-        </h3>
-        <p>
-          1478 → "one4seveneight"<br />
-          234567 → "23four5six7"<br />
-          10203 → "1zerotwozero3"<br />
-          <br />
-          이렇게 숫자의 일부 자릿수가 영단어로 바뀌어졌거나, 혹은 바뀌지 않고
-          그대로인 문자열 s가 매개변수로 주어집니다.<br />
-          s가 의미하는 원래 숫자를 return 하도록 solution 함수를 완성해주세요.
-        </p>
-        <p>
-          숫자 영단어 0 zero 1 one 2 two 3 three 4 four 5 five 6 six 7 seven 8
-          eight 9 nine
-        </p>
-
-        <div style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc">
-          <p style="margin-left: 25px">■ 내가 작성한 코드</p>
-          <ol style="margin: 0 0 10px 0">
-            <li>영단어의 배열 만들기</li>
-            <li>주어진 문자열에서 숫자 모두 삭제하기</li>
-            <li>replace 함수로 영단어를 숫자로 바꾸기</li>
-            <li>
-              문자열에 있는 단어를 모두 숫자열로 바꿀 수 있도록 반복문 작성하기
-            </li>
-          </ol>
-          <p style="margin-left: 25px">■ 더 나은 코드</p>
-          <ol style="margin: 0 0 10px 0">
-            <li>영단어의 배열 만들기</li>
-            <li>
-              영단어 배열의 길이만큼 반복문을 돌면서 문자열에 있는 영단어를 찾기
-            </li>
-            <li>찾은 영단어를 split 함수를 이용해서 분리하고,</li>
-            <li>배열의 index 값을 넣어서 한단어로 만들기</li>
-          </ol>
-        </div>
-
-        <p
-          class="codepen"
-          data-height="300"
-          data-default-tab="js,result"
-          data-slug-hash="ExLEbaY"
-          data-user="hyemin12"
-          style="
-            height: 300px;
-            box-sizing: border-box;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid;
-            margin: 1em 0;
-            padding: 1em;
-          "
-        >
-          <span
-            >See the Pen
-            <a href="https://codepen.io/hyemin12/pen/ExLEbaY">
-              코딩테스트(영단어를숫자로바꾸기)</a
+            <span
+              >See the Pen
+              <a href="https://codepen.io/hyemin12/pen/XWqEaxz"> Untitled</a> by
+              고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
+              <a href="https://codepen.io">CodePen</a>.</span
             >
-            by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
-            <a href="https://codepen.io">CodePen</a>.</span
-          >
-        </p>
-        <script
-          async
-          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-        ></script>
-        <h4>문자열.split()</h4>
-        <p>- 여러개의 문자열로 나눌 때 사용(배열로 전환)</p>
-        <p>
-          - 'string'.split('')
-          <span style="color: green; margin-left: 10px">
-            // Array ["s", "t", "i", "r", "n", "g"]</span
-          >
-        </p>
-        <h4>배열.join()</h4>
-        <p>- 배열의 모든 요소를 연결해서 하나의 문자열로 만듬</p>
-        <p>
-          - ["s", "t", "i", "r", "n", "g"].join()
-          <span style="color: green; margin-left: 10px"> // "s,t,i,r,n,g"</span>
-        </p>
-        <h4>Number()</h4>
-        <p>- 문자열을 숫자로 바꿀 때 사용</p>
-        <h4>replace(a,b)</h4>
-        <p>- a와 일치하는 모든 문자열이 b로 교체됨</p>
-      </section>
-      <section>
-        <h4>
-          Q. 정수 n을 입력받아 n의 약수를 모두 더한 값을 리턴하는 함수,
-          solution을 완성해주세요.
-        </h4>
-        <p>n은 0 이상 3000이하인 정수입니다.</p>
-        <p style="margin-top: 15px">예시)</p>
-        <p>- n = 12 / 결과: 28</p>
-        <p>- n = 5 / 결과: 6</p>
-        <div style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc">
-          <p style="margin-left: 25px">■ 코드</p>
-          <ol style="margin: 0 0 10px 0">
-            <li>n을 나눴을 때 0이 되는 값 = 약수</li>
-            <li>0부터 n까지 반복하면서 약수를 구하기</li>
-            <li>반환되는 약수 더하기</li>
-          </ol>
-        </div>
-        <p
-          class="codepen"
-          data-height="300"
-          data-default-tab="js,result"
-          data-slug-hash="dyemZgz"
-          data-user="hyemin12"
-          style="
-            height: 300px;
-            box-sizing: border-box;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid;
-            margin: 1em 0;
-            padding: 1em;
-          "
-        >
-          <span
-            >See the Pen
-            <a href="https://codepen.io/hyemin12/pen/dyemZgz">
-              코딩테스트(약수의합)</a
-            >
-            by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
-            <a href="https://codepen.io">CodePen</a>.</span
-          >
-        </p>
-        <script
-          async
-          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-        ></script>
-      </section>
-      <section>
-        <h4>
-          Q. 함수 solution은 정수 n을 매개변수로 입력받습니다. n의 각 자릿수를
-          큰것부터 작은 순으로 정렬한 새로운 정수를 리턴해주세요. 예를들어 n이
-          118372면 873211을 리턴하면 됩니다.
-        </h4>
-        <p>n은 1이상 8000000000 이하인 자연수입니다.</p>
-        <p style="margin-top: 15px">예시)</p>
-        <p>- n: 118372 / 결과: 873211</p>
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+          <h4>정규표현식</h4>
+          <p>- /￦d/ or [0~9] : 숫자인지 아닌지 확인</p>
+          <p>- [^0~9] : 숫자를 제외한 모든 문자 (문자열 시작조건을 주려면 ^)</p>
+          <p>- [a-z] : 알파벳 소문자 확인</p>
+          <p>- [A-Z] : 알파벳 대문자 확인</p>
+          <p>- 자리수를 제한하려면 /[0~9]{자리수}/</p>
+          <p>- 정규표현식.test() : 정규 표현식을 만족하는지 참 거짓 확인</p>
+        </section>
+        <section>
+          <h3>
+            Q. 네오와 프로도가 숫자놀이를 하고 있습니다. 네오가 프로도에게
+            숫자를 건넬 때 일부 자릿수를 영단어로 바꾼 카드를 건네주면 프로도는
+            원래 숫자를 찾는 게임입니다. 다음은 숫자의 일부 자릿수를 영단어로
+            바꾸는 예시입니다.
+          </h3>
+          <p>
+            1478 → "one4seveneight"<br />
+            234567 → "23four5six7"<br />
+            10203 → "1zerotwozero3"<br />
+            <br />
+            이렇게 숫자의 일부 자릿수가 영단어로 바뀌어졌거나, 혹은 바뀌지 않고
+            그대로인 문자열 s가 매개변수로 주어집니다.<br />
+            s가 의미하는 원래 숫자를 return 하도록 solution 함수를 완성해주세요.
+          </p>
+          <p>
+            숫자 영단어 0 zero 1 one 2 two 3 three 4 four 5 five 6 six 7 seven 8
+            eight 9 nine
+          </p>
 
-        <div style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc">
-          <p style="margin-left: 25px">■ 코드</p>
-          <ol style="margin: 0 0 10px 0">
-            <li>숫자를 문자열로 바꾸기</li>
-            <li>문자열을 배열로 바꾸고 정렬하기</li>
-            <li>정렬된 배열을 문자열로 바꾸기</li>
-            <li>문자열을 숫자로 변환해서 반환</li>
-          </ol>
-        </div>
-        <p
-          class="codepen"
-          data-height="300"
-          data-default-tab="js,result"
-          data-slug-hash="xxjWPvd"
-          data-user="hyemin12"
-          style="
-            height: 300px;
-            box-sizing: border-box;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid;
-            margin: 1em 0;
-            padding: 1em;
-          "
-        >
-          <span
-            >See the Pen
-            <a href="https://codepen.io/hyemin12/pen/xxjWPvd">
-              코딩테스트(정수내림차순)</a
-            >
-            by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
-            <a href="https://codepen.io">CodePen</a>.</span
+          <div
+            style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
           >
-        </p>
-        <script
-          async
-          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-        ></script>
-        <h4>Number()</h4>
-        <p>- 문자열을 숫자로 바꿀 때 사용</p>
-        <h4>toString()</h4>
-        <p>- 문자열로 변환</p>
-      </section>
+            <p style="margin-left: 25px">■ 내가 작성한 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>영단어의 배열 만들기</li>
+              <li>주어진 문자열에서 숫자 모두 삭제하기</li>
+              <li>replace 함수로 영단어를 숫자로 바꾸기</li>
+              <li>
+                문자열에 있는 단어를 모두 숫자열로 바꿀 수 있도록 반복문
+                작성하기
+              </li>
+            </ol>
+            <p style="margin-left: 25px">■ 더 나은 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>영단어의 배열 만들기</li>
+              <li>
+                영단어 배열의 길이만큼 반복문을 돌면서 문자열에 있는 영단어를
+                찾기
+              </li>
+              <li>찾은 영단어를 split 함수를 이용해서 분리하고,</li>
+              <li>배열의 index 값을 넣어서 한단어로 만들기</li>
+            </ol>
+          </div>
+
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="js,result"
+            data-slug-hash="ExLEbaY"
+            data-user="hyemin12"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/hyemin12/pen/ExLEbaY">
+                코딩테스트(영단어를숫자로바꾸기)</a
+              >
+              by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
+              <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+          <h4>문자열.split()</h4>
+          <p>- 여러개의 문자열로 나눌 때 사용(배열로 전환)</p>
+          <p>
+            - 'string'.split('')
+            <span style="color: green; margin-left: 10px">
+              // Array ["s", "t", "i", "r", "n", "g"]</span
+            >
+          </p>
+          <h4>배열.join()</h4>
+          <p>- 배열의 모든 요소를 연결해서 하나의 문자열로 만듬</p>
+          <p>
+            - ["s", "t", "i", "r", "n", "g"].join()
+            <span style="color: green; margin-left: 10px">
+              // "s,t,i,r,n,g"</span
+            >
+          </p>
+          <h4>Number()</h4>
+          <p>- 문자열을 숫자로 바꿀 때 사용</p>
+          <h4>replace(a,b)</h4>
+          <p>- a와 일치하는 모든 문자열이 b로 교체됨</p>
+        </section>
+        <section>
+          <h4>
+            Q. 정수 n을 입력받아 n의 약수를 모두 더한 값을 리턴하는 함수,
+            solution을 완성해주세요.
+          </h4>
+          <p>n은 0 이상 3000이하인 정수입니다.</p>
+          <p style="margin-top: 15px">예시)</p>
+          <p>- n = 12 / 결과: 28</p>
+          <p>- n = 5 / 결과: 6</p>
+          <div
+            style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
+          >
+            <p style="margin-left: 25px">■ 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>n을 나눴을 때 0이 되는 값 = 약수</li>
+              <li>0부터 n까지 반복하면서 약수를 구하기</li>
+              <li>반환되는 약수 더하기</li>
+            </ol>
+          </div>
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="js,result"
+            data-slug-hash="dyemZgz"
+            data-user="hyemin12"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/hyemin12/pen/dyemZgz">
+                코딩테스트(약수의합)</a
+              >
+              by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
+              <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </section>
+        <section>
+          <h4>
+            Q. 함수 solution은 정수 n을 매개변수로 입력받습니다. n의 각 자릿수를
+            큰것부터 작은 순으로 정렬한 새로운 정수를 리턴해주세요. 예를들어 n이
+            118372면 873211을 리턴하면 됩니다.
+          </h4>
+          <p>n은 1이상 8000000000 이하인 자연수입니다.</p>
+          <p style="margin-top: 15px">예시)</p>
+          <p>- n: 118372 / 결과: 873211</p>
+
+          <div
+            style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
+          >
+            <p style="margin-left: 25px">■ 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>숫자를 문자열로 바꾸기</li>
+              <li>문자열을 배열로 바꾸고 정렬하기</li>
+              <li>정렬된 배열을 문자열로 바꾸기</li>
+              <li>문자열을 숫자로 변환해서 반환</li>
+            </ol>
+          </div>
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="js,result"
+            data-slug-hash="xxjWPvd"
+            data-user="hyemin12"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/hyemin12/pen/xxjWPvd">
+                코딩테스트(정수내림차순)</a
+              >
+              by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
+              <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+          <h4>Number()</h4>
+          <p>- 문자열을 숫자로 바꿀 때 사용</p>
+          <h4>toString()</h4>
+          <p>- 문자열로 변환</p>
+        </section>
+        <section id="#자릿수더하기">
+          <h4>
+            Q. 자연수 N이 주어지면, N의 각 자릿수의 합을 구해서 return 하는
+            solution 함수를 만들어 주세요. 예를들어 N = 123이면 1 + 2 + 3 = 6을
+            return 하면 됩니다.
+          </h4>
+          <p>N의 범위 : 100,000,000 이하의 자연수</p>
+          <p style="margin-top: 15px">예시)</p>
+          <p>- n: 123 / 결과: 6</p>
+          <p>- n: 987 / 결과: 24</p>
+
+          <div
+            style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
+          >
+            <p style="margin-left: 25px">■ 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>숫자를 문자열로 바꾸기</li>
+              <li>문자열을 배열로 바꾸기</li>
+              <li>index값을 숫자로 변환하고 더하기 (반복문)</li>
+            </ol>
+          </div>
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="js,result"
+            data-slug-hash="RwyMxNB"
+            data-user="hyemin12"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/hyemin12/pen/RwyMxNB">
+                코딩테스트공부(자릿수더하기)</a
+              >
+              by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
+              <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+          <h4>parseInt()</h4>
+          <p>- 특정 진수의 정수를 반환</p>
+        </section>
+        <section>
+          <a name="정수제곱근판별"> #정수제곱근판별</a>
+          <h3>
+            Q. 임의의 양의 정수 n에 대해, n이 어떤 양의 정수 x의 제곱인지 아닌지
+            판단하려 합니다. n이 양의 정수 x의 제곱이라면 x+1의 제곱을 리턴하고,
+            n이 양의 정수 x의 제곱이 아니라면 -1을 리턴하는 함수를 완성하세요.
+          </h3>
+
+          <p style="margin-top: 15px">예시)</p>
+          <p>- n: 121 / 결과: 144</p>
+          <p>- n: 3 / 결과: -1</p>
+          <div
+            style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
+          >
+            <p style="margin-left: 25px">■ 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>n의 제곱 여부 판별</li>
+              <li>x가 양의 정수라면 x+1 제곱근 구하기</li>
+              <li>x가 양의 정수가 아니라면 -1 반환</li>
+            </ol>
+          </div>
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="js,result"
+            data-slug-hash="wvjmpWb"
+            data-user="hyemin12"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/hyemin12/pen/wvjmpWb"> Untitled</a> by
+              고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
+              <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+          <h4>Math.sqrt()</h4>
+          <p>- 루트값 구하기</p>
+          <h4>Math.pow()</h4>
+          <p>- 제곱값 구하기</p>
+        </section>
+        <section>
+          <a name="자연수뒤집어배열로만들기"> #자연수뒤집어배열로만들기</a>
+          <h3>
+            Q. 자연수 n을 뒤집어 각 자리 숫자를 원소로 가지는 배열 형태로
+            리턴해주세요. 예를들어 n이 12345이면 [5,4,3,2,1]을 리턴합니다.
+          </h3>
+
+          <p style="margin-top: 15px">예시)</p>
+          <p>- n: 12345 / 결과: [5,4,3,2,1]</p>
+
+          <div
+            style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
+          >
+            <p style="margin-left: 25px">■ 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>숫자를 문자열로 바꾸고 배열로 바꾸기</li>
+              <li>reverse를 사용해 배열 뒤집기</li>
+              <li>빈배열에 숫자로 변환한 값 push 하기</li>
+            </ol>
+          </div>
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="js,result"
+            data-slug-hash="bGMvaZE"
+            data-user="hyemin12"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/hyemin12/pen/bGMvaZE">
+                코딩테스트공부(자연수뒤집어배열로만들기)</a
+              >
+              by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
+              <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </section>
+        <section>
+          <a name="문자열내p와y의개수"> #문자열 내 p와 y의 개수 </a>
+          <h3>
+            Q. 대문자와 소문자가 섞여있는 문자열 s가 주어집니다. s에 'p'의
+            개수와 'y'의 개수를 비교해 같으면 True, 다르면 False를 return 하는
+            solution를 완성하세요.
+          </h3>
+          <p>
+            'p', 'y' 모두 하나도 없는 경우는 항상 True를 리턴합니다. 단, 개수를
+            비교할 때 대문자와 소문자는 구별하지 않습니다. 예를 들어 s가
+            "pPoooyY"면 true를 return하고 "Pyy"라면 false를 return합니다.
+          </p>
+
+          <p style="margin-top: 15px">예시)</p>
+          <p>- n: 12345 / 결과: [5,4,3,2,1]</p>
+
+          <div
+            style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
+          >
+            <p style="margin-left: 25px">■ 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>문자열을 대문자로 변경한 후 split()로 문자열 나누기</li>
+              <li>배열의 길이를 비교하기</li>
+            </ol>
+            <p style="margin-left: 25px">■ 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>숫자를 문자열로 바꾸고 배열로 바꾸기</li>
+              <li>reverse를 사용해 배열 뒤집기</li>
+              <li>빈배열에 숫자로 변환한 값 push 하기</li>
+            </ol>
+          </div>
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="js,result"
+            data-slug-hash="mdLxXBV"
+            data-user="hyemin12"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/hyemin12/pen/mdLxXBV"> Untitled</a> by
+              고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
+              <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+          <h4>match()</h4>
+          <p>- 정규표현식과 매치되는 부분을 검사해줌</p>
+          <p>- g 프래그를 사용하면 모든 결과를 array형으로 반환함</p>
+          <p>- str.match(/p/ig)</p>
+        </section>
+        <section>
+          <a
+            name="문자열을정수로바꾸기
+          "
+          >
+            #문자열을 정수로 바꾸기
+          </a>
+          <h3>
+            Q. 문자열 s를 숫자로 변환한 결과를 반환하는 함수, solution을
+            완성하세요.
+          </h3>
+          <p>
+            s의 길이는 1 이상 5이하입니다.<br />
+            s의 맨앞에는 부호(+, -)가 올 수 있습니다.<br />
+            s는 부호와 숫자로만 이루어져있습니다.<br />
+            s는 "0"으로 시작하지 않습니다.
+          </p>
+
+          <div
+            style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
+          >
+            <p style="margin-left: 25px">■ 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>Number()나 parseInt() 사용해서 숫자로 바꾸기</li>
+            </ol>
+          </div>
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="js,result"
+            data-slug-hash="wvjmmBp"
+            data-user="hyemin12"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/hyemin12/pen/wvjmmBp">
+                코딩테스트공부(문자열정수로)</a
+              >
+              by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
+              <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+          <h4>
+            문자열에 * / )하게 되면 자바스크립트에 문자열을 num으로 인식함...
+          </h4>
+        </section>
+      </div>
     </div>
   </body>
 </html>
