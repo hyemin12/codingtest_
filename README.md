@@ -38,15 +38,3 @@ body {
 ```js
 document.getElementById("result").innerText = `'설명' = ${solution(값)}`;
 ```
-
-<br />
-<hr />
-<hr />
-
-참고 - https://hw1205.tistory.com/45 <br> - enai.tistory.com<br> - https://velog.io/@ellie12/%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8-%EB%AC%B8%EC%9E%90%EC%97%B4-%EC%A0%95%EB%A0%AC%ED%95%98%EA%B8%B0-sort
-
-- https://salangdung.tistory.com/130?category=899482
-
-```
-
-```
