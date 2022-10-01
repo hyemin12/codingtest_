@@ -27,8 +27,8 @@
 ```
 
 ```html
-<h1 id="result"></h1>
-<h1 id="result2"></h1>
+<h2 id="result"></h2>
+<h2 id="result2"></h2>
 ```
 
 ```css

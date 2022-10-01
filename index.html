@@ -42,15 +42,21 @@
       }
       aside {
         width: 300px;
-        height: 100%;
+        height: 100vh;
         position: relative;
       }
       .link {
         width: 200px;
+        height: 93%;
+        overflow-y: scroll;
         position: fixed;
       }
       .link > li {
         padding: 5px 0;
+      }
+      .link a {
+        color: #444;
+        text-decoration: none;
       }
       section {
         padding: 40px 0 60px 0;
@@ -61,17 +67,36 @@
   <body>
     <div class="container">
       <aside class="aside">
-        <ul class="link">
+        <ol class="link">
           <li><a href="#평균구하기">평균구하기</a></li>
+          <li><a href="#핸드폰번호가리기">핸드폰번호가리기</a></li>
           <li><a href="#짝수와홀수">짝수와홀수</a></li>
+          <li><a href="#행렬의덧셈">행렬의덧셈</a></li>
+          <li><a href="#나머지가1이되는수찾기">나머지가1이되는수찾기</a></li>
+          <li><a href="#두정수사이의합">두정수사이의합</a></li>
+          <li><a href="#문자열내림차순배치">문자열내림차순배치</a></li>
+          <li><a href="#제일작은수제거">제일작은수제거</a></li>
+          <li><a href="#문자열다루기기본">문자열다루기기본</a></li>
+          <li><a href="#신규아이디추천">신규아이디추천</a></li>
+          <li><a href="#"></a></li>
+          <li><a href="#"></a></li>
+          <li><a href="#자릿수더하기">자릿수더하기</a></li>
+
           <li><a href="#정수제곱근판별">정수제곱근판별</a></li>
-          <li><a href="#문자열내p와y의개수">문자열내p와y의개수</a></li>
           <li>
             <a href="#자연수뒤집어배열로만들기">자연수뒤집어배열로만들기</a>
           </li>
+          <li><a href="#문자열내p와y의개수">문자열내p와y의개수</a></li>
           <li><a href="#문자열을정수로바꾸기">문자열을정수로바꾸기</a></li>
+          <li><a href="#가운데글자가져오기">가운데글자가져오기</a></li>
+          <li><a href="#x만큼간격있는n개숫자">x만큼간격있는n개숫자</a></li>
+
+          <li><a href="#하샤드수">하샤드수</a></li>
+          <li><a href="#콜라츠추측">콜라츠추측(while문)</a></li>
           <li><a href="#"></a></li>
-        </ul>
+          <li><a href="#"></a></li>
+          <li><a href="#"></a></li>
+        </ol>
       </aside>
       <div class="main">
         <section>
@@ -135,6 +160,7 @@
           </p>
         </section>
         <section>
+          <a name="핸드폰번호가리기">핸드폰번호가리기</a>
           <h3>
             Q. 프로그래머스 모바일은 개인정보 보호를 위해 고지서를 보낼 때
             고객들의 전화번호의 일부를 가립니다. 전화번호가 문자열
@@ -252,6 +278,7 @@
           ></script>
         </section>
         <section>
+          <a name="행렬의덧셈">행렬의덧셈</a>
           <h3>
             Q. 행렬의 덧셈은 행과 열의 크기가 같은 두 행렬의 같은 행, 같은 열의
             값을 서로 더한 결과가 됩니다. 2개의 행렬 arr1과 arr2를 입력받아,
@@ -330,6 +357,7 @@
         </section>
 
         <section>
+          <a name="나머지가1이되는수찾기">나머지가1이되는수찾기</a>
           <h3>
             Q. 자연수 n이 매개변수로 주어집니다. n을 x로 나눈 나머지가 1이
             되도록 하는 가장 작은 자연수 x를 return 하도록 solution 함수를
@@ -397,6 +425,7 @@
           </p>
         </section>
         <section>
+          <a name="두정수사이의합"> 두 정수 사이의 합 </a>
           <h3>
             Q. 두 정수 a, b가 주어졌을 때 a와 b 사이에 속한 모든 정수의 합을
             리턴하는 함수, solution을 완성하세요.
@@ -464,6 +493,7 @@
           <p>- 주어진 숫자들 중 가장 작은 값/ 큰 값을 반환</p>
         </section>
         <section>
+          <a name="문자열내림차순배치">문자열내림차순배치</a>
           <h3>
             Q. 문자열 s에 나타나는 문자를 큰것부터 작은 순으로 정렬해 새로운
             문자열을 리턴하는 함수, solution을 완성해주세요. s는 영문
@@ -521,6 +551,7 @@
           </p>
         </section>
         <section>
+          <a name="제일작은수제거">제일작은수제거</a>
           <h3>
             Q. 정수를 저장한 배열, arr 에서 가장 작은 수를 제거한 배열을
             리턴하는 함수, solution을 완성해주세요. 단, 리턴하려는 배열이 빈
@@ -596,6 +627,7 @@
           </p>
         </section>
         <section>
+          <a name="문자열다루기기본">문자열다루기 기본</a>
           <h3>
             Q. 문자열 s의 길이가 4 혹은 6이고, 숫자로만 구성돼있는지 확인해주는
             함수, solution을 완성하세요. 예를 들어 s가 "a234"이면 False를
@@ -654,6 +686,7 @@
           <p>- 정규표현식.test() : 정규 표현식을 만족하는지 참 거짓 확인</p>
         </section>
         <section>
+          <a name="신규아이디추천">신규아이디추천 - 카카오 블라인드 채용문제</a>
           <h3>
             Q. 네오와 프로도가 숫자놀이를 하고 있습니다. 네오가 프로도에게
             숫자를 건넬 때 일부 자릿수를 영단어로 바꾼 카드를 건네주면 프로도는
@@ -857,6 +890,7 @@
           <p>- 문자열로 변환</p>
         </section>
         <section id="#자릿수더하기">
+          <a name="자릿수더하기">자릿수더하기</a>
           <h4>
             Q. 자연수 N이 주어지면, N의 각 자릿수의 합을 구해서 return 하는
             solution 함수를 만들어 주세요. 예를들어 N = 123이면 1 + 2 + 3 = 6을
@@ -1138,6 +1172,265 @@
           <h4>
             문자열에 * / )하게 되면 자바스크립트에 문자열을 num으로 인식함...
           </h4>
+        </section>
+        <section>
+          <a name="가운데글자가져오기">가운데글자가져오기</a>
+          <h4>
+            Q. 단어 s의 가운데 글자를 반환하는 함수, solution을 만들어 보세요.
+            단어의 길이가 짝수라면 가운데 두글자를 반환하면 됩니다.
+          </h4>
+          <p>s는 길이가 1 이상, 100이하인 스트링입니다.</p>
+          <p style="margin-top: 15px">예시)</p>
+          <p>- s = 'abcde' / 결과: 'c'</p>
+          <p>- s = 'qwer' / 결과: 'we</p>
+          <div
+            style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
+          >
+            <p style="margin-left: 25px">■ 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>문자열 길이의 절반값 구하기</li>
+              <li>문자열 길이가 짝수일 경우 2글자 반환</li>
+              <li>그렇지 않을 경우 가운데 글자 1글자만 반환</li>
+            </ol>
+          </div>
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="js,result"
+            data-slug-hash="vYjRRMd"
+            data-user="hyemin12"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/hyemin12/pen/vYjRRMd">
+                코딩테스트공부(가운데글자가져오기)</a
+              >
+              by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
+              <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+          <h4>string.charAt()</h4>
+          <p>- 특정 인덱스에 위치하는 유니코드 단일문자를 반환</p>
+        </section>
+        <section>
+          <a name="x만큼간격있는n개숫자"> #x만큼간격있는n개숫자</a>
+          <h3>
+            Q. 함수 solution은 정수 x와 자연수 n을 입력 받아, x부터 시작해 x씩
+            증가하는 숫자를 n개 지니는 리스트를 리턴해야 합니다. 다음 제한
+            조건을 보고, 조건을 만족하는 함수, solution을 완성해주세요.
+          </h3>
+          <p>
+            x는 -10000000 이상, 10000000 이하인 정수입니다.<br />
+            n은 1000 이하인 자연수입니다.
+          </p>
+          <p style="margin-top: 15px">예시)</p>
+          <p>- x = 2 / n =5 / 결과: [2,4,6,8,10]</p>
+          <p>- x = -4 / n = 2 / 결과: [-4, -8]</p>
+          <div
+            style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
+          >
+            <p style="margin-left: 25px">■ 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>x + (x + x) ... 더해지는 반복문 만들기</li>
+              <li>계산된 값을 배열에 넣기</li>
+            </ol>
+          </div>
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="js,result"
+            data-slug-hash="dyeePbV"
+            data-user="hyemin12"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/hyemin12/pen/dyeePbV">
+                코딩테스트공부(x만큼간격있는n개숫자)</a
+              >
+              by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
+              <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+          <h4>다른 사람 코드</h4>
+          <p>
+            - Array(n).fill(x) 로 배열을 만든 다음 map 돌면서 배열의 값과 index
+            값을 곱해서 반환함...
+          </p>
+        </section>
+        <section>
+          <a name="하샤드수"> #하샤드수</a>
+          <h3>
+            Q. 양의 정수 x가 하샤드 수이려면 x의 자릿수의 합으로 x가 나누어져야
+            합니다. 예를 들어 18의 자릿수 합은 1+8=9이고, 18은 9로 나누어
+            떨어지므로 18은 하샤드 수입니다. 자연수 x를 입력받아 x가 하샤드
+            수인지 아닌지 검사하는 함수, solution을 완성해주세요.
+          </h3>
+          <p>x는 1 이상, 10000 이하인 정수입니다.</p>
+          <p style="margin-top: 15px">예시)</p>
+          <p>- arr: 10 / 결과: true</p>
+          <p>- arr: 11 / 결과:false</p>
+          <div
+            style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
+          >
+            <p style="margin-left: 25px">■ 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>arr를 배열로 바꾸기</li>
+              <li>배열의 모든 값 더하기(sum)</li>
+              <li>arr % sum === 0인지 아닌지 확인하기</li>
+            </ol>
+          </div>
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="js,result"
+            data-slug-hash="poVVvgo"
+            data-user="hyemin12"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/hyemin12/pen/poVVvgo">
+                코딩테스트공부(하샤드)</a
+              >
+              by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
+              <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+          <h4>다른 사람 코드</h4>
+          <p>- [..x.toString()] 을 통해 각 자리 수 배열로 만들고</p>
+          <p>
+            - 배열의 값을 reduce()로 더함 (결과값 숫자, 따로 문자열을 숫자로
+            변환할 필요가 없음)
+          </p>
+          <p>- x % 더한값 === 0 참인지 거짓인지 판별</p>
+        </section>
+        <section>
+          <a name="콜라츠추측"> #콜라츠추측</a>
+          <h3>
+            Q. 1937년 Collatz란 사람에 의해 제기된 이 추측은, 주어진 수가 1이 될
+            때까지 다음 작업을 반복하면, 모든 수를 1로 만들 수 있다는
+            추측입니다. 작업은 다음과 같습니다.
+          </h3>
+          <p>
+            1-1. 입력된 수가 짝수라면 2로 나눕니다. <br />
+            1-2. 입력된 수가 홀수라면 3을 곱하고 1을 더합니다. <br />
+            2. 결과로 나온 수에 같은 작업을 1이 될 때까지 반복합니다
+          </p>
+          <br />
+          <p>
+            예를 들어, 주어진 수가 6이라면 6 → 3 → 10 → 5 → 16 → 8 → 4 → 2 → 1
+            이 되어 총 8번 만에 1이 됩니다. 위 작업을 몇 번이나 반복해야 하는지
+            반환하는 함수, solution을 완성해 주세요. 단, 주어진 수가 1인
+            경우에는 0을, 작업을 500번 반복할 때까지 1이 되지 않는다면 –1을
+            반환해 주세요.
+          </p>
+          <p style="margin-top: 15px">예시)</p>
+          <p>- n: 6 / 결과: 8</p>
+          <p>- n: 16 / 결과: 4</p>
+          <p>- n: 626331 / 결과: -1</p>
+          <div
+            style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
+          >
+            <p style="margin-left: 25px">■ 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>짝수라면 2로 나누기</li>
+              <li>홀수라면 3을 곱하고, 1 더하기</li>
+              <li>위 코드들을 반복문으로 작성하기</li>
+              <li>num이 1이 되면 작업회수 반환하는 코드작성</li>
+              <li>반복횟수(작업횟수)가 500이 되면 -1 반환시키기</li>
+            </ol>
+          </div>
+          <p
+            class="codepen"
+            data-height="300"
+            data-default-tab="js,result"
+            data-slug-hash="abGGzJw"
+            data-user="hyemin12"
+            style="
+              height: 300px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/hyemin12/pen/abGGzJw">
+                코딩테스트공부(콜라츠추측)</a
+              >
+              by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
+              <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+          <h4>다른 사람 코드</h4>
+          <p>- While()문을 사용해서 조건문 작성</p>
+          <p>
+            - 조건: num이 1이 아니거나, answer이 500이 아닐경우
+            <span style="color: green; margin-left: 10px"
+              >// 이 동안 계속 반복해서 코드가 실행됨</span
+            >
+          </p>
+          <p>
+            - num이 짝수일경우, num /2 코드를 아닐경우 num * 3 + 1 코드 실행
+          </p>
+          <p>코드가 반복되는 동안 answer를 더해서 작업의 횟수 확인</p>
+          <h4>While문</h4>
+          <p>
+            - 조건식이 true일 경우 계속해서 반복, 조건식이 false가 되면
+            while문을 종료
+          </p>
+          <h4>- for문과 while문 차이점</h4>
+          <p>- for문 : 반복횟수가 정해진 경우 or 배열과 함께 사용</p>
+          <p>무한 루프나 특정 조건에 만족할 때까지 반복해야하는 경우</p>
         </section>
       </div>
     </div>
