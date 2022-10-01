@@ -2,27 +2,23 @@
 
 ```html
 <section>
-  <h4>
-    Q. 행렬의 덧셈은 행과 열의 크기가 같은 두 행렬의 같은 행, 같은 열의 값을
-    서로 더한 결과가 됩니다. 2개의 행렬 arr1과 arr2를 입력받아, 행렬 덧셈의
-    결과를 반환하는 함수, solution을 완성해주세요.
-  </h4>
-  <p>행렬 arr1, arr2의 행과 열의 길이는 500을 넘지 않습니다.</p>
+  <h4>Q.</h4>
+  <p>문제설명.</p>
   <p style="margin-top: 15px">예시)</p>
-  <p>- arr1 = [[1,2],[2,3]] / arr2= [[3,4],[5,6]] / 결과: [[4,6],[7,9]]</p>
-  <p>- arr1 = [[1],[2]] / arr2= [[3],[4]] / 결과: [[4],[6]]</p>
+  <p>- / 결과:</p>
+  <p>- / 결과:</p>
   <div style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc">
     <p style="margin-left: 25px">■ 코드</p>
     <ol style="margin: 0 0 10px 0">
-      <li>s의 길이 4 혹은 6인지 참 거짓 확인</li>
-      <li>s의 길이가 참일 경우 문자로만 구성되어 있는지 참 거짓 확인</li>
+      <li></li>
+      <li></li>
     </ol>
   </div>
   코드팬주소
-  <h4>Number()</h4>
-  <p>- 문자열을 숫자로 바꿀 때 사용</p>
-  <h4>replace(a,b)</h4>
-  <p>- a와 일치하는 모든 문자열이 b로 교체됨</p>
+
+  <h4>공부한내용</h4>
+  <p>-</p>
+  <p style="color:green; margin-left:10px">// 주석</p>
 </section>
 ```
 
