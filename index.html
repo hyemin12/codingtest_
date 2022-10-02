@@ -54,6 +54,8 @@
           <li><a href="#직사각형별찍기">직사각형별찍기</a></li>
           <li><a href="#같은숫자는싫어">같은숫자는 싫어</a></li>
           <li><a href="#이상한문자만들기">이상한문자만들기</a></li>
+          <li><a href="#최대공약수최소공약수">최대공약수최소공약수</a></li>
+          <li><a href="#문자열내마음대로정렬">문자열내마음대로정렬</a></li>
 
           <li><a href="#"></a></li>
         </ol>
@@ -2090,6 +2092,147 @@
       function toWeirdCase(s){
         return s.split(' ').map(i => i.split('').map((j, key) => key % 2 === 0 ? j.toUpperCase() : j).join('')).join(' ')
       }
+            </code>
+          </pre>
+        </section>
+        <section>
+          <a name="최대공약수최소공약수"> #최대공약수최소공약수</a>
+          <h3>
+            Q. 두 수를 입력받아 두 수의 최대공약수와 최소공배수를 반환하는 함수,
+            solution을 완성해 보세요. 배열의 맨 앞에 최대공약수, 그다음
+            최소공배수를 넣어 반환하면 됩니다. 예를 들어 두 수 3, 12의
+            최대공약수는 3, 최소공배수는 12이므로 solution(3, 12)는 [3, 12]를
+            반환해야 합니다.
+          </h3>
+          <p>두 수는 1이상 1000000이하의 자연수입니다.</p>
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>- n: 3 , m : 12 = 결과: [3, 12]</p>
+          <p>- n: 2 , m : 5 = 결과: [1, 10]</p>
+
+          <div
+            style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
+          >
+            <p style="margin-left: 25px">■ 내가 작성한 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>n 이랑 m 나머지 0이 되는 index 찾기 = 최대공약수</li>
+              <li>n * m / 최대공약수 = 최소공배수</li>
+              <li>※ 가독성이 안좋은 것 같은 느낌</li>
+            </ol>
+          </div>
+          <pre>
+            <code class="javascript">
+      function solution(n, m) {
+        var answer = [];
+        let max ;
+        
+        for(let i = Math.max(n,m); i >0; i--){
+            if(n % i === 0 && m % i === 0){
+                max = i;
+                break;
+            }
+        }
+        
+        let min = (n * m) / max
+        answer = [max, min]
+    
+        return answer;
+      }
+            </code>
+          </pre>
+          <hr />
+          <br />
+
+          <p style="margin-left: 25px; margin-bottom: 3px">
+            ■ 다른 사람 작성 코드
+          </p>
+          <ul style="margin: 0 0 10px 0">
+            <li>r은 n & m 의 나머지</li>
+            <li>조건식 : r = n % m</li>
+            <li>증감식 : a = b, b = r</li>
+          </ul>
+          <pre>
+            <code class="javascript">
+      function gcdlcm(a, b) {
+        var r;
+        for(var ab= a*b;r = a % b;a = b, b = r){}
+        return [b, ab/b];
+      }
+            </code>
+          </pre>
+          <ul>
+            <li>a=2 , b=5</li>
+            <li>ab=10, a=2 , b=5, r=2</li>
+            <li>ab=10, a=5, b=2, r=1</li>
+            <li>ab=10, a=2, b=1, r=0</li>
+            <li>return [1, 10]</li>
+          </ul>
+        </section>
+        <section>
+          <a name="문자열내마음대로정렬"> #문자열내마음대로정렬</a>
+          <h3>
+            Q. 문자열로 구성된 리스트 strings와, 정수 n이 주어졌을 때, 각
+            문자열의 인덱스 n번째 글자를 기준으로 오름차순 정렬하려 합니다. 예를
+            들어 strings가 ["sun", "bed", "car"]이고 n이 1이면 각 단어의 인덱스
+            1의 문자 "u", "e", "a"로 strings를 정렬합니다.
+          </h3>
+          <p>
+            - strings는 길이 1 이상, 50이하인 배열입니다<br />
+            - strings의 원소는 소문자 알파벳으로 이루어져 있습니다.<br />
+            - strings의 원소는 길이 1 이상, 100이하인 문자열입니다. <br />
+            - 모든 strings의 원소의 길이는 n보다 큽니다.<br />
+            - 인덱스 1의 문자가 같은 문자열이 여럿 일 경우, 사전순으로 앞선
+            문자열이 앞쪽에 위치합니다.
+          </p>
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>
+            - strings: ["sun", "bed", "car"] , n:1 = 결과: ["car", "bed", "sun"]
+          </p>
+          <p>
+            - strings: ["abce", "abcd", "cdx"] , n:2 = 결과: ["abcd", "abce",
+            "cdx"]
+          </p>
+
+          <div
+            style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
+          >
+            <p style="margin-left: 25px">■ 내가 작성한 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>n번째 문자로 정렬</li>
+              <li>n번째 문자 똑같을 경우 단어 전체로 정렬</li>
+            </ol>
+          </div>
+          <pre>
+            <code class="javascript">
+      function solution(strings, n) {
+        var answer = [];
+        
+        answer = strings.sort((a,b)=>{
+            if(a[n]＜b[n]) return -1;
+            if(a[n]>b[n]) return 1;
+            if(a＜b)return -1
+            if(a>b)return 1
+        })  
+        
+        return answer;
+      }
+            </code>
+          </pre>
+          <hr />
+          <br />
+
+          <p style="margin-left: 25px; margin-bottom: 3px">
+            ■ 다른 사람 작성 코드
+          </p>
+          <ul style="margin: 0 0 10px 0">
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+          <pre>
+            <code class="javascript">
+
             </code>
           </pre>
         </section>
