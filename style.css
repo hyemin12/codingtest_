@@ -54,6 +54,14 @@ section {
   padding: 40px 0 60px 0;
   border-bottom: 1px solid #ccc;
 }
+pre {
+  margin: 0 !important;
+}
+
+code > span {
+  letter-spacing: 1px;
+}
+
 @media screen and (max-width: 1180px) {
   aside {
     display: none;

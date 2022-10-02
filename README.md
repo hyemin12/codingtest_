@@ -2,19 +2,12 @@
 
 ```html
 <section>
-  <h4>Q.</h4>
-  <p>문제설명.</p>
+  <a name=""> #</a>
+  <h3>Q.</h3>
+  <p></p>
+  <br />
   <p style="margin-top: 15px">예시)</p>
-  <p>- / 결과:</p>
-  <p>- / 결과:</p>
-  <div style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc">
-    <p style="margin-left: 25px">■ 코드</p>
-    <ol style="margin: 0 0 10px 0">
-      <li></li>
-      <li></li>
-    </ol>
-  </div>
-  코드팬주소
+  <p>- = 결과:</p>
 
   <h4>공부한내용</h4>
   <p>-</p>

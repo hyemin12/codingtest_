@@ -6,7 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>코딩테스트공부</title>
     <link rel="stylesheet" href="style.css" />
-    <style></style>
+
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/base16/google-dark.min.css"
+    />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+    <script>
+      hljs.highlightAll();
+    </script>
   </head>
   <body>
     <div class="container">
@@ -42,7 +50,10 @@
           <li><a href="#없는숫자더하기">없는숫자더하기</a></li>
           <li><a href="#내적">내적(reduce)</a></li>
           <li><a href="#약수의개수와덧셈">약수의개수와덧셈</a></li>
-          <li><a href="#"></a></li>
+          <li><a href="#부족한금액계산하기">부족한금액계산하기</a></li>
+          <li><a href="#직사각형별찍기">직사각형별찍기</a></li>
+          <li><a href="#같은숫자는싫어">같은숫자는 싫어</a></li>
+          <li><a href="#이상한문자만들기">이상한문자만들기</a></li>
 
           <li><a href="#"></a></li>
         </ol>
@@ -61,44 +72,47 @@
           <p style="margin-top: 15px">예시)</p>
           <p>- arr = [1,2,3,4] / 결과: 2.5</p>
           <p>- arr = [5,5] / 결과: 5</p>
+
           <div
             style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
           >
-            <p style="margin-left: 25px">■ 코드</p>
+            <p style="margin-left: 25px">■ 내가 작성한 코드</p>
             <ol style="margin: 0 0 10px 0">
               <li>배열의 총합 구하기</li>
               <li>결과 = 배열의 총합 / 배열의길이</li>
             </ol>
           </div>
-          <p
-            class="codepen"
-            data-height="300"
-            data-default-tab="js,result"
-            data-slug-hash="KKRQOWz"
-            data-user="hyemin12"
-            style="
-              height: 300px;
-              box-sizing: border-box;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              border: 2px solid;
-              margin: 1em 0;
-              padding: 1em;
-            "
-          >
-            <span
-              >See the Pen
-              <a href="https://codepen.io/hyemin12/pen/KKRQOWz"> Untitled</a> by
-              고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
-              <a href="https://codepen.io">CodePen</a>.</span
-            >
-          </p>
+          <pre>
+            <code class="javascript">
+      function solution(arr) {
+        let result = 0;
+        const reducer = (previousValue, currentValue) => previousValue + currentValue;
+      
+        if (arr) {
+          result = arr.reduce(reducer) / arr.length;
+        }
+        return result
+      }
+            </code>
+          </pre>
 
-          <script
-            async
-            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-          ></script>
+          <hr />
+          <br />
+
+          <p style="margin-left: 25px; margin-bottom: 3px">
+            ■ 다른 사람 작성 코드
+          </p>
+          <ul style="margin: 0 0 10px 0">
+            <li>reduce()로a부터 b까지의 총합을 구하기</li>
+            <li>array length로 나눠서 평균 구하기</li>
+          </ul>
+          <pre>
+            <code class="javascript">
+      function average(array){
+        return array.reduce((a, b) => a + b) / array.length;
+      }
+            </code>
+          </pre>
           <h4>Arr.reduce()</h4>
           <p>
             - 배열의 각 요소에 대해 주어진 **리듀서**(reducer) 함수를 실행하고,
@@ -121,46 +135,56 @@
           <p style="margin-top: 15px">예시)</p>
           <p>- phone_number = "01033334444" / 결과: "**\*\*\***4444"</p>
           <p>- phone_number = "027778888" / 결과: "**\***8888"</p>
+
           <div
             style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
           >
-            <p style="margin-left: 25px">■ 코드</p>
+            <p style="margin-left: 25px">■ 내가 작성한 코드</p>
             <ol style="margin: 0 0 10px 0">
               <li>문자열 뒷자리 4자리만 따로 정의하기</li>
               <li>문자열 뒷자리 4자리를 제외한 길이만큼 * 문자열 추가하기</li>
               <li>* 문자열과 숫자 4자리 합치기</li>
             </ol>
           </div>
-          <p
-            class="codepen"
-            data-height="300"
-            data-default-tab="js,result"
-            data-slug-hash="mdLXNvb"
-            data-user="hyemin12"
-            style="
-              height: 300px;
-              box-sizing: border-box;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              border: 2px solid;
-              margin: 1em 0;
-              padding: 1em;
-            "
-          >
-            <span
-              >See the Pen
-              <a href="https://codepen.io/hyemin12/pen/mdLXNvb">
-                코딩테스트공부(slice)</a
-              >
-              by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
-              <a href="https://codepen.io">CodePen</a>.</span
-            >
+          <pre>
+            <code class="javascript">
+      function solution3(phone_number) {
+        let result = "";
+        const pNumber = phone_number.slice(-4);
+        for (let i = 0; i ＜ phone_number.length - 4; i++) {
+          result += "*";
+        }
+        return result + pNumber;
+      }
+            </code>
+          </pre>
+
+          <hr />
+          <br />
+
+          <p style="margin-left: 25px; margin-bottom: 3px">
+            ■ 다른 사람 작성 코드
           </p>
-          <script
-            async
-            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-          ></script>
+          <ul style="margin: 0 0 10px 0">
+            <li>1. 끝자리 4자리 수 빼고 replace()로 문자열 바꾸기</li>
+            <li>2. phone_number 길이에서 4 뺀만큼 반복해서 * 더하기</li>
+            <li>2-1. phone_number 끝에 4자리 추출한 값 더하기</li>
+          </ul>
+          <pre>
+            <code class="javascript">
+      // 1번 방법
+
+      function solution(phone_number){
+        return phone_number.replace(/\d(?=\d{4})/g, "*");
+      }
+
+      // 2번 방법
+
+      function solution(phone_number){
+        var result = "*".repeat(phone_number.length - 4) + phone_number.slice(-4);
+      }
+            </code>
+          </pre>
           <h4>Array.slice(begin, end)</h4>
           <p>
             - begin : 0을 시작으로 하는 추출 시작점에 대한 인덱스<br />
@@ -187,44 +211,47 @@
           <p style="margin-top: 15px">예시)</p>
           <p>- num = 3 / 결과: "Odd"</p>
           <p>- num = 4 / 결과: "Even"</p>
+
           <div
             style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
           >
-            <p style="margin-left: 25px">■ 코드</p>
+            <p style="margin-left: 25px">■ 내가 작성한 코드</p>
             <ol style="margin: 0 0 10px 0">
               <li>n을 2로 나눴을 때 0 인지 아닌지 참 거짓 확인</li>
               <li>참일 경우 : 짝수, Event</li>
               <li>거짓일 경우 : 홀수, Odd</li>
             </ol>
           </div>
-          <p
-            class="codepen"
-            data-height="300"
-            data-default-tab="js,result"
-            data-slug-hash="jOxZgjm"
-            data-user="hyemin12"
-            style="
-              height: 300px;
-              box-sizing: border-box;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              border: 2px solid;
-              margin: 1em 0;
-              padding: 1em;
-            "
-          >
-            <span
-              >See the Pen
-              <a href="https://codepen.io/hyemin12/pen/jOxZgjm"> Untitled</a> by
-              고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
-              <a href="https://codepen.io">CodePen</a>.</span
-            >
+          <pre>
+            <code class="javascript">
+      function solution(num) {
+        let result = ""
+        if (num % 2 == 0) {
+          result =  "Even";
+        } else {
+          result = "Odd";
+        }return result
+      }
+            </code>
+          </pre>
+
+          <hr />
+          <br />
+
+          <p style="margin-left: 25px; margin-bottom: 3px">
+            ■ 다른 사람 작성 코드
           </p>
-          <script
-            async
-            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-          ></script>
+          <ul style="margin: 0 0 10px 0">
+            <li>삼항연산자 사용해서 깔끔하게 작성</li>
+          </ul>
+          <pre>
+            <code class="javascript">
+      function solution2(num) {
+        const answer = num % 2 == 0 ? "Even" : "Odd";
+        return answer;
+      }
+            </code>
+          </pre>
         </section>
         <section>
           <a name="행렬의덧셈">행렬의덧셈</a>
@@ -239,10 +266,11 @@
             - arr1 = [[1,2],[2,3]] / arr2= [[3,4],[5,6]] / 결과: [[4,6],[7,9]]
           </p>
           <p>- arr1 = [[1],[2]] / arr2= [[3],[4]] / 결과: [[4],[6]]</p>
+
           <div
             style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
           >
-            <p style="margin-left: 25px">■ 코드</p>
+            <p style="margin-left: 25px">■ 내가 작성한 코드</p>
             <ol style="margin: 0 0 10px 0">
               <li>
                 [[],[]] 중 가장 상단 배열의 길이 만큼 반복하는 반복문 작성
@@ -254,36 +282,38 @@
               <li>배열1와 배열2의 값 더하는 로직 작성</li>
             </ol>
           </div>
-          <p
-            class="codepen"
-            data-height="300"
-            data-default-tab="js,result"
-            data-slug-hash="ExLEYPO"
-            data-user="hyemin12"
-            style="
-              height: 300px;
-              box-sizing: border-box;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              border: 2px solid;
-              margin: 1em 0;
-              padding: 1em;
-            "
-          >
-            <span
-              >See the Pen
-              <a href="https://codepen.io/hyemin12/pen/ExLEYPO">
-                코딩테스트공부(반복문)</a
-              >
-              by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
-              <a href="https://codepen.io">CodePen</a>.</span
-            >
+          <pre>
+            <code class="javascript">
+      function solution(arr1, arr2) {
+        let result = [];
+        for (let i = 0; i ＜ arr1.length; i++) {
+          result.push([]);
+          for (let j = 0; j ＜ arr1[i].length; j++) {
+            const sum = arr1[i][j] + arr2[i][j];
+            result[i].push(sum);
+          }
+        }
+        return result;
+      }
+            </code>
+          </pre>
+
+          <hr />
+          <br />
+
+          <p style="margin-left: 25px; margin-bottom: 3px">
+            ■ 다른 사람 작성 코드
           </p>
-          <script
-            async
-            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-          ></script>
+          <ul style="margin: 0 0 10px 0">
+            <li>for문을 사용하지 않고 map()을 사용해서 간결하게 작성</li>
+          </ul>
+          <pre>
+            <code class="javascript">
+      function solution2(arr1, arr2) {
+        return arr1.map((a, i) => a.map((b, j) => b + arr2[i][j]));
+      }
+            </code>
+          </pre>
           <h4>반복문</h4>
           <p>
             arr1 = [[1,2],[2,3]]<br />
@@ -323,10 +353,11 @@
             12를 11로 나눈 나머지가 1이고, 11보다 작은 자연수 중에서 문제의
             조건을 만족하는 수가 없으므로, 11을 return 해야 합니다.
           </p>
+
           <div
             style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
           >
-            <p style="margin-left: 25px">■ 코드</p>
+            <p style="margin-left: 25px">■ 내가 작성한 코드</p>
             <ol style="margin: 0 0 10px 0">
               <li>n을 x로 나눴을 때 나머지가 1이 되도록 하는 조건문</li>
               <li>
@@ -335,42 +366,41 @@
               <li>※ 나머지가 1일 경우 break를 해서 반복문을 멈춰야함</li>
             </ol>
           </div>
+          <pre>
+            <code class="javascript">
+      function solution(n) {
+        let result = 0;
+        for (let i = 0; i ＜ n; i++) {
+          if (n % i === 1) {
+            result = i;
+          break
+          }
+        }
+        return result;
+      }
+            </code>
+          </pre>
 
-          <p
-            class="codepen"
-            data-height="300"
-            data-default-tab="js,result"
-            data-slug-hash="OJZvLbb"
-            data-user="hyemin12"
-            style="
-              height: 300px;
-              box-sizing: border-box;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              border: 2px solid;
-              margin: 1em 0;
-              padding: 1em;
-            "
-          >
-            <span
-              >See the Pen
-              <a href="https://codepen.io/hyemin12/pen/OJZvLbb">
-                코딩테스트공부(나머지값구하기)</a
-              >
-              by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
-              <a href="https://codepen.io">CodePen</a>.</span
-            >
+          <hr />
+          <br />
+
+          <p style="margin-left: 25px; margin-bottom: 3px">
+            ■ 다른 사람 작성 코드
           </p>
-          <script
-            async
-            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-          ></script>
-          <h4>반복문</h4>
-          <p>
-            - 반복문 돌면서 나머지가 1이 되도록 하는 가장 작은 자연수 구하기<br />-
-            break를 해서 코드를 멈추지 않으면 계속 for문이 실행됨...
-          </p>
+          <ul style="margin: 0 0 10px 0">
+            <li>n % x === 1을 만드는 x값을 구해서 반환</li>
+          </ul>
+          <pre>
+            <code class="javascript">
+      function solution(n, x = 1) {    
+        while (x++) {
+            if (n % x === 1) {
+                return x;
+            }
+        }    
+      }
+            </code>
+          </pre>
         </section>
         <section>
           <a name="두정수사이의합"> 두 정수 사이의 합 </a>
@@ -388,6 +418,7 @@
             a와 b의 대소관계는 정해져있지 않습니다.
           </p>
           <p>- a =3 / b= 5 / 결과 = 12</p>
+
           <div
             style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
           >
@@ -397,46 +428,49 @@
               <li>정의된 min, max 사이의 숫자를 구하는 반복문 작성</li>
               <li>구해진 숫자를 모두 더하기</li>
             </ol>
-            <p style="margin-left: 25px">■ 더 나은 코드</p>
-            <ol style="margin: 0 0 10px 0">
-              <li>
-                Math.min(a, b)과 Math.max(a,b)를 사용해서 작은 값, 큰 값
-                반환받기
-              </li>
-              <li>min, max 사이의 숫자를 구하는 반복문 작성</li>
-              <li>구해진 숫자를 모두 더하기</li>
-            </ol>
           </div>
-          <p
-            class="codepen"
-            data-height="300"
-            data-default-tab="js,result"
-            data-slug-hash="OJZvLxp"
-            data-user="hyemin12"
-            style="
-              height: 300px;
-              box-sizing: border-box;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              border: 2px solid;
-              margin: 1em 0;
-              padding: 1em;
-            "
-          >
-            <span
-              >See the Pen
-              <a href="https://codepen.io/hyemin12/pen/OJZvLxp">
-                코딩테스트공부(Math.minmax)</a
-              >
-              by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
-              <a href="https://codepen.io">CodePen</a>.</span
-            >
+          <pre>
+            <code class="javascript">
+      function solution2(a,b){
+        let min = a
+        let max = b
+        let result2 = 0
+        
+        if(a ＞ b){
+          min = b; max=a
+        }
+        for(let i = min; i＜=max;i++){
+          result2 = result2 + i
+        }
+        return result2
+      }
+            </code>
+          </pre>
+
+          <hr />
+          <br />
+
+          <p style="margin-left: 25px; margin-bottom: 3px">
+            ■ 다른 사람 작성 코드
           </p>
-          <script
-            async
-            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-          ></script>
+          <ul style="margin: 0 0 10px 0">
+            <li>
+              Math.min(a, b)과 Math.max(a,b)를 사용해서 작은 값, 큰 값 반환받기
+            </li>
+            <li>min, max 사이의 숫자를 구하는 반복문 작성</li>
+            <li>구해진 숫자를 모두 더하기</li>
+          </ul>
+          <pre>
+            <code class="javascript">
+      function solution(a, b) {
+        let result = 0;
+        for (let i = Math.min(a, b); i ＜= Math.max(a, b); i++) {
+          result += i;
+        }
+        return result;
+      }
+            </code>
+          </pre>
           <h4>Math.min() , Math.max()</h4>
           <p>- 주어진 숫자들 중 가장 작은 값/ 큰 값을 반환</p>
         </section>
@@ -451,46 +485,44 @@
           <p>str은 길이 1 이상인 문자열입니다.</p>
           <p style="margin-top: 15px">예시)</p>
           <p>- s ="Zbcdefg" / 결과 = "gfedcbZ</p>
+
           <div
             style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
           >
-            <p style="margin-left: 25px">■ 코드</p>
+            <p style="margin-left: 25px">■ 내가 작성한 코드</p>
             <ol style="margin: 0 0 10px 0">
               <li>문자열을 쪼개서 배열로 만들기</li>
               <li>배열을 sort 함수를 사용해서 정렬하기</li>
               <li>정렬된 배열을 합쳐서 문자열로 반환하기</li>
             </ol>
           </div>
-          <p
-            class="codepen"
-            data-height="300"
-            data-default-tab="js,result"
-            data-slug-hash="LYmdPJE"
-            data-user="hyemin12"
-            style="
-              height: 300px;
-              box-sizing: border-box;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              border: 2px solid;
-              margin: 1em 0;
-              padding: 1em;
-            "
-          >
-            <span
-              >See the Pen
-              <a href="https://codepen.io/hyemin12/pen/LYmdPJE">
-                코딩테스트공부(문자열정렬)</a
-              >
-              by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
-              <a href="https://codepen.io">CodePen</a>.</span
-            >
+          <pre>
+            <code class="javascript">
+      function solution(s){
+        const arr = s.split('')
+        const result = arr.sort((a,b)=>(a＜b) ? 1 : -1).join('')
+        return result  
+      }
+            </code>
+          </pre>
+
+          <hr />
+          <br />
+
+          <p style="margin-left: 25px; margin-bottom: 3px">
+            ■ 다른 사람 작성 코드
           </p>
-          <script
-            async
-            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-          ></script>
+          <pre>
+            <code class="javascript">
+      function solution(s) {
+        return s
+          .split("")
+          .sort()
+          .reverse()
+          .join("");
+      }
+            </code>
+          </pre>
           <h4>문자열 정렬하기 sort()</h4>
           <p>- sort((a,b)=>{return a - b})<br />- a와 b를 비교해서 정렬하기</p>
           <p>
@@ -513,6 +545,7 @@
           <p style="margin-top: 15px">예시)</p>
           <p>- arr = [4,3,2,1] / 결과: [4,3,2]<br /></p>
           <p>- arr = [10] / 결과: [-1]<br /></p>
+
           <div
             style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
           >
@@ -527,43 +560,41 @@
                 달라지기때문에 문제 의도와 다른 해결방법
               </li>
             </ol>
-            <p style="margin-left: 25px">■ 올바른 코드</p>
-            <ol style="margin: 0 0 10px 0">
-              <li>ndexOf를 사용해서 제일 작은 수의 index를 찾기</li>
-              <li>찾은 index를 삭제하기</li>
-              <li>배열의 길이가 0일 경우 [-1]을 리턴하도록 작성</li>
-            </ol>
           </div>
-          <p
-            class="codepen"
-            data-height="300"
-            data-default-tab="js,result"
-            data-slug-hash="bGMvbXv"
-            data-user="hyemin12"
-            style="
-              height: 300px;
-              box-sizing: border-box;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              border: 2px solid;
-              margin: 1em 0;
-              padding: 1em;
-            "
-          >
-            <span
-              >See the Pen
-              <a href="https://codepen.io/hyemin12/pen/bGMvbXv">
-                코딩테스트공부(가장작은수제거)</a
-              >
-              by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
-              <a href="https://codepen.io">CodePen</a>.</span
-            >
+          <pre>
+            <code class="javascript">
+      function solution2(arr){
+        let result = arr.sort((a,b)=>(a＜b)? -1:1).splice(1)
+
+        if(result.length === 0 ){
+          return [-1]
+        }
+        return result
+      } 
+            </code>
+          </pre>
+
+          <hr />
+          <br />
+
+          <p style="margin-left: 25px; margin-bottom: 3px">
+            ■ 다른 사람 작성 코드
           </p>
-          <script
-            async
-            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-          ></script>
+          <ul style="margin: 0 0 10px 0">
+            <li>indexOf를 사용해서 제일 작은 수의 index를 찾기</li>
+            <li>찾은 index를 삭제하기</li>
+            <li>배열의 길이가 0일 경우 [-1]을 리턴하도록 작성</li>
+          </ul>
+          <pre>
+            <code class="javascript">
+      function solution(arr){
+        const index = arr.indexOf(Math.min(...arr))
+        arr.splice(index, 1)
+        const result = arr.length >0 ? arr : [-1]
+        return result
+      }  
+            </code>
+          </pre>
           <h4>작은 수 index 찾아서 제거하기</h4>
           <p>
             - indexOf를 사용해서 제일 작은 수의 index를 찾고, splice를 사용해서
@@ -585,46 +616,49 @@
           <p style="margin-top: 15px">예시)</p>
           <p>- s = "a234" / 결과: false<br /></p>
           <p>- s = "1234" / 결과: true<br /></p>
+
           <div
             style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
           >
-            <p style="margin-left: 25px">■ 코드</p>
+            <p style="margin-left: 25px">■ 내가 작성한 코드</p>
             <ol style="margin: 0 0 10px 0">
               <li>s의 길이 4 혹은 6인지 참 거짓 확인</li>
               <li>
                 s의 길이가 참일 경우 문자로만 구성되어 있는지 참 거짓 확인
               </li>
+              <li>※정규표현식에 대해 잘 알지 못해 따로 공부하며 작성</li>
             </ol>
           </div>
+          <pre>
+            <code class="javascript">
+      function solution2(s){
+        let result = true;
+        if(s.length === 4||s.length===6){
+          if(/^\d+$/.test(s)){
+            result = true
+          }else{ result = false}
+        }else{
+          result = false
+        }
+        return result
+      }
+            </code>
+          </pre>
 
-          <p
-            class="codepen"
-            data-height="300"
-            data-default-tab="js,result"
-            data-slug-hash="XWqEaxz"
-            data-user="hyemin12"
-            style="
-              height: 300px;
-              box-sizing: border-box;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              border: 2px solid;
-              margin: 1em 0;
-              padding: 1em;
-            "
-          >
-            <span
-              >See the Pen
-              <a href="https://codepen.io/hyemin12/pen/XWqEaxz"> Untitled</a> by
-              고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
-              <a href="https://codepen.io">CodePen</a>.</span
-            >
+          <hr />
+          <br />
+
+          <p style="margin-left: 25px; margin-bottom: 3px">
+            ■ 다른 사람 작성 코드
           </p>
-          <script
-            async
-            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-          ></script>
+          <pre>
+            <code class="javascript">
+      function solution(s){
+        const result =  (s.length === 4 || s.length === 6) && /^\d+$/.test(s)  ? true  : false 
+        return result
+      }
+            </code>
+          </pre>
           <h4>정규표현식</h4>
           <p>- /￦d/ or [0~9] : 숫자인지 아닌지 확인</p>
           <p>- [^0~9] : 숫자를 제외한 모든 문자 (문자열 시작조건을 주려면 ^)</p>
@@ -668,48 +702,52 @@
                 작성하기
               </li>
             </ol>
-            <p style="margin-left: 25px">■ 더 나은 코드</p>
-            <ol style="margin: 0 0 10px 0">
-              <li>영단어의 배열 만들기</li>
-              <li>
-                영단어 배열의 길이만큼 반복문을 돌면서 문자열에 있는 영단어를
-                찾기
-              </li>
-              <li>찾은 영단어를 split 함수를 이용해서 분리하고,</li>
-              <li>배열의 index 값을 넣어서 한단어로 만들기</li>
-            </ol>
           </div>
+          <pre>
+            <code class="javascript">
+      function solution2(s){
+        const number = [{num:'0',eng:'zero'},{num:'1',eng:'one'},{num:'2',eng:'two'},{num:'3',eng:'three'},{num:'4',eng:'four'},{num:'5',eng:'five'},{num:'6',eng:'six'},{num:'7',eng:'seven'},{num:'8',eng:'eight'},{num:'9',eng:'nine'}]
 
-          <p
-            class="codepen"
-            data-height="300"
-            data-default-tab="js,result"
-            data-slug-hash="ExLEbaY"
-            data-user="hyemin12"
-            style="
-              height: 300px;
-              box-sizing: border-box;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              border: 2px solid;
-              margin: 1em 0;
-              padding: 1em;
-            "
-          >
-            <span
-              >See the Pen
-              <a href="https://codepen.io/hyemin12/pen/ExLEbaY">
-                코딩테스트(영단어를숫자로바꾸기)</a
-              >
-              by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
-              <a href="https://codepen.io">CodePen</a>.</span
-            >
+        let str = s
+        for(let i = 0; i ＜ number.length; i++){
+          str = str.replace(number[i].eng, number[i].num)
+        }
+        return Number(str)
+      }
+            </code>
+          </pre>
+
+          <hr />
+          <br />
+
+          <p style="margin-left: 25px; margin-bottom: 3px">
+            ■ 다른 사람 작성 코드
           </p>
-          <script
-            async
-            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-          ></script>
+          <ul style="margin: 0 0 10px 0">
+            <li>영단어의 배열 만들기</li>
+            <li>
+              영단어 배열의 길이만큼 반복문을 돌면서 문자열에 있는 영단어를 찾기
+            </li>
+            <li>찾은 영단어를 split 함수를 이용해서 분리하고,</li>
+            <li>배열의 index 값을 넣어서 한단어로 만들기</li>
+          </ul>
+          <pre>
+            <code class="javascript">
+      function solution(s) {
+        const eng = ['zero','one','two','three','four','five','six','seven','eight','nine']
+        
+        var answer = s;
+      
+          for(let i=0; i＜eng.length; i++) {
+              let arr = answer.split(eng[i]);
+              answer = arr.join(i);
+          }
+      
+          return Number(answer);
+    
+      }
+            </code>
+          </pre>
           <h4>문자열.split()</h4>
           <p>- 여러개의 문자열로 나눌 때 사용(배열로 전환)</p>
           <p>
@@ -741,46 +779,28 @@
           <p style="margin-top: 15px">예시)</p>
           <p>- n = 12 / 결과: 28</p>
           <p>- n = 5 / 결과: 6</p>
+
           <div
             style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
           >
-            <p style="margin-left: 25px">■ 코드</p>
+            <p style="margin-left: 25px">■ 내가 작성한 코드</p>
             <ol style="margin: 0 0 10px 0">
               <li>n을 나눴을 때 0이 되는 값 = 약수</li>
               <li>0부터 n까지 반복하면서 약수를 구하기</li>
               <li>반환되는 약수 더하기</li>
             </ol>
           </div>
-          <p
-            class="codepen"
-            data-height="300"
-            data-default-tab="js,result"
-            data-slug-hash="dyemZgz"
-            data-user="hyemin12"
-            style="
-              height: 300px;
-              box-sizing: border-box;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              border: 2px solid;
-              margin: 1em 0;
-              padding: 1em;
-            "
-          >
-            <span
-              >See the Pen
-              <a href="https://codepen.io/hyemin12/pen/dyemZgz">
-                코딩테스트(약수의합)</a
-              >
-              by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
-              <a href="https://codepen.io">CodePen</a>.</span
-            >
-          </p>
-          <script
-            async
-            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-          ></script>
+          <pre>
+            <code class="javascript">
+      function solution(num) {
+          var answer = 0;
+          for (let i = 1; i ＜= num; i++) {
+              if (num % i === 0) answer += i
+          }
+          return answer
+      }
+            </code>
+          </pre>
         </section>
         <section>
           <a name="정수내림차순배치">#정수내림차순배치</a>
@@ -792,11 +812,10 @@
           <p>n은 1이상 8000000000 이하인 자연수입니다.</p>
           <p style="margin-top: 15px">예시)</p>
           <p>- n: 118372 / 결과: 873211</p>
-
           <div
             style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
           >
-            <p style="margin-left: 25px">■ 코드</p>
+            <p style="margin-left: 25px">■ 내가 작성한 코드</p>
             <ol style="margin: 0 0 10px 0">
               <li>숫자를 문자열로 바꾸기</li>
               <li>문자열을 배열로 바꾸고 정렬하기</li>
@@ -804,36 +823,30 @@
               <li>문자열을 숫자로 변환해서 반환</li>
             </ol>
           </div>
-          <p
-            class="codepen"
-            data-height="300"
-            data-default-tab="js,result"
-            data-slug-hash="xxjWPvd"
-            data-user="hyemin12"
-            style="
-              height: 300px;
-              box-sizing: border-box;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              border: 2px solid;
-              margin: 1em 0;
-              padding: 1em;
-            "
-          >
-            <span
-              >See the Pen
-              <a href="https://codepen.io/hyemin12/pen/xxjWPvd">
-                코딩테스트(정수내림차순)</a
-              >
-              by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
-              <a href="https://codepen.io">CodePen</a>.</span
-            >
+          <pre>
+            <code class="javascript">
+      function solution(n) {
+        var answer = 0;
+        answer = n.toString().split('').sort((a,b)=>b-a).join('')
+        return Number(answer);
+      }
+            </code>
+          </pre>
+
+          <hr />
+          <br />
+
+          <p style="margin-left: 25px; margin-bottom: 3px">
+            ■ 다른 사람 작성 코드
           </p>
-          <script
-            async
-            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-          ></script>
+          <ul style="margin: 0 0 10px 0"></ul>
+          <pre>
+            <code class="javascript">
+      function solution(n) {
+          return parseInt((n+"").split("").sort().reverse().join(""));
+      }
+            </code>
+          </pre>
           <h4>Number()</h4>
           <p>- 문자열을 숫자로 바꿀 때 사용</p>
           <h4>toString()</h4>
@@ -850,47 +863,46 @@
           <p style="margin-top: 15px">예시)</p>
           <p>- n: 123 / 결과: 6</p>
           <p>- n: 987 / 결과: 24</p>
-
           <div
             style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
           >
-            <p style="margin-left: 25px">■ 코드</p>
+            <p style="margin-left: 25px">■ 내가 작성한 코드</p>
             <ol style="margin: 0 0 10px 0">
               <li>숫자를 문자열로 바꾸기</li>
               <li>문자열을 배열로 바꾸기</li>
               <li>index값을 숫자로 변환하고 더하기 (반복문)</li>
             </ol>
           </div>
-          <p
-            class="codepen"
-            data-height="300"
-            data-default-tab="js,result"
-            data-slug-hash="RwyMxNB"
-            data-user="hyemin12"
-            style="
-              height: 300px;
-              box-sizing: border-box;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              border: 2px solid;
-              margin: 1em 0;
-              padding: 1em;
-            "
-          >
-            <span
-              >See the Pen
-              <a href="https://codepen.io/hyemin12/pen/RwyMxNB">
-                코딩테스트공부(자릿수더하기)</a
-              >
-              by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
-              <a href="https://codepen.io">CodePen</a>.</span
-            >
+          <pre>
+            <code class="javascript">
+      function solution(n){
+        var answer = 0;
+        const arr = n.toString().split('')
+        for(let i =0; i＜arr.length;i++){
+            answer += Number(arr[i])
+        }
+        return answer;
+      }
+            </code>
+          </pre>
+
+          <hr />
+          <br />
+
+          <p style="margin-left: 25px; margin-bottom: 3px">
+            ■ 다른 사람 작성 코드
           </p>
-          <script
-            async
-            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-          ></script>
+          <ul style="margin: 0 0 10px 0">
+            <li>문자열을 배열로 바꾸기</li>
+            <li>reduce() 통해서 모든 배열 더함</li>
+          </ul>
+          <pre>
+            <code class="javascript">
+      function solution(n){
+        return (n+"").split("").reduce((acc, curr) => acc + parseInt(curr), 0)
+      } 
+            </code>
+          </pre>
           <h4>parseInt()</h4>
           <p>- 특정 진수의 정수를 반환</p>
         </section>
@@ -905,44 +917,41 @@
           <p style="margin-top: 15px">예시)</p>
           <p>- n: 121 / 결과: 144</p>
           <p>- n: 3 / 결과: -1</p>
+
           <div
             style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
           >
-            <p style="margin-left: 25px">■ 코드</p>
+            <p style="margin-left: 25px">■ 내가 작성한 코드</p>
             <ol style="margin: 0 0 10px 0">
               <li>n의 제곱 여부 판별</li>
               <li>x가 양의 정수라면 x+1 제곱근 구하기</li>
               <li>x가 양의 정수가 아니라면 -1 반환</li>
             </ol>
           </div>
-          <p
-            class="codepen"
-            data-height="300"
-            data-default-tab="js,result"
-            data-slug-hash="wvjmpWb"
-            data-user="hyemin12"
-            style="
-              height: 300px;
-              box-sizing: border-box;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              border: 2px solid;
-              margin: 1em 0;
-              padding: 1em;
-            "
-          >
-            <span
-              >See the Pen
-              <a href="https://codepen.io/hyemin12/pen/wvjmpWb"> Untitled</a> by
-              고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
-              <a href="https://codepen.io">CodePen</a>.</span
-            >
+          <pre>
+            <code class="javascript">
+              // sqrt(), pow() 몰라서 작성 못함
+            </code>
+          </pre>
+
+          <hr />
+          <br />
+
+          <p style="margin-left: 25px; margin-bottom: 3px">
+            ■ 다른 사람 작성 코드
           </p>
-          <script
-            async
-            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-          ></script>
+          <ul style="margin: 0 0 10px 0">
+            <li>n의 제곱근이 정수인지 참 거짓 조건문</li>
+            <li>참: (제곱근 +1) 제곱하기</li>
+            <li>거짓: return false</li>
+          </ul>
+          <pre>
+            <code class="javascript">
+      function solution(n){
+        return Number.isInteger(Math.sqrt(n)) ? Math.pow(Math.sqrt(n) + 1, 2) : -1
+      }  
+            </code>
+          </pre>
           <h4>Math.sqrt()</h4>
           <p>- 루트값 구하기</p>
           <h4>Math.pow()</h4>
@@ -961,43 +970,50 @@
           <div
             style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
           >
-            <p style="margin-left: 25px">■ 코드</p>
+            <p style="margin-left: 25px">■ 내가 작성한 코드</p>
             <ol style="margin: 0 0 10px 0">
               <li>숫자를 문자열로 바꾸고 배열로 바꾸기</li>
               <li>reverse를 사용해 배열 뒤집기</li>
               <li>빈배열에 숫자로 변환한 값 push 하기</li>
             </ol>
           </div>
-          <p
-            class="codepen"
-            data-height="300"
-            data-default-tab="js,result"
-            data-slug-hash="bGMvaZE"
-            data-user="hyemin12"
-            style="
-              height: 300px;
-              box-sizing: border-box;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              border: 2px solid;
-              margin: 1em 0;
-              padding: 1em;
-            "
-          >
-            <span
-              >See the Pen
-              <a href="https://codepen.io/hyemin12/pen/bGMvaZE">
-                코딩테스트공부(자연수뒤집어배열로만들기)</a
-              >
-              by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
-              <a href="https://codepen.io">CodePen</a>.</span
-            >
+          <pre>
+            <code class="javascript">
+      function solution2(n) {
+        var answer = [];
+        arr = n.toString().split('').reverse()
+        for(let i =0 ; i < arr.length;i++){
+            answer.push(Number(arr[i]))
+        }
+        return answer;
+      }  
+            </code>
+          </pre>
+
+          <hr />
+          <br />
+
+          <p style="margin-left: 25px; margin-bottom: 3px">
+            ■ 다른 사람 작성 코드
           </p>
-          <script
-            async
-            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-          ></script>
+          <ul style="margin: 0 0 10px 0">
+            <li>n을 10으로 나눈 나머지 배열에 넣기</li>
+            <li>n을 내림해서 정수로 만들기</li>
+          </ul>
+          <pre>
+            <code class="javascript">
+      function solution(n){
+        var arr = [];
+      
+          do {
+              arr.push(n%10);
+              n = Math.floor(n/10);
+          } while (n>0);
+      
+          return arr;
+      }
+            </code>
+          </pre>
         </section>
         <section>
           <a name="문자열내p와y의개수"> #문자열 내 p와 y의 개수 </a>
@@ -1012,52 +1028,41 @@
             "pPoooyY"면 true를 return하고 "Pyy"라면 false를 return합니다.
           </p>
 
-          <p style="margin-top: 15px">예시)</p>
-          <p>- n: 12345 / 결과: [5,4,3,2,1]</p>
-
           <div
             style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
           >
-            <p style="margin-left: 25px">■ 코드</p>
+            <p style="margin-left: 25px">■ 내가 작성한 코드</p>
             <ol style="margin: 0 0 10px 0">
               <li>문자열을 대문자로 변경한 후 split()로 문자열 나누기</li>
               <li>배열의 길이를 비교하기</li>
             </ol>
-            <p style="margin-left: 25px">■ 코드</p>
-            <ol style="margin: 0 0 10px 0">
-              <li>숫자를 문자열로 바꾸고 배열로 바꾸기</li>
-              <li>reverse를 사용해 배열 뒤집기</li>
-              <li>빈배열에 숫자로 변환한 값 push 하기</li>
-            </ol>
           </div>
-          <p
-            class="codepen"
-            data-height="300"
-            data-default-tab="js,result"
-            data-slug-hash="mdLxXBV"
-            data-user="hyemin12"
-            style="
-              height: 300px;
-              box-sizing: border-box;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              border: 2px solid;
-              margin: 1em 0;
-              padding: 1em;
-            "
-          >
-            <span
-              >See the Pen
-              <a href="https://codepen.io/hyemin12/pen/mdLxXBV"> Untitled</a> by
-              고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
-              <a href="https://codepen.io">CodePen</a>.</span
-            >
+          <pre>
+            <code class="javascript">
+      function solution2(s){
+        const p = s.toUpperCase().split("P").length
+        const y = s.toUpperCase().split("Y").length;
+        return p === y ? true : false 
+      } 
+            </code>
+          </pre>
+
+          <hr />
+          <br />
+
+          <p style="margin-left: 25px; margin-bottom: 3px">
+            ■ 다른 사람 작성 코드
           </p>
-          <script
-            async
-            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-          ></script>
+          <ul style="margin: 0 0 10px 0">
+            <li>match()와 정규표현식을 통해서 길이 비교</li>
+          </ul>
+          <pre>
+            <code class="javascript">
+      function solution(s){
+        return s.match(/p/ig).length == s.match(/y/ig).length;
+      } 
+            </code>
+          </pre>
           <h4>match()</h4>
           <p>- 정규표현식과 매치되는 부분을 검사해줌</p>
           <p>- g 프래그를 사용하면 모든 결과를 array형으로 반환함</p>
@@ -1075,48 +1080,42 @@
             s는 부호와 숫자로만 이루어져있습니다.<br />
             s는 "0"으로 시작하지 않습니다.
           </p>
-
           <div
             style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
           >
-            <p style="margin-left: 25px">■ 코드</p>
+            <p style="margin-left: 25px">■ 내가 작성한 코드</p>
             <ol style="margin: 0 0 10px 0">
               <li>Number()나 parseInt() 사용해서 숫자로 바꾸기</li>
             </ol>
           </div>
-          <p
-            class="codepen"
-            data-height="300"
-            data-default-tab="js,result"
-            data-slug-hash="wvjmmBp"
-            data-user="hyemin12"
-            style="
-              height: 300px;
-              box-sizing: border-box;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              border: 2px solid;
-              margin: 1em 0;
-              padding: 1em;
-            "
-          >
-            <span
-              >See the Pen
-              <a href="https://codepen.io/hyemin12/pen/wvjmmBp">
-                코딩테스트공부(문자열정수로)</a
-              >
-              by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
-              <a href="https://codepen.io">CodePen</a>.</span
-            >
+          <pre>
+            <code class="javascript">
+      function solution2(str) {
+        var answer = 0;
+        answer = Number(str)
+        return answer;
+      }
+            </code>
+          </pre>
+
+          <hr />
+          <br />
+
+          <p style="margin-left: 25px; margin-bottom: 3px">
+            ■ 다른 사람 작성 코드
           </p>
-          <script
-            async
-            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-          ></script>
-          <h4>
-            문자열에 * / )하게 되면 자바스크립트에 문자열을 num으로 인식함...
-          </h4>
+          <ul style="margin: 0 0 10px 0">
+            <li>
+              문자열에 * / )하게 되면 자바스크립트에 문자열을 num으로 인식함...
+            </li>
+          </ul>
+          <pre>
+            <code class="javascript">
+      function solution(str){
+        return str/1
+      }
+            </code>
+          </pre>
         </section>
         <section>
           <a name="가운데글자가져오기">가운데글자가져오기</a>
@@ -1128,46 +1127,50 @@
           <p style="margin-top: 15px">예시)</p>
           <p>- s = 'abcde' / 결과: 'c'</p>
           <p>- s = 'qwer' / 결과: 'we</p>
+
           <div
             style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
           >
-            <p style="margin-left: 25px">■ 코드</p>
+            <p style="margin-left: 25px">■ 내가 작성한 코드</p>
             <ol style="margin: 0 0 10px 0">
               <li>문자열 길이의 절반값 구하기</li>
               <li>문자열 길이가 짝수일 경우 2글자 반환</li>
               <li>그렇지 않을 경우 가운데 글자 1글자만 반환</li>
             </ol>
           </div>
-          <p
-            class="codepen"
-            data-height="300"
-            data-default-tab="js,result"
-            data-slug-hash="vYjRRMd"
-            data-user="hyemin12"
-            style="
-              height: 300px;
-              box-sizing: border-box;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              border: 2px solid;
-              margin: 1em 0;
-              padding: 1em;
-            "
-          >
-            <span
-              >See the Pen
-              <a href="https://codepen.io/hyemin12/pen/vYjRRMd">
-                코딩테스트공부(가운데글자가져오기)</a
-              >
-              by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
-              <a href="https://codepen.io">CodePen</a>.</span
-            >
+          <pre>
+            <code class="javascript">
+      function solution2(s) {
+        var answer = '';
+        const index = (s.length) / 2
+        if(s.length % 2 === 0){
+          answer = s.slice(index-1, index+1);
+        }else{
+            answer = s.charAt(index);
+        }
+          return answer;
+      }
+            </code>
+          </pre>
+
+          <hr />
+          <br />
+
+          <p style="margin-left: 25px; margin-bottom: 3px">
+            ■ 다른 사람 작성 코드
           </p>
-          <script
-            async
-            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-          ></script>
+          <ul style="margin: 0 0 10px 0">
+            <li>짝수일경우 s[index]값만 출력</li>
+            <li>홀수일경우 s[index -1]+ s[index] 2자리값 출력</li>
+          </ul>
+          <pre>
+            <code class="javascript">
+      function solution(s){
+        const mid = Math.floor(s.length/2);
+          return s.length %2 === 1 ? s[mid] : s[mid-1]+s[mid];
+      }
+            </code>
+          </pre>
           <h4>string.charAt()</h4>
           <p>- 특정 인덱스에 위치하는 유니코드 단일문자를 반환</p>
         </section>
@@ -1185,50 +1188,48 @@
           <p style="margin-top: 15px">예시)</p>
           <p>- x = 2 / n =5 / 결과: [2,4,6,8,10]</p>
           <p>- x = -4 / n = 2 / 결과: [-4, -8]</p>
+
           <div
             style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
           >
-            <p style="margin-left: 25px">■ 코드</p>
+            <p style="margin-left: 25px">■ 내가 작성한 코드</p>
             <ol style="margin: 0 0 10px 0">
               <li>x + (x + x) ... 더해지는 반복문 만들기</li>
               <li>계산된 값을 배열에 넣기</li>
             </ol>
           </div>
-          <p
-            class="codepen"
-            data-height="300"
-            data-default-tab="js,result"
-            data-slug-hash="dyeePbV"
-            data-user="hyemin12"
-            style="
-              height: 300px;
-              box-sizing: border-box;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              border: 2px solid;
-              margin: 1em 0;
-              padding: 1em;
-            "
-          >
-            <span
-              >See the Pen
-              <a href="https://codepen.io/hyemin12/pen/dyeePbV">
-                코딩테스트공부(x만큼간격있는n개숫자)</a
-              >
-              by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
-              <a href="https://codepen.io">CodePen</a>.</span
-            >
+          <pre>
+            <code class="javascript">
+      function solution(x, n) {
+        var answer = [];
+        for(let i = 1; i＜=n;i++){
+            answer.push(x*i)
+        }
+        return answer;
+      } 
+            </code>
+          </pre>
+
+          <hr />
+          <br />
+
+          <p style="margin-left: 25px; margin-bottom: 3px">
+            ■ 다른 사람 작성 코드
           </p>
-          <script
-            async
-            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-          ></script>
-          <h4>다른 사람 코드</h4>
-          <p>
-            - Array(n).fill(x) 로 배열을 만든 다음 map 돌면서 배열의 값과 index
-            값을 곱해서 반환함...
-          </p>
+          <ul style="margin: 0 0 10px 0">
+            <li>
+              Array(n).fill(x) 로 배열을 만든 다음 map 돌면서 배열의 값과 index
+              값을 곱해서 반환함...
+            </li>
+          </ul>
+          <pre>
+            <code class="javascript">
+      function solution2(x,n){
+        console.log(Array(n).fill(x))
+        return Array(n).fill(x).map((v, i) => (i + 1) * v)
+      }
+            </code>
+          </pre>
         </section>
         <section>
           <a name="하샤드수"> #하샤드수</a>
@@ -1245,50 +1246,49 @@
           <div
             style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
           >
-            <p style="margin-left: 25px">■ 코드</p>
+            <p style="margin-left: 25px">■ 내가 작성한 코드</p>
             <ol style="margin: 0 0 10px 0">
               <li>arr를 배열로 바꾸기</li>
               <li>배열의 모든 값 더하기(sum)</li>
               <li>arr % sum === 0인지 아닌지 확인하기</li>
             </ol>
           </div>
-          <p
-            class="codepen"
-            data-height="300"
-            data-default-tab="js,result"
-            data-slug-hash="poVVvgo"
-            data-user="hyemin12"
-            style="
-              height: 300px;
-              box-sizing: border-box;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              border: 2px solid;
-              margin: 1em 0;
-              padding: 1em;
-            "
-          >
-            <span
-              >See the Pen
-              <a href="https://codepen.io/hyemin12/pen/poVVvgo">
-                코딩테스트공부(하샤드)</a
-              >
-              by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
-              <a href="https://codepen.io">CodePen</a>.</span
-            >
+          <pre>
+            <code class="javascript">
+      function solution(x) {
+        const arr = x.toString().split('')
+        let sum = 0
+        for(let i =0; i＜arr.length;i++){
+              sum += parseInt(arr[i])
+        }
+        return x % sum === 0 ? true : false
+      }
+            </code>
+          </pre>
+
+          <hr />
+          <br />
+
+          <p style="margin-left: 25px; margin-bottom: 3px">
+            ■ 다른 사람 작성 코드
           </p>
-          <script
-            async
-            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-          ></script>
+          <ul style="margin: 0 0 10px 0">
+            <li>[..x.toString()] 을 통해 각 자리 수 배열로 만들고</li>
+            <li>
+              배열의 값을 reduce()로 더함 (결과값 숫자, 따로 문자열을 숫자로
+              변환할 필요가 없음)
+            </li>
+            <li>x % 더한값 === 0 참인지 거짓인지 판별</li>
+          </ul>
+          <pre>
+            <code class="javascript">
+      function solution2(x){
+        var result = [...x.toString()].reduce((acc, curr) => +acc + +curr, 0);
+        return x % result === 0  ? true : false 
+      }
+            </code>
+          </pre>
           <h4>다른 사람 코드</h4>
-          <p>- [..x.toString()] 을 통해 각 자리 수 배열로 만들고</p>
-          <p>
-            - 배열의 값을 reduce()로 더함 (결과값 숫자, 따로 문자열을 숫자로
-            변환할 필요가 없음)
-          </p>
-          <p>- x % 더한값 === 0 참인지 거짓인지 판별</p>
         </section>
         <section>
           <a name="콜라츠추측"> #콜라츠추측</a>
@@ -1317,7 +1317,7 @@
           <div
             style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
           >
-            <p style="margin-left: 25px">■ 코드</p>
+            <p style="margin-left: 25px">■ 내가 작성한 코드</p>
             <ol style="margin: 0 0 10px 0">
               <li>짝수라면 2로 나누기</li>
               <li>홀수라면 3을 곱하고, 1 더하기</li>
@@ -1326,48 +1326,55 @@
               <li>반복횟수(작업횟수)가 500이 되면 -1 반환시키기</li>
             </ol>
           </div>
-          <p
-            class="codepen"
-            data-height="300"
-            data-default-tab="js,result"
-            data-slug-hash="abGGzJw"
-            data-user="hyemin12"
-            style="
-              height: 300px;
-              box-sizing: border-box;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              border: 2px solid;
-              margin: 1em 0;
-              padding: 1em;
-            "
-          >
-            <span
-              >See the Pen
-              <a href="https://codepen.io/hyemin12/pen/abGGzJw">
-                코딩테스트공부(콜라츠추측)</a
+          <pre>
+            <code class="javascript">
+      function solution(num) {
+        for (let answer = 0; answer < 500;answer++){
+          if(num ===1) {
+            return answer
+          }else if(num % 2 ==0){
+            num = num  / 2
+          }else if(num % 2 == 1){
+            num = (num * 3) + 1
+          }
+        }
+        return -1       
+      }
+            </code>
+          </pre>
+
+          <hr />
+          <br />
+
+          <p style="margin-left: 25px; margin-bottom: 3px">
+            ■ 다른 사람 작성 코드
+          </p>
+          <ul style="margin: 0 0 10px 0">
+            <li>- While()문을 사용해서 조건문 작성</li>
+            <li>
+              - 조건: num이 1이 아니거나, answer이 500이 아닐경우
+              <span style="color: green; margin-left: 10px"
+                >// 이 동안 계속 반복해서 코드가 실행됨</span
               >
-              by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
-              <a href="https://codepen.io">CodePen</a>.</span
-            >
-          </p>
-          <script
-            async
-            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-          ></script>
-          <h4>다른 사람 코드</h4>
-          <p>- While()문을 사용해서 조건문 작성</p>
-          <p>
-            - 조건: num이 1이 아니거나, answer이 500이 아닐경우
-            <span style="color: green; margin-left: 10px"
-              >// 이 동안 계속 반복해서 코드가 실행됨</span
-            >
-          </p>
-          <p>
-            - num이 짝수일경우, num /2 코드를 아닐경우 num * 3 + 1 코드 실행
-          </p>
-          <p>코드가 반복되는 동안 answer를 더해서 작업의 횟수 확인</p>
+            </li>
+            <li>
+              - num이 짝수일경우, num /2 코드를 아닐경우 num * 3 + 1 코드 실행
+            </li>
+            <li>코드가 반복되는 동안 answer를 더해서 작업의 횟수 확인</li>
+          </ul>
+          <pre>
+            <code class="javascript">
+      function solution2(num) {
+        var answer = 0;
+        while(num !=1 && answer !=500){
+            num%2==0 ? num = num/2 : num = num*3 +1;
+            answer++;
+          }
+        return num == 1 ? answer : -1; 
+      }
+            </code>
+          </pre>
+          <h4>메모</h4>
           <h4>While문</h4>
           <p>
             - 조건식이 true일 경우 계속해서 반복, 조건식이 false가 되면
@@ -1394,44 +1401,23 @@
 
           <p style="margin-top: 15px">예시)</p>
           <p>- seoul: ["Jane", "Kim"] / 결과: "김서방은 1에 있다"</p>
+
           <div
             style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
           >
-            <p style="margin-left: 25px">■ 코드</p>
+            <p style="margin-left: 25px">■ 내가 작성한 코드</p>
             <ol style="margin: 0 0 10px 0">
               <li>indexOf()로 해당 index 찾아서 문구와 함께 출력</li>
             </ol>
           </div>
-          <p
-            class="codepen"
-            data-height="300"
-            data-default-tab="js,result"
-            data-slug-hash="VwxxYyB"
-            data-user="hyemin12"
-            style="
-              height: 300px;
-              box-sizing: border-box;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              border: 2px solid;
-              margin: 1em 0;
-              padding: 1em;
-            "
-          >
-            <span
-              >See the Pen
-              <a href="https://codepen.io/hyemin12/pen/VwxxYyB">
-                코딩테스트공부(김서방찾기)</a
-              >
-              by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
-              <a href="https://codepen.io">CodePen</a>.</span
-            >
-          </p>
-          <script
-            async
-            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-          ></script>
+          <pre>
+            <code class="javascript">
+      function solution(seoul) {
+        const index = seoul.indexOf('Kim')
+        return `김서방은 ${index}에 있다`;
+      }
+            </code>
+          </pre>
         </section>
         <section>
           <a name="나누어떨어지는숫자배열"> #나누어떨어지는숫자배열</a>
@@ -1454,7 +1440,7 @@
           <div
             style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
           >
-            <p style="margin-left: 25px">■ 코드</p>
+            <p style="margin-left: 25px">■ 내가 작성한 코드</p>
             <ol style="margin: 0 0 10px 0">
               <li>
                 arr를 map 돌면서 divisor로 나누었을 때 0이 되는 값은 배열에
@@ -1464,38 +1450,40 @@
               <li>아닐 경우는 오름차순으로 정렬해서 반환</li>
             </ol>
           </div>
-          <p
-            class="codepen"
-            data-height="300"
-            data-default-tab="js,result"
-            data-slug-hash="ExLLaOb"
-            data-user="hyemin12"
-            style="
-              height: 300px;
-              box-sizing: border-box;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              border: 2px solid;
-              margin: 1em 0;
-              padding: 1em;
-            "
-          >
-            <span
-              >See the Pen
-              <a href="https://codepen.io/hyemin12/pen/ExLLaOb">
-                코딩테스트공부(나누어떨어지는숫자배열)</a
-              >
-              by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
-              <a href="https://codepen.io">CodePen</a>.</span
-            >
+          <pre>
+            <code class="javascript">
+      function solution(arr, divisor) {
+        var answer = [];
+        arr.map((a)=> a % divisor === 0 && answer.push(a))
+        answer.length === 0 ? answer = [-1] : answer.sort((a,b)=>a-b)
+    
+        return answer;
+      }
+            </code>
+          </pre>
+
+          <hr />
+          <br />
+
+          <p style="margin-left: 25px; margin-bottom: 3px">
+            ■ 다른 사람 작성 코드
           </p>
-          <script
-            async
-            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-          ></script>
-          <h4>다른 사람 코드</h4>
-          <p>- filter() 사용해서 배열 중에 조건에 맞는 것만 필터링 함</p>
+          <ul style="margin: 0 0 10px 0">
+            <li>- filter() 사용해서 배열 중에 조건에 맞는 것만 필터링 함</li>
+          </ul>
+          <pre>
+            <code class="javascript">
+      function solution2(arr, divisor) {
+        var answer = [];
+      
+        answer = arr.filter((a)=> a % divisor === 0)
+        answer.length === 0 ? answer.push(-1) : answer.sort((a,b)=>a-b)
+        
+      return answer;
+      }
+            </code>
+          </pre>
+          <h4>메모</h4>
         </section>
         <section>
           <a name="음양더하기"> #음양더하기</a>
@@ -1516,55 +1504,57 @@
           <p style="margin-top: 15px">예시)</p>
           <p>- absolutes: [4,7,12] / signs: [true,false,true] / 결과: 9</p>
           <p>- absolutes: [1,2,3] / signs: [false,false,true] / 결과: 0</p>
+
           <div
             style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
           >
-            <p style="margin-left: 25px">■ 코드</p>
+            <p style="margin-left: 25px">■ 내가 작성한 코드</p>
             <ol style="margin: 0 0 10px 0">
               <li>abosultes의 길이만큼 반복문</li>
               <li>sign의 참 거짓값에 따라 배열에 음, 양수 push 하기</li>
               <li>배열의 값 모두 더하기</li>
             </ol>
           </div>
-          <p
-            class="codepen"
-            data-height="300"
-            data-default-tab="js,result"
-            data-slug-hash="OJZZVyV"
-            data-user="hyemin12"
-            style="
-              height: 300px;
-              box-sizing: border-box;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              border: 2px solid;
-              margin: 1em 0;
-              padding: 1em;
-            "
-          >
-            <span
-              >See the Pen
-              <a href="https://codepen.io/hyemin12/pen/OJZZVyV">
-                코딩테스트공부(음양더하기)</a
-              >
-              by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
-              <a href="https://codepen.io">CodePen</a>.</span
-            >
+          <pre>
+            <code class="javascript">
+      function solution(absolutes, signs) {
+        let result = []
+        for(let i =0 ; i< absolutes.length;i++){
+            signs[i] === true ? result.push(absolutes[i]): result.push(- absolutes[i])
+        }
+        return result.reduce((acc,cur)=>acc+cur);
+      }
+            </code>
+          </pre>
+
+          <hr />
+          <br />
+
+          <p style="margin-left: 25px; margin-bottom: 3px">
+            ■ 다른 사람 작성 코드
           </p>
-          <script
-            async
-            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-          ></script>
-          <h4>다른 사람 코드</h4>
-          <p>- signs[i] ? answer += absolutes[i] : answer -= absolutes[i]</p>
-          <p>
-            - signs는 boolean값이므로 signs[i] === true 와 같이 작성하지 않고
-            signs[i]로 작성함
-          </p>
-          <p>- 배열에 숫자를 입력하지 않고, 바로 계산</p>
-          <p>- 참일 경우: answer += absolutes[i]</p>
-          <p>- 거짓일 경우: answer -= absolutes[i]</p>
+          <ul style="margin: 0 0 10px 0">
+            <li>signs[i] ? answer += absolutes[i] : answer -= absolutes[i]</li>
+            <li>
+              signs는 boolean값이므로 signs[i] === true 와 같이 작성하지 않고
+              signs[i]로 작성함
+            </li>
+            <li>배열에 숫자를 입력하지 않고, 바로 계산</li>
+            <li>참일 경우: answer += absolutes[i]</li>
+            <li>거짓일 경우: answer -= absolutes[i]</li>
+          </ul>
+          <pre>
+            <code class="javascript">
+      function solution2(absolutes, signs) {
+        let answer = 0;
+        for (let i = 0; i < absolutes.length; i++) {
+            signs[i] ? answer += absolutes[i] : answer -= absolutes[i]
+        }
+        return answer;
+      }
+            </code>
+          </pre>
+          <h4>메모</h4>
         </section>
         <section>
           <a name="수박수박수박"> #수박수박수박</a>
@@ -1581,50 +1571,47 @@
           <p style="margin-top: 15px">예시)</p>
           <p>- n: 3 / 결과: "수박수"</p>
           <p>- n: 4 / 결과: "수박수박"</p>
+
           <div
             style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
           >
-            <p style="margin-left: 25px">■ 코드</p>
+            <p style="margin-left: 25px">■ 내가 작성한 코드</p>
             <ol style="margin: 0 0 10px 0">
               <li>'수박' 정의</li>
               <li>짝수 일 경우에는 n/2 몫만큼 수박 반복시키기</li>
               <li>홀수 일 경우에는 n/2 몫만큼 수박 반복시키고 + '수' 더하기</li>
             </ol>
           </div>
-          <p
-            class="codepen"
-            data-height="300"
-            data-default-tab="js,result"
-            data-slug-hash="rNvvVMd"
-            data-user="hyemin12"
-            style="
-              height: 300px;
-              box-sizing: border-box;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              border: 2px solid;
-              margin: 1em 0;
-              padding: 1em;
-            "
-          >
-            <span
-              >See the Pen
-              <a href="https://codepen.io/hyemin12/pen/rNvvVMd">
-                코딩테스트공부(수박수박수박)</a
-              >
-              by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
-              <a href="https://codepen.io">CodePen</a>.</span
-            >
+          <pre>
+            <code class="javascript">
+      function solution(n) {
+        var answer = '';
+        const str = '수박'
+    
+        answer =  n%2 === 0 ? str.repeat(n/2) : str.repeat(Math.floor(n/2)) + '수'
+
+        return answer;
+      } 
+            </code>
+          </pre>
+
+          <hr />
+          <br />
+
+          <p style="margin-left: 25px; margin-bottom: 3px">
+            ■ 다른 사람 작성 코드
           </p>
-          <script
-            async
-            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-          ></script>
-          <h4>다른 사람 코드</h4>
-          <p>- 수박을 n만큼 반복시키기</p>
-          <p>- 반복한 수박을 slice를 사용해서 잘라내기</p>
-          <p>- "수박".repeat(n).slice(0, n)</p>
+          <ul style="margin: 0 0 10px 0">
+            <li>- 수박을 n만큼 반복시키기</li>
+            <li>- 반복한 수박을 slice를 사용해서 잘라내기</li>
+            <li>- "수박".repeat(n).slice(0, n)</li>
+          </ul>
+          <pre>
+            <code class="javascript">
+      const solution2 = n => "수박".repeat(n).slice(0,n);
+            </code>
+          </pre>
+          <h4>메모</h4>
         </section>
         <section>
           <a name="없는숫자더하기"> #없는숫자더하기</a>
@@ -1635,7 +1622,6 @@
           </h3>
           <p>
             - 1 ≤ numbers의 길이 ≤ 9
-
             <br />
             - 0 ≤ numbers의 모든 원소 ≤ 9 - numbers의 모든 원소는 서로 다릅니다.
           </p>
@@ -1643,53 +1629,51 @@
           <p style="margin-top: 15px">예시)</p>
           <p>- n: [1,2,3,4,6,7,8,0] / 결과: 14</p>
           <p>- n: [5,8,4,0,6,7,9] / 결과: 6</p>
+
           <div
             style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
           >
-            <p style="margin-left: 25px">■ 코드</p>
+            <p style="margin-left: 25px">■ 내가 작성한 코드</p>
             <ol style="margin: 0 0 10px 0">
               <li>0 ~ 9까지 숫자 중에 numbers에 포함되지 않은 숫자 찾기</li>
               <li>숫자 모두 더하기</li>
             </ol>
           </div>
-          <p
-            class="codepen"
-            data-height="300"
-            data-default-tab="js,result"
-            data-slug-hash="GRddJdo"
-            data-user="hyemin12"
-            style="
-              height: 300px;
-              box-sizing: border-box;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              border: 2px solid;
-              margin: 1em 0;
-              padding: 1em;
-            "
-          >
-            <span
-              >See the Pen
-              <a href="https://codepen.io/hyemin12/pen/GRddJdo">
-                코딩테스트공부(없는수더하기)</a
-              >
-              by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
-              <a href="https://codepen.io">CodePen</a>.</span
-            >
+          <pre>
+            <code class="javascript">
+      function solution(numbers) {
+        let answer = 0
+        for(let i =0;i ＜= 9;i++){
+              numbers.includes(i) ? 0 :  answer += i 
+        }
+        return answer
+      }
+            </code>
+          </pre>
+
+          <hr />
+          <br />
+
+          <p style="margin-left: 25px; margin-bottom: 3px">
+            ■ 다른 사람 작성 코드
           </p>
-          <script
-            async
-            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-          ></script>
-          <h4>다른 사람 코드</h4>
-          <p>- 0 ~ 9 를 모두 더한 총합에서 배열의 합 빼기...</p>
-          <p>- return 45 - numbers.reduce((cur, acc) => cur + acc, 0);</p>
-          <p>
-            - (numbers.includes(i)===false) 를 ! 부정기호를 사용해서 간단하게
-            표현
-          </p>
-          <p>- (!numbers.includes(i))</p>
+          <ul style="margin: 0 0 10px 0">
+            <li>0 ~ 9 를 모두 더한 총합에서 배열의 합 빼기...</li>
+            <li>return 45 numbers.reduce((cur, acc) => cur + acc, 0);</li>
+            <li>
+              (numbers.includes(i)===false) 를 ! 부정기호를 사용해서 간단하게
+              표현
+            </li>
+            <li>(!numbers.includes(i))</li>
+          </ul>
+          <pre>
+            <code class="javascript">
+      function solution2(numbers) {
+        return 45 - numbers.reduce((cur, acc) => cur + acc, 0);
+      }
+            </code>
+          </pre>
+          <h4>메모</h4>
         </section>
         <section>
           <a name="내적"> #내적</a>
@@ -1712,45 +1696,42 @@
           <div
             style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
           >
-            <p style="margin-left: 25px">■ 코드</p>
+            <p style="margin-left: 25px">■ 내가 작성한 코드</p>
             <ol style="margin: 0 0 10px 0">
               <li>a의 길이만큼 반복</li>
               <li>a[i]*b[i] 값 더하기</li>
             </ol>
           </div>
-          <p
-            class="codepen"
-            data-height="300"
-            data-default-tab="js,result"
-            data-slug-hash="ExLLjer"
-            data-user="hyemin12"
-            style="
-              height: 300px;
-              box-sizing: border-box;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              border: 2px solid;
-              margin: 1em 0;
-              padding: 1em;
-            "
-          >
-            <span
-              >See the Pen
-              <a href="https://codepen.io/hyemin12/pen/ExLLjer">
-                코딩테스트공부(내적)</a
-              >
-              by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
-              <a href="https://codepen.io">CodePen</a>.</span
-            >
+          <pre>
+            <code class="javascript">
+      function solution(a, b) {
+      var answer = 0;
+      for(let i =0; i＜a.length;i++){
+          answer +=  a[i] * b[i]
+        }
+      return answer;
+      }
+            </code>
+          </pre>
+
+          <hr />
+          <br />
+
+          <p style="margin-left: 25px; margin-bottom: 3px">
+            ■ 다른 사람 작성 코드
           </p>
-          <script
-            async
-            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-          ></script>
-          <h4>다른 사람 코드</h4>
-          <p>- a.reduce((acc, cur, idx) => acc += cur*b[idx], 0)</p>
-          <p>- reduce() 사용해서 총합 구하기</p>
+          <ul style="margin: 0 0 10px 0">
+            <li>- a.reduce((acc, cur, idx) => acc += cur*b[idx], 0)</li>
+            <li>- reduce() 사용해서 총합 구하기</li>
+          </ul>
+          <pre>
+            <code class="javascript">
+      function solution2(a, b) {
+        return a.reduce((acc, cur, idx) => acc += cur*b[idx], 0)
+      }
+            </code>
+          </pre>
+          <h4>메모</h4>
           <p>★ arr.reduce(callback(acc, cur, curIndex, arr), initVal]);</p>
         </section>
         <section>
@@ -1764,12 +1745,13 @@
           <p>- 1 ≤ left ≤ right ≤ 1,000</p>
           <br />
           <p style="margin-top: 15px">예시)</p>
-          <p>- left: 13 / right: 17 / 결과: 3</p>
-          <p>- left: 24 / right: 27 / 결과 : 52</p>
+          <p>- left: 13 , right: 17 = 결과: 3</p>
+          <p>- left: 24 , right: 27 = 결과 : 52</p>
+
           <div
             style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
           >
-            <p style="margin-left: 25px">■ 코드</p>
+            <p style="margin-left: 25px">■ 내가 작성한 코드</p>
             <ol style="margin: 0 0 10px 0">
               <li>left부터 right까지 반복되도록 반복문작석</li>
               <li>나머지가 0되는 약수 찾기 (i % j === 0)</li>
@@ -1777,41 +1759,339 @@
               <li>배열의 길이가 짝수면 더하고, 홀수면 빼기</li>
             </ol>
           </div>
-          <p
-            class="codepen"
-            data-height="300"
-            data-default-tab="js,result"
-            data-slug-hash="yLjjYpw"
-            data-user="hyemin12"
-            style="
-              height: 300px;
-              box-sizing: border-box;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              border: 2px solid;
-              margin: 1em 0;
-              padding: 1em;
-            "
-          >
-            <span
-              >See the Pen
-              <a href="https://codepen.io/hyemin12/pen/yLjjYpw">
-                코딩테스트공부(약수의개수와덧셈)</a
-              >
-              by 고혜민 (<a href="https://codepen.io/hyemin12">@hyemin12</a>) on
-              <a href="https://codepen.io">CodePen</a>.</span
-            >
+          <pre>
+            <code class="javascript">
+      function solution(left, right) {
+        var answer = 0;
+        for(let i = left; i<= right; i++){
+          let arr = []
+            for(let j = 0;j<=i;j++){
+                if(i % j ===0) { arr.push(j)}
+            }
+            arr.length % 2 === 0 ? answer += i : answer -= i 
+        }    
+        return answer;
+      }
+            </code>
+          </pre>
+
+          <hr />
+          <br />
+
+          <p style="margin-left: 25px; margin-bottom: 3px">
+            ■ 다른 사람 작성 코드
           </p>
-          <script
-            async
-            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-          ></script>
-          <h4>다른 사람 코드</h4>
-          <p>- if (Number.isInteger(Math.sqrt(i))) {}</p>
-          <p>- Math.squrt() 사용해서 제곱근 구하기</p>
-          <p>- Number.isInteger() 통해 제곱근의 정수 판별하기</p>
+          <ul style="margin: 0 0 10px 0">
+            <li>if (Number.isInteger(Math.sqrt(i))) {}</li>
+            <li>Math.squrt() 사용해서 제곱근 구하기</li>
+            <li>Number.isInteger() 통해 제곱근의 정수 판별하기</li>
+          </ul>
+
+          <p></p>
+          <pre>
+            <code class="javascript">
+      function solution(left,right){
+        var answer = 0;
+          for (let i = left; i <= right; i++) {
+            if (Number.isInteger(Math.sqrt(i))) {
+                answer -= i;
+            } else {
+                answer += i;
+            }
+          }
+        return answer;
+      }
+            </code>
+          </pre>
+          <h4>메모</h4>
           <p>★ 제곱근이 정수라면 약수는 홀수</p>
+        </section>
+        <section>
+          <a name="부족한금액계산하기"> #부족한금액계산하기</a>
+          <h3>
+            Q. 새로 생긴 놀이기구는 인기가 매우 많아 줄이 끊이질 않습니다. 이
+            놀이기구의 원래 이용료는 price원 인데, 놀이기구를 N 번 째 이용한다면
+            원래 이용료의 N배를 받기로 하였습니다. 즉, 처음 이용료가 100이었다면
+            2번째에는 200, 3번째에는 300으로 요금이 인상됩니다. 놀이기구를
+            count번 타게 되면 현재 자신이 가지고 있는 금액에서 얼마가
+            모자라는지를 return 하도록 solution 함수를 완성하세요.<br />
+            단, 금액이 부족하지 않으면 0을 return 하세요.
+          </h3>
+          <p>
+            놀이기구의 이용료 price : 1 ≤ price ≤ 2,500, price는 자연수
+            <br />처음 가지고 있던 금액 money : 1 ≤ money ≤ 1,000,000,000,
+            money는 자연수<br />
+            놀이기구의 이용 횟수 count : 1 ≤ count ≤ 2,500, count는 자연수
+          </p>
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>- price: 3 , money: 20 , count: 4 = 결과: 10</p>
+
+          <div
+            style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
+          >
+            <p style="margin-left: 25px">■ 내가 작성한 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>count만큼 반복하면서 count와 i를 곱하기</li>
+              <li>결과를 answer과 더해서 총합 구하기</li>
+              <li>answer이 money보다 작을 경우 참 거짓 조건문작성하기</li>
+            </ol>
+          </div>
+          <pre>
+            <code class="javascript">
+      function solution(price, money, count) {
+        var answer = 0;
+        for(let i = 1;i＜=count;i++){
+            answer += (price * i)
+        }
+        return answer ＜= money ? 0 : answer - money
+      }
+            </code>
+          </pre>
+
+          <hr />
+          <br />
+
+          <p style="margin-left: 25px; margin-bottom: 3px">
+            ■ 다른 사람 작성 코드
+          </p>
+          <ul style="margin: 0 0 10px 0">
+            <li>tmp = price * count * (count + 1) / 2 - money;</li>
+            <li>1 ~ count 까지의 합 : count * (count + 1) / 2</li>
+            <li>숫자의 개수 * ((첫번째 수 + 마지막 수) / 2)</li>
+          </ul>
+
+          <p></p>
+          <pre>
+            <code class="javascript">
+      function solution(price, money, count) {
+        const qq = count * (count + 1) / 2
+        const tmp = price * count * (count + 1) / 2 - money;
+        
+        return tmp > 0 ? tmp : 0;
+      } 
+            </code>
+          </pre>
+          <h4>메모</h4>
+          <p>★ 가우스 공식.. 공부 더하기....</p>
+        </section>
+        <section>
+          <a name="직사각형별찍기"> #직사각형별찍기</a>
+          <h3>
+            Q. 이 문제에는 표준 입력으로 두 개의 정수 n과 m이 주어집니다. 별(*)
+            문자를 이용해 가로의 길이가 n, 세로의 길이가 m인 직사각형 형태를
+            출력해보세요.
+          </h3>
+          <p>n과 m은 각각 1000 이하인 자연수입니다.</p>
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>- a: 5, b: 3 = 결과: ***** \n ***** \n *****</p>
+
+          <div
+            style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
+          >
+            <p style="margin-left: 25px">■ 내가 작성한 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>b만큼 반복시키기</li>
+              <li>*을 담을 변수 정의</li>
+              <li>a만큼 *을 변수에 더하기</li>
+              <li>* 변수 출력하기</li>
+            </ol>
+          </div>
+          <pre>
+            <code class="javascript">
+            const a = 5, b=3;
+
+            for (let i =0; i＜b; i++){     
+                let answer = ''
+                for(let j =0 ; j＜a; j++){
+                    answer += "*"
+                }
+            console.log(answer)
+            }
+            </code>
+          </pre>
+          <hr />
+          <br />
+          <p style="margin-left: 25px; margin-bottom: 3px">
+            ■ 다른 사람 작성 코드
+          </p>
+          <ul style="margin: 0 0 10px 0">
+            <li>row : *을 a 만큼 반복시키기 (repeat)</li>
+            <li>d만큼 반복해서 출력시키기</li>
+          </ul>
+
+          <p></p>
+          <pre>
+            <code class="javascript">
+            const c = 2, d = 2;
+
+            const row = '*'.repeat(c)
+            for(let i =0; i ＜ d; i++){
+                console.log(row)
+            }
+            </code>
+         </pre>
+        </section>
+        <section>
+          <a name="같은숫자는싫어"> #같은숫자는 싫어</a>
+          <h3>
+            Q. 배열 arr에서 연속적으로 나타나는 숫자는 제거하고 남은 수들을
+            return 하는 solution 함수를 완성해 주세요.
+          </h3>
+          <p>
+            배열 arr가 주어집니다. 배열 arr의 각 원소는 숫자 0부터 9까지로
+            이루어져 있습니다. 이때, 배열 arr에서 연속적으로 나타나는 숫자는
+            하나만 남기고 전부 제거하려고 합니다. 단, 제거된 후 남은 수들을
+            반환할 때는 배열 arr의 원소들의 순서를 유지해야 합니다. 예를
+            들면,<br />
+            - arr = [1, 1, 3, 3, 0, 1, 1] 이면 [1, 3, 0, 1] 을 return 합니다.<br />
+            - arr = [4, 4, 4, 3, 3] 이면 [4, 3] 을 return 합니다.
+          </p>
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>- arr: [1,1,3,3,0,1,1] = 결과: [1,3,0,1]</p>
+          <p>- arr: [4,4,4,3,3] = 결과: [4,3]</p>
+
+          <div
+            style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
+          >
+            <p style="margin-left: 25px">■ 내가 작성한 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>arr[i] 값과 arr[i+1]이 같지 않으면 answer에 집어넣기</li>
+              <li>arr 길이만큼 반복</li>
+            </ol>
+          </div>
+          <pre>
+            <code class="javascript">
+      function solution(arr){
+      var answer = [];
+      
+      for(let i =0 ; i＜ arr.length; i++){
+          arr[i] !== arr[i+1] && answer.push(arr[i])  
+      }
+      return answer;
+      }
+            </code>
+          </pre>
+
+          <hr />
+          <br />
+
+          <p style="margin-left: 25px; margin-bottom: 3px">
+            ■ 다른 사람 작성 코드
+          </p>
+          <ul style="margin: 0 0 10px 0">
+            <li>현재인덱스와 다음 인덱스가 같지 않은 값 필터링</li>
+          </ul>
+          <pre>
+            <code class="javascript">
+      function solution(arr)
+      {
+          return arr.filter((val,index) => val != arr[index+1]);
+      }
+            </code>
+          </pre>
+        </section>
+        <section>
+          <a name="이상한문자만들기"> #이상한문자만들기</a>
+          <h3>
+            Q. 문자열 s는 한 개 이상의 단어로 구성되어 있습니다. 각 단어는 하나
+            이상의 공백문자로 구분되어 있습니다. 각 단어의 짝수번째 알파벳은
+            대문자로, 홀수번째 알파벳은 소문자로 바꾼 문자열을 리턴하는 함수,
+            solution을 완성하세요.
+          </h3>
+          <p>
+            문자열 전체의 짝/홀수 인덱스가 아니라, 단어(공백을 기준)별로 짝/홀수
+            인덱스를 판단해야합니다.<br />
+            첫 번째 글자는 0번째 인덱스로 보아 짝수번째 알파벳으로 처리해야
+            합니다.
+          </p>
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>- s: "try hello world" = 결과: "TrY HeLlO WoRlD"</p>
+
+          <div
+            style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
+          >
+            <p style="margin-left: 25px">■ 내가 작성한 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>s를 배열로 바꾸기 (공백을 기준으로 나눠서)</li>
+              <li>변환될 단어를 담을 배열 정의</li>
+              <li>arr[i]길이만큼 돌면서 조건문 검사하기</li>
+              <li>
+                짝수이거나 인덱스가 0이면 대문자로 변환, 홀수면 소문자로 변환
+              </li>
+              <li>
+                변환된 문자를 담은 변수 join()해서 단어로 만들고, answer에
+                집어넣기
+              </li>
+              <li>
+                단어로 이루어진 배열 join()하기 (단어 사이에 공백을 넣어서)
+              </li>
+              <li>※ 가독성이 안좋은 것 같은 느낌</li>
+            </ol>
+          </div>
+          <pre>
+            <code class="javascript">
+      function solution(s) {
+        var answer = [];
+        var arr = s.split(' ')
+        
+        for(let i =0; i  ＜ arr.length ; i++){
+            let word = []
+            for(let j = 0 ; j ＜ arr[i].length;j++){
+                (j % 2 === 0||j ===0) ? word.push(arr[i][j].toUpperCase()) : word.push(arr[i][j].toLowerCase())
+            } 
+            answer.push(word.join(''))
+        }
+        
+        return answer.join(' ');
+      } 
+            </code>
+          </pre>
+          <pre><code class="javascript">
+      function solution(s) {
+        var answer = [];
+        var arr = s.split(' ')
+        
+        for(let i =0; i ＜ arr.length ; i++){
+              let word = arr[i].split('')
+            for(let j = 0 ; j＜ word.length;j++){
+              word[j] =  (j % 2 === 0||j ===0) ? word[j].toUpperCase() : word[j].toLowerCase()
+            } 
+          answer.push(word.join(''))
+          
+        }
+        
+        return answer.join(' ') ;
+    }
+          </code></pre>
+
+          <hr />
+          <br />
+
+          <p style="margin-left: 25px; margin-bottom: 3px">
+            ■ 다른 사람 작성 코드
+          </p>
+          <ul style="margin: 0 0 10px 0">
+            <li>배열을 [[],[]] 형태로 나눔..</li>
+            <li>1. 공백 있게 나누기</li>
+            <li>2. 각 문자별로</li>
+            <li>
+              문자별로 나눠진 배열에서 index의 값을 확인하고 대문자 소문자로
+              변환
+            </li>
+            <li>문자별로 나눈 배열 join</li>
+            <li>join 된 문자배열 join (띄어쓰기 넣어서)</li>
+          </ul>
+          <pre>
+            <code class="javascript">
+      function toWeirdCase(s){
+        return s.split(' ').map(i => i.split('').map((j, key) => key % 2 === 0 ? j.toUpperCase() : j).join('')).join(' ')
+      }
+            </code>
+          </pre>
         </section>
       </div>
     </div>
