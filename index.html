@@ -2266,16 +2266,35 @@
             <p style="margin-left: 25px">■ 내가 작성한 코드</p>
             <ol style="margin: 0 0 10px 0">
               <li>대문자 소문자</li>
-              <li>문자열이 대문자에 포함되어 있다면 다음 대문자 출력</li>
-              <li>
-                문자열이 대문자에 포함되어 있지않다면 소문자로 변환하고 찾기
-              </li>
-              <li>다음 소문자 출력</li>
+              <li>문자열이 빈칸일 경우 빈칸 출력</li>
+              <li>문자열이 대문자 포함 여부 확인</li>
+              <li>문자열 index값 가져오기</li>
+              <li>결과에 문자열 넣기</li>
+              <li>※문자열이 대문자 포함 여부 결과를 변수에 담아서 사용</li>
+              <li>※다른 사람들은 s[i]를 변수로 선언해서 사용함</li>
             </ol>
           </div>
           <pre>
             <code class="javascript">
-
+      function solution(s, n) {
+        var answer = '';
+        var upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+        var lowerCase = 'abcdefghijklmnopqrstuvwxyz'
+        
+        for(let i = 0; i＜s.length;i++){
+            if(s[i] ＝＝＝ ＇＇){
+                answer += ＇＇
+                continue
+              
+            }
+            const textType = upperCase.includes(s[i]) ? upperCase : lowerCase 
+            let index = textType.indexOf(s[i]) + n
+            if(index >= textType.length) index -= textType.length
+            answer += textType[index]
+            
+        }
+        return answer;
+      }
             </code>
           </pre>
           <hr />
@@ -2285,13 +2304,19 @@
             ■ 다른 사람 작성 코드
           </p>
           <ul style="margin: 0 0 10px 0">
-            <li></li>
-            <li></li>
-            <li></li>
+            <li>소문자부터 대문자까지 한가지 변수에 선언</li>
+            <li>
+              s를 배열로 바꾸고, 배열을 반복하면서 n개 index 뒤에 있는 문자열을
+              반환
+            </li>
+            <li>join()을 통해 문자열로 변환</li>
           </ul>
           <pre>
             <code class="javascript">
-
+      function solution(s, n) {
+          var chars = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXY                          "
+          return s.split('').map(e => chars[chars.indexOf(e)+n]).join('');
+      }
             </code>
           </pre>
         </section>
