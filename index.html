@@ -57,6 +57,7 @@
           <li><a href="#최대공약수최소공약수">최대공약수최소공약수</a></li>
           <li><a href="#문자열내마음대로정렬">문자열내마음대로정렬</a></li>
           <li><a href="#시저암호">시저암호</a></li>
+          <li><a href="#예산">예산</a></li>
 
           <li><a href="#"></a></li>
         </ol>
@@ -1795,7 +1796,7 @@
             <code class="javascript">
       function solution(left,right){
         var answer = 0;
-          for (let i = left; i <= right; i++) {
+          for (let i = left; i ＜= right; i++) {
             if (Number.isInteger(Math.sqrt(i))) {
                 answer -= i;
             } else {
@@ -2316,6 +2317,86 @@
       function solution(s, n) {
           var chars = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXY                          "
           return s.split('').map(e => chars[chars.indexOf(e)+n]).join('');
+      }
+            </code>
+          </pre>
+        </section>
+        <section>
+          <a name="예산"> #예산</a>
+          <h3>
+            Q. S사에서는 각 부서에 필요한 물품을 지원해 주기 위해 부서별로
+            물품을 구매하는데 필요한 금액을 조사했습니다. 그러나, 전체 예산이
+            정해져 있기 때문에 모든 부서의 물품을 구매해 줄 수는 없습니다.
+            그래서 최대한 많은 부서의 물품을 구매해 줄 수 있도록 하려고
+            합니다.<br />
+
+            물품을 구매해 줄 때는 각 부서가 신청한 금액만큼을 모두 지원해 줘야
+            합니다. 예를 들어 1,000원을 신청한 부서에는 정확히 1,000원을
+            지원해야 하며, 1,000원보다 적은 금액을 지원해 줄 수는 없습니다.<br />
+
+            부서별로 신청한 금액이 들어있는 배열 d와 예산 budget이 매개변수로
+            주어질 때, 최대 몇 개의 부서에 물품을 지원할 수 있는지 return 하도록
+            solution 함수를 완성해주세요.
+          </h3>
+          <p>
+            - d는 부서별로 신청한 금액이 들어있는 배열이며, 길이(전체 부서의
+            개수)는 1 이상 100 이하입니다.<br />
+            - d의 각 원소는 부서별로 신청한 금액을 나타내며, 부서별 신청 금액은
+            1 이상 100,000 이하의 자연수입니다. <br />
+            - budget은 예산을 나타내며, 1 이상 10,000,000 이하의 자연수입니다.
+          </p>
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>- d: [1,3,2,5,4], budget: 9 = 결과: 3</p>
+          <p>- d: [2,2,3,3], budget: 10 = 결과: 4</p>
+
+          <div
+            style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
+          >
+            <p style="margin-left: 25px">■ 내가 작성한 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>d 배열 오름차순 정렬</li>
+              <li>배열만큼 돌면서 예산에서 신청금액 빼기</li>
+              <li>예산이 0혹은 0보다 크면 count 1씩 증가</li>
+              <li>예산이 0보다 작으면 멈추기</li>
+            </ol>
+          </div>
+          <pre>
+            <code class="javascript">
+      function solution(d, budget) {
+        var answer = 0;
+        
+        d.sort((a,b)=>a-b)
+        
+        for(let i = 0; i<d.length;i++){
+            budget -=  d[i]
+            if(budget ＞= 0) answer += 1
+            if(budget ＜ 0) break;
+        }
+        return answer;
+      }
+            </code>
+          </pre>
+          <hr />
+          <br />
+
+          <p style="margin-left: 25px; margin-bottom: 3px">
+            ■ 다른 사람 작성 코드
+          </p>
+          <ul style="margin: 0 0 10px 0">
+            <li>reduce로 전체합 구하고, 예산보다 커질 경우</li>
+            <li>pop으로 d의 마지막 value를 반복하는 작업</li>
+            <li>전체 희망예산의 합이 budget보다 작아지면 반복문을 탈출</li>
+            <li>d의 length를 반환</li>
+          </ul>
+          <pre>
+            <code class="javascript">
+      function solution(d, budget) {
+          d.sort((a, b) => a - b);
+      
+          while (d.reduce((a, b) => (a + b), 0) > budget) d.pop();
+      
+          return d.length;
       }
             </code>
           </pre>
