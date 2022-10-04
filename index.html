@@ -2368,7 +2368,7 @@
         
         d.sort((a,b)=>a-b)
         
-        for(let i = 0; i<d.length;i++){
+        for(let i = 0; i＜d.length;i++){
             budget -=  d[i]
             if(budget ＞= 0) answer += 1
             if(budget ＜ 0) break;
@@ -2400,6 +2400,88 @@
       }
             </code>
           </pre>
+        </section>
+        <section>
+          <a name="졸업선물"> #졸업선물</a>
+          <h3>
+            Q.학생들에게 졸업선물을 해주기 위해 갖고 학생들에게 직접 갖고
+            싶은물건의 가격과 배송비를 알아오라고 했다. 선생님의 한정된 예산으로
+            졸업선물을 사줄 수 있는 최대학생수를 구해라.
+          </h3>
+          <p>
+            선생님에겐 한정된 예산과, 물건값의 50%를 할인해주는 쿠폰이 있다.<br />단,
+            50% 할인 쿠폰은 물건값만 할인되고, 배송비는 할인 되지 않는다.
+          </p>
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>- arr: [[6,6],[2,2],[4,3],[4,5],[10,3]], budget: 28 = 결과: 4</p>
+
+          <div
+            style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
+          >
+            <p style="margin-left: 25px">■ 내가 작성한 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>상품가격 + 배송비 작은 순으로 정렬</li>
+              <li>arr 길이만큼 반복</li>
+              <li>예산에서 (가격/2 + 배송비) 빼기</li>
+              <li>예산이 0보다 작으면 멈추기</li>
+            </ol>
+          </div>
+          <pre>
+          <code class="javascript">
+            
+    function solution(arr, budget){
+      let count = 0;
+
+      arr.sort((a, b) => a[0] + b[1] - (b[0] + b[1]));
+    
+      for (let i = 0; i ＜ arr.length; i++) {
+        if (budget >= 0) {
+          budget -= arr[i][0] / 2 + arr[i][1];
+          count += 1;
+        }
+        if (budget ＜ 0) break;
+      }
+      return count
+    }
+          </code>
+        </pre>
+          <hr />
+          <br />
+
+          <p style="margin-left: 25px; margin-bottom: 3px">
+            ■ 다른 사람 작성 코드
+          </p>
+          <ul style="margin: 0 0 10px 0">
+            <li>상품가격, 배송비 더한 값 오름차순으로 정렬</li>
+            <li>budget - (arr[i][0] / 2 + arr[i][1]) 변수에 할당</li>
+            <li>할인 금액을 제외한 나머지 금액을 돌릴 반복문</li>
+            <li>남은 금액보다 선물의 값이 높으면 중단</li>
+            <li>남은 금액보다 선물의 값이 낮으면 선물 값 빼고, count 올리기</li>
+          </ul>
+          <pre>
+          <code class="javascript">
+      function solution(budget, arr) {
+        let answer = 0;
+        const numOfStudent = arr.length;
+      
+        arr.sort((a, b) => a[0] + a[1] - (b[0] + b[1]));
+        for (let i = 0; i ＜ numOfStudent; i++) {
+          let restMoney = budget - (arr[i][0] / 2 + arr[i][1]);
+          let count = 1;
+          for (let j = 0; j ＜ numOfStudent; j++) {
+            if (i !== j && arr[j][0] + arr[j][1] ＜= restMoney) {
+              restMoney -= arr[j][0] + arr[j][1];
+              count += 1;
+            }
+            answer = Math.max(answer, count);
+          }
+        }
+        return answer;
+      }
+          </code>
+        </pre>
+          <p style="color: green; margin-left: 10px">// 주석</p>
         </section>
       </div>
     </div>
