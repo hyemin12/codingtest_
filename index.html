@@ -60,6 +60,9 @@
           <li><a href="#예산">예산</a></li>
           <li><a href="#졸업선물">졸업선물</a></li>
           <li><a href="#최소직사각형">최소직사각형</a></li>
+          <li><a href="#K번째수">K번째수</a></li>
+          <li><a href="#두개뽑아서더하기">두개뽑아서더하기</a></li>
+          <li><a href="#2016년요일찾기">2016년요일찾기</a></li>
 
           <li><a href="#"></a></li>
         </ol>
@@ -2609,6 +2612,264 @@
               if (h > maxSize[1]) maxSize[1] = h;
           })
           return maxSize[0]*maxSize[1];
+      }
+          </code>
+        </pre>
+        </section>
+        <section>
+          <a name="K번째수"> #K번째수</a>
+          <h3>
+            Q.배열 array의 i번째 숫자부터 j번째 숫자까지 자르고 정렬했을 때,
+            k번째에 있는 수를 구하려 합니다.
+          </h3>
+          <p>
+            예를 들어 array가 [1, 5, 2, 6, 3, 7, 4], i = 2, j = 5, k =
+            3이라면<br />
+            <br />
+            1. array의 2번째부터 5번째까지 자르면 [5, 2, 6, 3]입니다.<br />
+            2. 1에서 나온 배열을 정렬하면 [2, 3, 5, 6]입니다.<br />
+            3. 2에서 나온 배열의 3번째 숫자는 5입니다.<br />
+            <br />
+            배열 array, [i, j, k]를 원소로 가진 2차원 배열 commands가 매개변수로
+            주어질 때, commands의 모든 원소에 대해 앞서 설명한 연산을 적용했을
+            때 나온 결과를 배열에 담아 return 하도록 solution 함수를
+            작성해주세요.
+          </p>
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>
+            - arr: [1, 5, 2, 6, 3, 7, 4] , commands: [[2, 5, 3], [4, 4, 1], [1,
+            7, 3]] = 결과: [5, 6, 3]
+          </p>
+
+          <div
+            style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
+          >
+            <p style="margin-left: 25px">■ 내가 작성한 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>commands 배열 길이만큼 반복</li>
+              <li>array 배열 slice 이용해서 자르기</li>
+              <li>오름차순으로 정렬하기</li>
+              <li>배열의 3번째 숫자 추출해서 answer에 넣기</li>
+            </ol>
+          </div>
+          <pre>
+          <code class="javascript">   
+      function solution(array, commands) {
+        var answer = [];
+        let a = ''
+        for(let i =0; i＜commands.length;i++){
+            const arr = commands[i]
+            a = array.slice((arr[0] -1),arr[1]).sort((a,b)=>a-b)
+            answer.push(a[arr[2] - 1] )
+        }
+        
+        return answer;
+      }
+          </code>
+        </pre>
+          <hr />
+          <br />
+
+          <p style="margin-left: 25px; margin-bottom: 3px">
+            ■ 다른 사람 작성 코드
+          </p>
+          <ul style="margin: 0 0 10px 0">
+            <li>반복문 작성</li>
+            <li>변수를 구조분해 해서 정의★★</li>
+            <li>const [sPosition, ePosition, position] = command</li>
+            <li>&& 두가지 조건 모두 충족시키기는 수만 반환</li>
+            <li>조건1. index가 sPosition보다 클 경우만</li>
+            <li>조건2. index가 ePosition보다 작은 경우만</li>
+            <li>정렬하고, n번째 수 출력</li>
+          </ul>
+          <pre>
+          <code class="javascript">
+      function solution(array, commands) {
+          return commands.map(command => {
+              const [sPosition, ePosition, position] = command
+              const newArray = array
+                  .filter((value, fIndex) => fIndex >= sPosition - 1 && fIndex <= ePosition - 1)
+                  .sort((a,b) => a - b)    
+      
+              return newArray[position - 1]
+          })
+        }
+          </code>
+        </pre>
+        </section>
+        <section>
+          <a name="두개뽑아서더하기"> #두개뽑아서더하기</a>
+          <h3>
+            Q.정수 배열 numbers가 주어집니다. numbers에서 서로 다른 인덱스에
+            있는 두 개의 수를 뽑아 더해서 만들 수 있는 모든 수를 배열에
+            오름차순으로 담아 return 하도록 solution 함수를 완성해주세요.
+          </h3>
+          <p>
+            - numbers의 길이는 2 이상 100 이하입니다.
+            <br />
+            -numbers의 모든 수는 0 이상 100 이하입니다.
+          </p>
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>- numbers : [2,1,3,4,1] = 결과: [2,3,4,5,6,7]</p>
+          <p>- numbers : [5,0,2,7] = 결과: [2,5,7,9,12]</p>
+
+          <div
+            style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
+          >
+            <p style="margin-left: 25px">■ 내가 작성한 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>0+1,0+2,0+3,1+2,1+3,2+3 ...</li>
+              <li>앞 index + 뒷 index 더하는 코드 작성</li>
+              <li>변수 i, j 반복시킬 반복문 작성</li>
+              <li>i와 j가 같지 않다면, 더한 값 배열에 집어넣기</li>
+              <li>new Set을 이용해서 중복 제거하고, 오름차순 정렬시키기</li>
+            </ol>
+          </div>
+          <pre>
+          <code class="javascript">   
+      function solution(numbers) {
+        var answer = [];
+        numbers.sort((a,b)=>a-b)
+        for(let i = 0;i＜numbers.length;i++){
+            let sum = 0 
+            for(let j=1;j＜numbers.length;j++){
+                if(i !== j){
+                    sum = numbers[i] + numbers[j] 
+                    answer.push(sum)
+                }
+            } 
+            
+        }
+        answer = [...new Set(answer)].sort((a,b)=>a-b)
+        
+        return answer;
+      }
+          </code>
+        </pre>
+          <hr />
+          <br />
+
+          <p style="margin-left: 25px; margin-bottom: 3px">
+            ■ 다른 사람 작성 코드
+          </p>
+          <ul style="margin: 0 0 10px 0">
+            <li>변수 i, j 반복시킬 반복문 작성</li>
+            <li>new Set()으로 중복 제거</li>
+            <li>오름차순으로 정렬</li>
+            <li>
+              ※ 변수 j를 i+1 값으로 설정해서 if(i !== j)와 같은 코드 작성하지
+              않음..
+            </li>
+          </ul>
+          <pre>
+          <code class="javascript">
+      function solution(numbers) {
+          const temp = []
+
+          for (let i = 0; i ＜ numbers.length; i++) {
+              for (let j = i + 1; j ＜ numbers.length; j++) {
+                  temp.push(numbers[i] + numbers[j])
+              }
+          }
+
+          const answer = [...new Set(temp)]
+
+          return answer.sort((a, b) => a - b)
+      }
+          </code>
+        </pre>
+          <h4>배열 중복 제거하는 방법</h4>
+          <p>1. new Set 이용</p>
+          <p style="color: green; margin-left: 10px">// [...new Set(array)]</p>
+          <p>2. filter(), indexOf() 사용</p>
+          <p style="color: green; margin-left: 10px">
+            // array.filter((v, i) => array.indexOf(v) === i);
+          </p>
+          <p>2. reduce(), includes() 사용</p>
+          <p style="color: green; margin-left: 10px">
+            // array.reduce((ac, v) => ac.includes(v) ? ac : [...ac, v], []);
+          </p>
+          <p>- 참고사이트: https://jsikim1.tistory.com/227</p>
+        </section>
+        <section>
+          <a name="2016년요일찾기"> #2016년요일찾기</a>
+          <h3>
+            Q.2016년 1월 1일은 금요일입니다. 2016년 a월 b일은 무슨 요일일까요?
+            두 수 a ,b를 입력받아 2016년 a월 b일이 무슨 요일인지 리턴하는 함수,
+            solution을 완성하세요.
+          </h3>
+          <p>
+            요일의 이름은 일요일부터 토요일까지 각각 SUN,MON,TUE,WED,THU,FRI,SAT
+            입니다. <br />예를 들어 a=5, b=24라면 5월 24일은 화요일이므로 문자열
+            "TUE"를 반환하세요.
+          </p>
+          <p>- 2016년은 윤년입니다.</p>
+          <p>
+            - 2016년 a월 b일은 실제로 있는 날입니다. (13월 26일이나 2월 45일같은
+            날짜는 주어지지 않습니다)
+          </p>
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>- a: 5, b: 24 = 결과: [2,3,4,5,6,7]</p>
+
+          <div
+            style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
+          >
+            <p style="margin-left: 25px">■ 내가 작성한 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>요일이 담긴 배열 변수에 저장 (weeks)</li>
+              <li>new Date(yyyy-mm-dd)를 통해 날짜 정보 가져오기</li>
+              <li>getDay로 요일 index 정보 가져오기</li>
+              <li>weeks[요일index]값 출력</li>
+              <li>
+                ※메소드를 사용해서 가져온거라 알고리즘 공부용으로는 알맞지 않은
+                코드..
+              </li>
+            </ol>
+          </div>
+          <pre>
+          <code class="javascript">   
+      function solution(a, b) {
+        var answer = '';
+        const weeks = ['SUN','MON','TUE','WED','THU','FRI','SAT']
+        const day = new Date(`2016-${a}-${b}`).getDay()
+        answer = weeks[day]
+
+        return answer;
+      }
+          </code>
+        </pre>
+          <hr />
+          <br />
+
+          <p style="margin-left: 25px; margin-bottom: 3px">
+            ■ 다른 사람 작성 코드
+          </p>
+          <ul style="margin: 0 0 10px 0">
+            <li>각 달의 총 일수를 배열로 저장</li>
+            <li>1월 1일이 금요일부터 시작하니까 week 배열을 fri 부터 시작</li>
+            <li>month배열의 값들을 sum에 더하기</li>
+            <li>(sum + b - 1) : 총 일수 + 해당 월 일수 - 1 (1월 1일)</li>
+            <li>위 코드 계산 결과 % 7 나머지 값 구하기</li>
+            <li>WEEK[나머지값]으로 요일 출력하기</li>
+          </ul>
+          <pre>
+          <code class="javascript">
+      function getDayName(a,b){
+        var answer = "";
+        var MONTH = [31,29,31,30,31,30,31,31,30,31,30,31];
+        var WEEK = ['FRI','SAT','SUN','MON','TUE','WED','THU'];
+        var sum = 0;
+          for(var i =1; i＜a; i++){
+          sum+=MONTH[i-1];
+        }
+        answer = WEEK[(sum+b-1)%7];
+        // 1월 1일은 금요일
+          // 31,29,31,30,31,30,31,31,30,31,30,31
+      
+          return answer;
       }
           </code>
         </pre>
