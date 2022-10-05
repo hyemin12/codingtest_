@@ -65,6 +65,21 @@
           <li><a href="#2016년요일찾기">2016년요일찾기</a></li>
           <li><a href="#포켓몬가져가기">포켓몬가져가기</a></li>
           <li><a href="#모의고사_수포자">모의고사_수포자</a></li>
+          <li><a href="#실패율">실패율</a></li>
+          <li style="list-style-type: none">---입문---</li>
+          <li><a href="#숫자비교하기">숫자비교하기</a></li>
+          <li><a href="#두수의합">두수의합</a></li>
+          <li><a href="#두수의차">두수의차</a></li>
+          <li><a href="#두수의곱">두수의곱</a></li>
+          <li><a href="#몫구하기">몫구하기</a></li>
+          <li><a href="#나이출력">나이출력</a></li>
+          <li><a href="#나머지구하기">나머지구하기</a></li>
+          <li><a href="#배열의평균값">배열의평균값</a></li>
+          <li><a href="#짝수의합">짝수의합</a></li>
+          <li><a href="#두수의나눗셈">두수의나눗셈</a></li>
+          <li><a href="#중복된숫자개수">중복된숫자개수</a></li>
+          <li><a href="#배열두배만들기">배열두배만들기</a></li>
+          <li><a href="#각도기">각도기</a></li>
 
           <li><a href="#"></a></li>
         </ol>
@@ -3129,6 +3144,345 @@
           }
           result.sort((a,b) => b[1] - a[1]);
           return result.map((x) => x[0]);
+      }
+          </code>
+        </pre>
+        </section>
+        <!-- 입문레벨 -->
+        <section>
+          <a name="숫자비교하기"> #숫자비교하기</a>
+          <h3>
+            Q. 정수 num1과 num2가 매개변수로 주어집니다. 두 수가 같으면 1 다르면
+            -1을 retrun하도록 solution 함수를 완성해주세요.
+          </h3>
+          <p>
+            0 ≤ num1 ≤ 10,000<br />
+            0 ≤ num2 ≤ 10,000
+          </p>
+
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>- num1: 2 num2: 3 = 결과: -1</p>
+          <p>- num1: 11 num2: 11 = 결과: 1</p>
+          <pre>
+          <code class="javascript">   
+      function solution(num1, num2) {
+        return num1 === num2 ? 1 : -1;
+      }
+          </code>
+        </pre>
+        </section>
+        <section>
+          <a name="두수의합"> #두수의합</a>
+          <h3>
+            Q. 정수 num1과 num2가 주어질 때, num1과 num2의 합을 return하도록
+            soltuion 함수를 완성해주세요.
+          </h3>
+          <p>
+            -50,000 ≤ num1 ≤ 50,000<br />
+            -50,000 ≤ num2 ≤ 50,000
+          </p>
+
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>- num1: 2 num2: 3 = 결과: 5</p>
+          <p>- num1: 100 num2: 2 = 결과: 102</p>
+
+          <pre>
+          <code class="javascript">   
+      function solution(num1, num2) {
+        var answer = num1 + num2
+        return answer
+      }
+          </code>
+        </pre>
+        </section>
+        <section>
+          <a name="두수의차"> #두수의차</a>
+          <h3>
+            Q. 정수 num1과 num2가 주어질 때, num1에서 num2를 뺀 값을
+            return하도록 soltuion 함수를 완성해주세요.
+          </h3>
+          <p>
+            -50000 ≤ num1 ≤ 50000<br />
+            -50000 ≤ num2 ≤ 50000
+          </p>
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>- num1: 2 num2: 3 = 결과: -1</p>
+          <p>- num1: 100 num2: 2 = 결과: 98</p>
+
+          <pre>
+          <code class="javascript">   
+      function solution(num1, num2) {
+        var answer = num1 - num2;
+        return answer;
+      }
+          </code>
+        </pre>
+        </section>
+        <section>
+          <a name="두수의곱"> #두수의곱</a>
+          <h3>
+            Q. 정수 num1, num2가 매개변수 주어집니다. num1과 num2를 곱한 값을
+            return 하도록 solution 함수를 완성해주세요.
+          </h3>
+          <p>
+            0 ≤ num1 ≤ 100<br />
+            0 ≤ num2 ≤ 100
+          </p>
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>- num1: 3 num2: 4 = 결과: 12</p>
+          <p>- num1: 27 num2: 19 = 결과: 513</p>
+
+          <pre>
+          <code class="javascript">   
+      function solution(num1, num2) {
+        var answer = num1 * num2;
+        return answer;
+      }
+          </code>
+        </pre>
+        </section>
+        <section>
+          <a name="몫구하기"> #몫구하기</a>
+          <h3>
+            Q. 정수 num1, num2가 매개변수로 주어질 때, num1을 num2로 나눈 몫을
+            return 하도록 solution 함수를 완성해주세요.
+          </h3>
+          <p>
+            0 ＜ num1 ≤ 100<br />
+            0 ＜ num2 ≤ 100
+          </p>
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>- num1: 10 num2: 5 = 결과: 2</p>
+          <p>- num1: 7 num2: 2 = 결과: 3</p>
+
+          <pre>
+          <code class="javascript">   
+      function solution(num1, num2) {
+        var answer = Math.floor(num1 / num2);
+        return answer;
+      }
+          </code>
+        </pre>
+        </section>
+        <section>
+          <a name="나이출력"> #나이출력</a>
+          <h3>
+            Q. 머쓱이는 40살인 선생님이 몇 년도에 태어났는지 궁금해졌습니다.
+            나이 age가 주어질 때, 2022년을 기준 출생 연도를 return 하는 solution
+            함수를 완성해주세요.
+          </h3>
+          <p>
+            0 ＜ age ≤ 120<br />
+            나이는 태어난 연도에 1살이며 1년마다 1씩 증가합니다.
+          </p>
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>- age: 40 = 결과: 1983</p>
+          <p>- age:23 = 결과: 2000</p>
+
+          <pre>
+          <code class="javascript">   
+    function solution(age) {
+      var answer = (2022 - age) + 1;
+      return answer;
+    }
+          </code>
+        </pre>
+        </section>
+        <section>
+          <a name="나머지구하기"> #나머지구하기</a>
+          <h3>
+            Q. 정수 num1, num2가 매개변수로 주어질 때, num1를 num2로 나눈
+            나머지를 return 하도록 solution 함수를 완성해주세요.
+          </h3>
+          <p>
+            0 ＜ num1 ≤ 100<br />
+            0 ＜ num2 ≤ 100
+          </p>
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>- num1: 3 num2: 2 = 결과: 1</p>
+          <p>- num1: 10 num2: 5 = 결과: 0</p>
+
+          <pre>
+          <code class="javascript">   
+      function solution(num1, num2) {
+          var answer = num1 % num2;
+          return answer;
+      }
+          </code>
+        </pre>
+        </section>
+        <section>
+          <a name="배열의평균값"> #배열의평균값</a>
+          <h3>
+            Q. 정수 배열 numbers가 매개변수로 주어집니다. numbers의 원소의
+            평균값을 return하도록 solution 함수를 완성해주세요.
+          </h3>
+          <p>
+            0 ≤ numbers의 원소 ≤ 1,000 <br />
+            1 ≤ numbers의 길이 ≤ 100 <br />
+            정답의 소수 부분이 .0 또는 .5인 경우만 입력으로 주어집니다.
+          </p>
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>- numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] = 결과: 5.5</p>
+          <p>
+            - numbers: [89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99 ] = 결과:
+            94.0
+          </p>
+
+          <pre>
+          <code class="javascript">   
+      function solution(numbers) {
+        var answer = 0;
+        const sum = numbers.reduce((acc,cur)=>acc+cur)
+        answer = sum / numbers.length
+        
+        return answer;
+      }
+          </code>
+        </pre>
+        </section>
+        <section>
+          <a name="짝수의합"> #짝수의합</a>
+          <h3>
+            Q. 정수 n이 주어질 때, n이하의 짝수를 모두 더한 값을 return 하도록
+            solution 함수를 작성해주세요.
+          </h3>
+          <p>0 ＜ n ≤ 1000</p>
+
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>- n: 10 = 결과: 30</p>
+          <p>- n: 4 = 결과: 6</p>
+          <pre>
+          <code class="javascript">   
+      function solution(n) {
+        var answer = 0;
+        for(let i= 0 ;i＜=n;i++){
+            if(i % 2 === 0) answer += i
+        }
+          
+        return answer;
+      }
+          </code>
+        </pre>
+        </section>
+        <section>
+          <a name="두수의나눗셈"> #두수의나눗셈</a>
+          <h3>
+            Q. 정수 num1과 num2가 매개변수로 주어질 때, num1을 num2로 나눈 값에
+            1,000을 곱한 후 정수 부분을 return 하도록 soltuion 함수를
+            완성해주세요.
+          </h3>
+          <p>0 ＜ num1 ≤ 100<br />0 ＜ num2 ≤ 100</p>
+
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>- num1:3 num2: 2 = 결과: 1500</p>
+          <p>- num1: 7 num2: 3 = 결과: 2333</p>
+          <p>- num1: 1 num2: 16 = 결과: 62</p>
+          <pre>
+          <code class="javascript">   
+      function solution(num1, num2) {
+        var answer = parseInt(num1 / num2 * 1000);
+        
+        return answer;
+      }
+          </code>
+        </pre>
+        </section>
+        <section>
+          <a name="중복된숫자개수"> #중복된숫자개수</a>
+          <h3>
+            Q. 정수가 담긴 배열 array와 정수 n이 매개변수로 주어질 때, array에
+            n이 몇 개 있는 지를 return 하도록 solution 함수를 완성해보세요.
+          </h3>
+          <p>
+            - 1 ≤ array의 길이 ≤ 100
+            <br />- 0 ≤ array의 원소 ≤ 1,000<br />
+            - 0 ≤ n ≤ 1,000
+          </p>
+
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>- array: [1, 1, 2, 3, 4, 5] n:1 = 결과: 2</p>
+          <p>- array: [0, 2, 3, 4] n:1 = 결과: 0</p>
+
+          <pre>
+          <code class="javascript">   
+      function solution(array, n) {
+        var answer = 0;
+        for(let i = 0; i＜ array.length; i++){
+          answer = array.filter((v)=> v === n).length
+        }
+        
+        return answer;
+      }
+          </code>
+        </pre>
+        </section>
+        <section>
+          <a name="배열두배만들기"> #배열두배만들기</a>
+          <h3>
+            Q. 정수 배열 numbers가 매개변수로 주어집니다. numbers의 각 원소에
+            두배한 원소를 가진 배열을 return하도록 solution 함수를 완성해주세요.
+          </h3>
+          <p>
+            -10,000 ≤ numbers의 원소 ≤ 10,000 <br />- 1 ≤ numbers의 길이 ≤ 1,000
+          </p>
+
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>- numbers: [1, 2, 3, 4, 5] = 결과: [2, 4, 6, 8, 10]</p>
+          <p>
+            - numbers: [1, 2, 100, -99, 1, 2, 3] = 결과: [2, 4, 200, -198, 2, 4,
+            6]
+          </p>
+
+          <pre>
+          <code class="javascript">   
+      function solution(numbers) {
+        var answer = numbers.map((a)=> a * 2)
+        return answer;
+      }
+          </code>
+        </pre>
+        </section>
+        <section>
+          <a name="각도기"> #각도기</a>
+          <h3>
+            Q. 각에서 0도 초과 90도 미만은 예각, 90도는 직각, 90도 초과 180도
+            미만은 둔각 180도는 평각으로 분류합니다. 각 angle이 매개변수로
+            주어질 때 예각일 때 1, 직각일 때 2, 둔각일 때 3, 평각일 때 4를
+            return하도록 solution 함수를 완성해주세요.
+          </h3>
+          <p>
+            - 예각 : 0 ＜ angle ＜ 90<br />
+            - 직각 : angle = 90<br />
+            - 둔각 : 90 ＜ angle ＜ 180 <br />
+            - 평각 : angle = 180
+          </p>
+
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>- angle: 70 = 결과: 1</p>
+          <p>- angle: 91 = 결과: 3</p>
+          <p>- angle: 180 = 결과: 4</p>
+
+          <pre>
+          <code class="javascript">   
+      function solution(angle) {
+        if(angle === 180) return  4;
+        if(angle > 90) return 3;
+        if(angle === 90 ) return  2
+        if(angle＜ 90 ) return 1
       }
           </code>
         </pre>
