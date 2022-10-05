@@ -70,3 +70,9 @@ code > span {
     margin: 0 auto;
   }
 }
+.code-title {
+  margin-left: 25px;
+  margin-bottom: 7px;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
