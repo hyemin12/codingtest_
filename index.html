@@ -63,6 +63,8 @@
           <li><a href="#K번째수">K번째수</a></li>
           <li><a href="#두개뽑아서더하기">두개뽑아서더하기</a></li>
           <li><a href="#2016년요일찾기">2016년요일찾기</a></li>
+          <li><a href="#포켓몬가져가기">포켓몬가져가기</a></li>
+          <li><a href="#모의고사_수포자">모의고사_수포자</a></li>
 
           <li><a href="#"></a></li>
         </ol>
@@ -2869,6 +2871,226 @@
         // 1월 1일은 금요일
           // 31,29,31,30,31,30,31,31,30,31,30,31
       
+          return answer;
+      }
+          </code>
+        </pre>
+        </section>
+        <section>
+          <a name="포켓몬가져가기"> #포켓몬가져가기</a>
+          <h3>
+            Q.N마리 폰켓몬의 종류 번호가 담긴 배열 nums가 매개변수로 주어질 때,
+            N/2마리의 폰켓몬을 선택하는 방법 중, 가장 많은 종류의 폰켓몬을
+            선택하는 방법을 찾아, 그때의 폰켓몬 종류 번호의 개수를 return 하도록
+            solution 함수를 완성해주세요.
+          </h3>
+          <p>
+            당신은 폰켓몬을 잡기 위한 오랜 여행 끝에, 홍 박사님의 연구실에
+            도착했습니다. 홍 박사님은 당신에게 자신의 연구실에 있는 총 N 마리의
+            폰켓몬 중에서 N/2마리를 가져가도 좋다고 했습니다.<br /><br />
+            홍 박사님 연구실의 폰켓몬은 종류에 따라 번호를 붙여 구분합니다.
+            따라서 같은 종류의 폰켓몬은 같은 번호를 가지고 있습니다. 예를 들어
+            연구실에 총 4마리의 폰켓몬이 있고, 각 폰켓몬의 종류 번호가 [3번,
+            1번, 2번, 3번]이라면 이는 3번 폰켓몬 두 마리, 1번 폰켓몬 한 마리,
+            2번 폰켓몬 한 마리가 있음을 나타냅니다. 이때, 4마리의 폰켓몬 중
+            2마리를 고르는 방법은 다음과 같이 6가지가 있습니다..<br /><br />
+            1. 첫 번째(3번), 두 번째(1번) 폰켓몬을 선택<br />
+            2. 첫 번째(3번), 세 번째(2번) 폰켓몬을 선택<br />
+            3. 첫 번째(3번), 네 번째(3번) 폰켓몬을 선택<br />
+            4. 두 번째(1번), 세 번째(2번) 폰켓몬을 선택<br />
+            5. 두 번째(1번), 네 번째(3번) 폰켓몬을 선택<br />
+            6. 세 번째(2번), 네 번째(3번) 폰켓몬을 선택
+            <br />
+          </p>
+          <br />
+          <p>
+            이때, 첫 번째(3번) 폰켓몬과 네 번째(3번) 폰켓몬을 선택하는 방법은 한
+            종류(3번 폰켓몬 두 마리)의 폰켓몬만 가질 수 있지만, 다른 방법들은
+            모두 두 종류의 폰켓몬을 가질 수 있습니다. 따라서 위 예시에서 가질 수
+            있는 폰켓몬 종류 수의 최댓값은 2가 됩니다.<br /><br />
+            당신은 최대한 다양한 종류의 폰켓몬을 가지길 원하기 때문에, 최대한
+            많은 종류의 폰켓몬을 포함해서 N/2마리를 선택하려 합니다. N마리
+            폰켓몬의 종류 번호가 담긴 배열 nums가 매개변수로 주어질 때,
+            N/2마리의 폰켓몬을 선택하는 방법 중, 가장 많은 종류의 폰켓몬을
+            선택하는 방법을 찾아, 그때의 폰켓몬 종류 번호의 개수를 return 하도록
+            solution 함수를 완성해주세요.
+          </p>
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>- nums: [3,1,2,3] = 결과: 2</p>
+          <p>- nums: [3,3,3,2,2,4] = 결과: 3</p>
+          <p>- nums: [3,3,3,2,2,2] = 결과: 2</p>
+
+          <div
+            style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
+          >
+            <p style="margin-left: 25px">■ 내가 작성한 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>배열 중복 값 제거</li>
+              <li>선택할 수 있는 포켓몬 수 정의 (selected)</li>
+              <li>getDay로 요일 index 정보 가져오기</li>
+              <li>조건부 반환 (선택할 수 있는 포켓몬 수, 포켓몬 종류)</li>
+              <li>
+                조건1. 포켓몬 종류 > 선택할 수 있는 포켓몬 수 = 선택할 수 있는
+                포켓몬 수
+              </li>
+              <li>
+                조건2. 포켓몬 종류 ＜ 선택할 수 있는 포켓몬 수 = 포켓몬 종류
+              </li>
+            </ol>
+          </div>
+          <pre>
+          <code class="javascript">   
+      function solution(nums) {
+        var answer = 0;
+        answer = [...new Set(nums)].length
+        const selected = nums.length /2 
+        return answer > selected ? selected : answer;
+      }
+          </code>
+        </pre>
+          <hr />
+          <br />
+
+          <p style="margin-left: 25px; margin-bottom: 3px">
+            ■ 다른 사람 작성 코드
+          </p>
+          <ul style="margin: 0 0 10px 0">
+            <li>noDuplicatePokemon: 배열 중복 제거</li>
+            <li>pokemonVarietyCount: 배열의 갯수</li>
+            <li>pokemonCounts: 포켓몬 총 마리 수</li>
+          </ul>
+          <pre>
+          <code class="javascript">
+      function solution(nums) {
+          const noDuplicatePokemon = new Set(nums);
+          const pokemonVarietyCount = noDuplicatePokemon.size;
+          const pokemonCounts = nums.length;
+
+          return pokemonVarietyCount > pokemonCounts/2 ? pokemonCounts/2 : pokemonVarietyCount;
+
+      }
+          </code>
+        </pre>
+        </section>
+        <section>
+          <a name="모의고사_수포자"> #모의고사_수포자</a>
+          <h3>
+            Q. 1번 문제부터 마지막 문제까지의 정답이 순서대로 들은 배열
+            answers가 주어졌을 때, 가장 많은 문제를 맞힌 사람이 누구인지 배열에
+            담아 return 하도록 solution 함수를 작성해주세요.
+          </h3>
+          <p>
+            수포자는 수학을 포기한 사람의 준말입니다. 수포자 삼인방은 모의고사에
+            수학 문제를 전부 찍으려 합니다. 수포자는 1번 문제부터 마지막
+            문제까지 다음과 같이 찍습니다.<br />
+            <br />
+            1번 수포자가 찍는 방식: 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, ...<br />
+            2번 수포자가 찍는 방식: 2, 1, 2, 3, 2, 4, 2, 5, 2, 1, 2, 3, 2, 4, 2,
+            5, ...<br />
+            3번 수포자가 찍는 방식: 3, 3, 1, 1, 2, 2, 4, 4, 5, 5, 3, 3, 1, 1, 2,
+            2, 4, 4, 5, 5, ...
+          </p>
+          <br />
+          <p>
+            1번 문제부터 마지막 문제까지의 정답이 순서대로 들은 배열 answers가
+            주어졌을 때, 가장 많은 문제를 맞힌 사람이 누구인지 배열에 담아
+            return 하도록 solution 함수를 작성해주세요.
+          </p>
+          <p>-시험은 최대 10,000 문제로 구성되어있습니다.</p>
+          <p>-문제의 정답은 1, 2, 3, 4, 5중 하나입니다.</p>
+          <p>
+            -가장 높은 점수를 받은 사람이 여럿일 경우, return하는 값을 오름차순
+            정렬해주세요.
+          </p>
+
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>- answers: [1,2,3,4,5] = 결과: [1]</p>
+          <p>- answers: [1,3,2,4,2] = 결과: [1,2,3]</p>
+
+          <div
+            style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
+          >
+            <p style="margin-left: 25px">■ 내가 작성한 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>각 학생의 찍는 방식 배열로 저장하기</li>
+              <li>각 학생별 정답일 경우 count할 변수 선언</li>
+              <li>answers의 길이만큼 반복하는 반복문 만들기</li>
+              <li>answer의[i]와 각 학생별 정답을 비교해서 점수 더하기</li>
+              <li>가장 높은 점수를 구하기</li>
+              <li>가장 높은와 각 학생의 점수를 비교해서 answer 배열에 담기</li>
+              <li>
+                ※ 찍는 방식을 string으로 정의하고, answer의 길이만큼 repeat을
+                돌리려고 했으나 split 했을 때 number가 아닌 string 형태로
+                변환돼서 불필요한 코드들이 많이 생김.. 프로그래머스 질문하기를
+                통해 % 를 활용하면 된다는 힌트를 얻고, 문제 풀이 다시 진행함
+              </li>
+              <li>찍는 패턴이 다르기때문에 %를 사용하면 좋음</li>
+              <li>
+                ex) 학생1의 경우 student1[11 % 5] => 정답배열 11번째와
+                student1[1]의 값을 비교하면 되기 때문에
+              </li>
+            </ol>
+          </div>
+          <pre>
+          <code class="javascript">   
+      function solution(answers) {
+        var answer = [];
+        let student1 = [1,2,3,4,5]
+        let student2 = [2,1,2,3,2,4,2,5]
+        let student3 = [3,3,1,1,2,2,4,4,5,5];
+        let count1 =0;
+        let count2 =0;
+        let count3 =0;
+        
+        for(let i =0;i＜answers.length;i++){
+          if(answers[i] =＝student1[i%5])  count1 += 1 
+          if(answers[i] == student2[i%8]) count2 += 1
+          if(answers[i] == student3[i%10]) count3 += 1
+        }
+        
+        const scroreArr = [count1, count2,count3 ]
+        const maxScore = Math.max(count1,count2,count3)
+    
+        for(let i = 0; i＜scroreArr.length; i++){
+            if(maxScore == scroreArr[i]) answer.push(i + 1)
+        }  
+            
+        return answer;
+      }
+          </code>
+        </pre>
+          <hr />
+          <br />
+
+          <p style="margin-left: 25px; margin-bottom: 3px">
+            ■ 다른 사람 작성 코드
+          </p>
+          <ul style="margin: 0 0 10px 0">
+            <li>각 학생의 정답을 배열로 저장</li>
+            <li>count를 한 배열로 정의</li>
+          </ul>
+          <pre>
+          <code class="javascript">
+      function solution(answers) {
+          var answer = [];
+          const man1 = [1, 2, 3, 4, 5];
+          const man2 = [2, 1, 2, 3, 2, 4, 2, 5];
+          const man3 = [3, 3, 1, 1, 2, 2, 4, 4, 5, 5];
+          let count = [0, 0, 0];
+
+          for(let i = 0; i ＜ answers.length; i++) {
+              if(answers[i] == man1[i % man1.length]) count[0]++;
+              if(answers[i] == man2[i % man2.length]) count[1]++;
+              if(answers[i] == man3[i % man3.length]) count[2]++;
+          }
+
+          const max = Math.max(count[0], count[1], count[2]);
+          for(let i = 0; i ＜ count.length; i++) {
+              if(max == count[i]) answer.push(i + 1);
+          }
+
           return answer;
       }
           </code>
