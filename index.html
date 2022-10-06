@@ -67,6 +67,9 @@
           <li><a href="#모의고사_수포자">모의고사_수포자</a></li>
           <li><a href="#실패율">실패율</a></li>
           <li><a href="#최댓값과최솟값">최댓값과최솟값</a></li>
+          <li>
+            <a href="#JadenCase문자열만들기">JadenCase문자열만들기 </a>
+          </li>
           <li style="list-style-type: none">---입문---</li>
           <li><a href="#숫자비교하기">숫자비교하기</a></li>
           <li><a href="#두수의합">두수의합</a></li>
@@ -85,9 +88,16 @@
           <li><a href="#자릿수더하기">자릿수더하기</a></li>
           <li><a href="#짝수홀수개수">짝수홀수개수</a></li>
           <li><a href="#배열의유사도">배열의유사도</a></li>
-          <li><a href="#점의위치구하기">점의위치구하기</a></li>
+          <li><a href="#배열뒤집기">배열뒤집기</a></li>
           <li><a href="#문자반복출력하기">문자반복출력하기</a></li>
           <li><a href="#양꼬치">양꼬치</a></li>
+          <li><a href="#n의배수고르기">n의배수고르기</a></li>
+          <li><a href="#머쓱이보다키큰사람">머쓱이보다키큰사람</a></li>
+          <li><a href="#피자나눠먹기">피자나눠먹기</a></li>
+          <li><a href="#배열원소길이">배열원소길이</a></li>
+          <li><a href="#문자열안에문자열">문자열안에문자열</a></li>
+          <li><a href="#아이스아메리카노">아이스아메리카노</a></li>
+          <li><a href="#편지">편지</a></li>
 
           <li><a href="#"></a></li>
         </ol>
@@ -3163,6 +3173,89 @@
             나타나는 숫자 중 최소값과 최대값을 찾아 이를 "(최소값)
             (최대값)"형태의 문자열을 반환하는 함수, solution을 완성하세요.
           </h3>
+
+          <br />
+          <p>- s는 길이 1 이상 200 이하인 문자열입니다.</p>
+          <p>- s는 알파벳과 숫자, 공백문자(" ")로 이루어져 있습니다.</p>
+          <p>- 숫자는 단어의 첫 문자로만 나옵니다.</p>
+          <p>- 숫자로만 이루어진 단어는 없습니다.</p>
+          <p>- 공백문자가 연속해서 나올 수 있습니다.</p>
+
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>- s: "3people unFollowed me" = 결과: "3people Unfollowed Me"</p>
+          <p>- s: "for the last week" = 결과: "For The Last Week"</p>
+
+          <div
+            style="margin-top: 15px; padding: 20px 0; border: 1px solid #ccc"
+          >
+            <p class="code-title">■ 내가 작성한 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>문자열을 공백을 기준으로 배열로 나누기</li>
+              <li>변환된 문자를 담을 변수 선언</li>
+              <li>
+                index가 0인 값은 대문자로 변환하고 아닌 문자들은 소문자로
+                변환해서 변수에 저장하기
+              </li>
+              <li>담긴 문자열을 answer로 집어넣기</li>
+              <li>문자열배열만큼 반복 시키기</li>
+              <li>배열을 공백을 기준으로 합치기</li>
+            </ol>
+          </div>
+          <pre>
+          <code class="javascript">   
+      function solution(s) {
+        var answer = []
+        const strArr = s.split(' ')
+    
+        for(let i = 0; i＜strArr.length;i++){
+            let str = ''
+            for(let j = 0; j＜strArr[i].length;j++){
+                j == 0 ? str += strArr[i][j].toUpperCase() : str += (strArr[i][j]).toLowerCase()
+            }
+            answer.push(str)
+        }
+        answer = answer.join(' ')
+        
+        return answer  ;
+      }
+          </code>
+        </pre>
+          <hr />
+          <br />
+
+          <p class="code-title">■ 다른 사람 작성 코드</p>
+          <ul style="margin: 0 0 10px 0">
+            <li>문자열 길이만큼</li>
+            <li>index가 0이거나 s[i]값 대문자로 변환해서 더하고</li>
+            <li>아닐 경우에는 s[i]값 소문자로 변환해서 더함</li>
+          </ul>
+          <pre>
+          <code class="javascript"> 
+      function solution(s) {
+          var answer = '';
+          for (let i = 0; i ＜ s.length; i++) {
+            if (i === 0 || s[i-1] === " ") {
+              answer += s[i].toUpperCase();
+            } else {
+              answer += s[i].toLowerCase();
+            }
+          }
+          return answer;
+      }
+          </code>
+        </pre>
+        </section>
+        JadenCase문자열만들기
+        <section>
+          <a name="JadenCase문자열만들기"> #JadenCase문자열만들기</a>
+          <h3>
+            Q. JadenCase란 모든 단어의 첫 문자가 대문자이고, 그 외의 알파벳은
+            소문자인 문자열입니다. 단, 첫 문자가 알파벳이 아닐 때에는 이어지는
+            알파벳은 소문자로 쓰면 됩니다. (첫 번째 입출력 예 참고) 문자열 s가
+            주어졌을 때, s를 JadenCase로 바꾼 문자열을 리턴하는 함수, solution을
+            완성해주세요
+          </h3>
           <p>
             예를들어 s가 "1 2 3 4"라면 "1 4"를 리턴하고, "-1 -2 -3 -4"라면 "-4
             -1"을 리턴하면 됩니다.<br />
@@ -3680,6 +3773,331 @@
       }
           </code>
         </pre>
+        </section>
+        <section>
+          <a name="배열뒤집기"> #배열뒤집기</a>
+          <h3>
+            Q. 정수가 들어 있는 배열 num_list가 매개변수로 주어집니다.
+            num_list의 원소의 순서를 거꾸로 뒤집은 배열을 return하도록 solution
+            함수를 완성해주세요.
+          </h3>
+          <p>
+            - 1 ≤ num_list의 길이 ≤ 1,000
+            <br />
+            - 0 ≤ num_list의 원소 ≤ 1,000
+            <br />
+          </p>
+
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>- num_list: [1, 2, 3, 4, 5] = 결과: [5, 4, 3, 2, 1]</p>
+          <p>- num_list: [1, 1, 1, 1, 1, 2] = 결과: [2, 1, 1, 1, 1, 1]</p>
+          <p>- num_list: [1, 0, 1, 1, 1, 3, 5] = 결과: [5, 3, 1, 1, 1, 0, 1]</p>
+
+          <pre>
+            <code class="javascript">   
+        function solution(num_list) {
+            var answer = num_list.reverse() 
+            return answer;
+        }
+            </code>
+          </pre>
+        </section>
+        <section>
+          <a name="문자반복출력하기"> #문자반복출력하기</a>
+          <h3>
+            Q. 문자열 my_string과 정수 n이 매개변수로 주어질 때, my_string에
+            들어있는 각 문자를 n만큼 반복한 문자열을 return 하도록 solution
+            함수를 완성해보세요.
+          </h3>
+          <p>
+            - 1 ≤ my_string 길이 ≤ 50
+            <br />
+            - 1 ≤ n ≤ 50
+            <br />
+            - "my_string"은 영어 대소문자로 이루어져 있습니다.
+          </p>
+
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>- my_string: "hello" n: 3 = 결과: "hhheeellllllooo"</p>
+
+          <pre>
+            <code class="javascript">   
+        function solution(my_string, n) {
+          var answer = '';
+          
+          for(let i =0;i＜my_string.length;i++){
+              answer += my_string[i].repeat(n)
+          }
+          return answer;
+        }
+            </code>
+          </pre>
+        </section>
+        <section>
+          <a name="양꼬치"> #양꼬치</a>
+          <h3>
+            Q. 머쓱이네 양꼬치 가게는 10인분을 먹으면 음료수 하나를 서비스로
+            줍니다. 양꼬치는 1인분에 12,000원, 음료수는 2,000원입니다. 정수 n과
+            k가 매개변수로 주어졌을 때, 양꼬치 n인분과 음료수 k개를 먹었다면
+            총얼마를 지불해야 하는지 return 하도록 solution 함수를 완성해보세요.
+          </h3>
+          <p>
+            - 0 < n < 1,000
+            <br />
+            - n / 10 ≤ k < 1,000
+            <br />
+            - 서비스로 받은 음료수는 모두 마십니다.
+          </p>
+
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>- n: 10 k: 3 = 결과: 124,000</p>
+          <p>- n: 64 k: 6 = 결과: 768,000</p>
+
+          <pre>
+            <code class="javascript">   
+        function solution(n, k) {
+          var answer = 0;
+          let service = n>= 10 ? parseInt(n /10) : 0
+          
+          answer = 12000 * n + 2000 * k - 2000 * service
+          
+          return answer;
+        }
+            </code>
+          </pre>
+          <p class="code-title">■ 다른 사람 작성 코드</p>
+          <pre>
+          <code class="javascript">   
+        function solution(n, k) {
+          return n*12000 + k*2000 - parseInt(n/10)*2000
+        }
+          </code>
+        </pre>
+        </section>
+        <section>
+          <a name="n의배수고르기"> #n의배수고르기</a>
+          <h3>
+            Q. 정수 n과 정수 배열 numlist가 매개변수로 주어질 때, numlist에서
+            n의 배수가 아닌 수들을 제거한 배열을 return하도록 solution 함수를
+            완성해주세요.
+          </h3>
+          <p>
+            - 1 ≤ n ≤ 10,000
+            <br />
+            - 1 ≤ numlist의 크기 ≤ 100
+            <br />
+            - 1 ≤ numlist의 원소 ≤ 100,000
+          </p>
+
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>
+            - n: 3 numlist: [4, 5, 6, 7, 8, 9, 10, 11, 12] = 결과: [6, 9, 12]
+          </p>
+          <p>- n: 5 numlist: [1, 9, 3, 10, 13, 5] = 결과: [10, 5]</p>
+          <p>
+            - n: 12 numlist: [2, 100, 120, 600, 12, 12] = 결과: [120, 600, 12,
+            12]
+          </p>
+
+          <pre>
+            <code class="javascript">   
+        function solution(n, numlist) {
+            var answer = numlist.filter((v)=> v % n === 0);
+            return answer;
+        }
+            </code>
+          </pre>
+        </section>
+        <section>
+          <a name="머쓱이보다키큰사람"> #머쓱이보다키큰사람</a>
+          <h3>
+            Q. 머쓱이는 학교에서 키 순으로 줄을 설 때 몇 번째로 서야 하는지
+            궁금해졌습니다. 머쓱이네 반 친구들의 키가 담긴 정수 배열 array와
+            머쓱이의 키 height가 매개변수로 주어질 때, 머쓱이보다 키 큰 사람
+            수를 return 하도록 solution 함수를 완성해보세요.
+          </h3>
+          <p>
+            - 1 ≤ array의 길이 ≤ 100
+            <br />
+            - 1 ≤ height ≤ 200
+            <br />
+            - 1 ≤ array의 원소 ≤ 200
+          </p>
+
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>- arr: [149, 180, 192, 170] height: 167 = 결과: 3</p>
+          <p>- arr: [180, 120, 140] height: 190 = 결과: 0</p>
+
+          <pre>
+            <code class="javascript">   
+        function solution(array, height) {
+          var answer = 0;
+          answer = array.filter((v)=> v > height).length
+          
+          return answer;
+        }
+            </code>
+          </pre>
+        </section>
+        <section>
+          <a name="피자나눠먹기"> #피자나눠먹기</a>
+          <h3>
+            Q. 머쓱이네 피자가게는 피자를 일곱 조각으로 잘라 줍니다. 피자를
+            나눠먹을 사람의 수 n이 주어질 때, 모든 사람이 피자를 한 조각 이상
+            먹기 위해 필요한 피자의 수를 return 하는 solution 함수를
+            완성해보세요.
+          </h3>
+          <p>- 1 ≤ n ≤ 100</p>
+
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>- n: 7 = 결과: 1</p>
+          <p>- n: 1 = 결과: 1</p>
+          <p>- n: 15 = 결과: 3</p>
+
+          <pre>
+            <code class="javascript">   
+        function solution(n) {
+          var answer = Math.ceil(n/7)
+          return answer;
+        }
+            </code>
+          </pre>
+        </section>
+        <section>
+          <a name="배열원소길이"> #배열원소길이</a>
+          <h3>
+            Q. 문자열 배열 strlist가 매개변수로 주어집니다. strlist 각 원소의
+            길이를 담은 배열을 retrun하도록 solution 함수를 완성해주세요.
+          </h3>
+          <p>
+            - 1 ≤ strlist 원소의 길이 ≤ 100<br />
+            - strlist는 알파벳 소문자, 대문자, 특수문자로 구성되어 있습니다.
+          </p>
+
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>- strlist: ["We", "are", "the", "world!"] = 결과: [2, 3, 3, 6]</p>
+          <p>- strlist: ["I", "Love", "Programmers."] = 결과: [1, 4, 12]</p>
+
+          <pre>
+            <code class="javascript">   
+      function solution(strlist) {
+        var answer = [];
+        for(let i =0; i＜strlist.length;i++){
+            answer.push(strlist[i].length)
+        }
+        return answer;
+      }
+            </code>
+          </pre>
+          <p class="code-title">■ 다른 사람 작성 코드</p>
+          <pre>
+          <code class="javascript">   
+      function solution(strlist) {
+        return strlist.map((el) => el.length)
+      }
+          </code>
+        </pre>
+        </section>
+        <section>
+          <a name="문자열안에문자열"> #문자열안에문자열</a>
+          <h3>
+            Q. 문자열 str1, str2가 매개변수로 주어집니다. str1 안에 str2가
+            있다면 1을 없다면 2를 return하도록 solution 함수를 완성해주세요.
+          </h3>
+          <p>- 1 ≤ str1의 길이 ≤ 100 <br />- 1 ≤ str2의 길이 ≤ 100</p>
+
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>- str1: "ab6CDE443fgh22iJKlmn1o" str2: "6CD" = 결과: 1</p>
+          <p>- str1: "ppprrrogrammers" str2: "pppp" = 결과:2</p>
+
+          <pre>
+            <code class="javascript">   
+      function solution(str1, str2) {
+          var answer = 0;
+          answer = str1.includes(str2) ? 1 : 2
+          return answer;
+      }
+            </code>
+          </pre>
+        </section>
+        <section>
+          <a name="아이스아메리카노"> #아이스아메리카노</a>
+          <h3>
+            Q. 머쓱이는 추운 날에도 아이스 아메리카노만 마십니다. 아이스
+            아메리카노는 한잔에 5,500원입니다. 머쓱이가 가지고 있는 돈 money가
+            매개변수로 주어질 때, 머쓱이가 최대로 마실 수 있는 아메리카노의 잔
+            수와 남는 돈을 순서대로 담은 배열을 return 하도록 solution 함수를
+            완성해보세요.
+          </h3>
+          <p>
+            - 공백도 하나의 문자로 취급합니다.<br />
+            <br />
+          </p>
+
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>- money: 5500 = 결과: [1, 0]</p>
+          <p>- money: 15000 = 결과: [2, 4000]</p>
+
+          <pre>
+            <code class="javascript">   
+        function solution(money) {
+          var answer = [];
+          
+          answer.push(parseInt(money / 5500), money % 5500)
+          
+          return answer;
+        }
+            </code>
+          </pre>
+          <p class="code-title">■ 다른 사람 작성 코드</p>
+          <pre>
+          <code class="javascript">   
+        function solution(money) {
+            return [Math.floor(money / 5500), money % 5500];
+        }
+          </code>
+        </pre>
+        </section>
+        <section>
+          <a name="편지"> #편지</a>
+          <h3>
+            Q. 머쓱이는 할머니께 생신 축하 편지를 쓰려고 합니다. 할머니가 보시기
+            편하도록 글자 한 자 한 자를 가로 2cm 크기로 적으려고 하며, 편지를
+            가로로만 적을 때, 축하 문구 message를 적기 위해 필요한 편지지의 최소
+            가로길이를 return 하도록 solution 함수를 완성해주세요.
+          </h3>
+          <p>
+            - 0 ＜ money ≤ 1,000,000
+            <br />
+            - 1 ≤ message의 길이 ≤ 50<br />
+            - 편지지의 여백은 생각하지 않습니다.<br />
+            - message는 영문 알파벳 대소문자, ‘!’, ‘~’ 또는 공백으로만 이루어져
+            있습니다.
+          </p>
+
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>- message: "happy birthday!" = 결과: 30</p>
+          <p>- message: "I love you~" = 결과: 22</p>
+
+          <pre>
+            <code class="javascript">   
+      function solution(message) {
+        var answer = 0;
+        answer = message.length  * 2
+        return answer;
+      }
+            </code>
+          </pre>
         </section>
       </div>
     </div>
