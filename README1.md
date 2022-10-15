@@ -1,168 +1,188 @@
-<li><a href="#주사위개수">주사위개수</a></li>
-<li><a href="#중복된문자제거">중복된문자제거</a></li>
-<li><a href="#최댓값만들기2">최댓값만들기2</a></li>
-<li><a href="#최댓값만들기2">최댓값만들기2</a></li>
+<li><a href="#A로B만들기">A로B만들기</a></li>
+<li><a href="#2차원으로만들기">2차원으로만들기 </a></li>
+<li><a href="#잘라서배열로저장">잘라서배열로저장</a></li>
+<li><a href="#종이자르기">종이자르기</a></li>
 <li><a href="#모음제거">모음제거</a></li>
 
 ```html
 <section>
-  <a name="주사위개수"> #주사위개수</a>
+  <a name="A로B만들기"> #A로B만들기</a>
   <h3>
-    Q. 머쓱이는 직육면체 모양의 상자를 하나 가지고 있는데 이 상자에 정육면체
-    모양의 주사위를 최대한 많이 채우고 싶습니다. 상자의 가로, 세로, 높이가
-    저장되어있는 배열 box와 주사위 모서리의 길이 정수 n이 매개변수로 주어졌을
-    때, 상자에 들어갈 수 있는 주사위의 최대 개수를 return 하도록 solution 함수를
-    완성해주세요.
+    Q. 문자열 before와 after가 매개변수로 주어질 때, before의 순서를 바꾸어
+    after를 만들 수 있으면 1을, 만들 수 없으면 0을 return 하도록 solution 함수를
+    완성해보세요.
   </h3>
-  <p>- box의 길이는 3입니다.</p>
-  <p>- box[0] = 상자의 가로 길이</p>
-  <p>- box[1] = 상자의 세로 길이</p>
-  <p>- box[2] = 상자의 높이 길이</p>
-  <p>- 1 ≤ box의 원소 ≤ 100</p>
-  <p>- 1 ≤ n ≤ 50</p>
-  <p>- n ≤ box의 원소</p>
-  <p>- 주사위는 상자와 평행하게 넣습니다.</p>
+  <p>- 0 < before의 길이 == after의 길이 < 1,000</p>
+  <p>- before와 after는 모두 소문자로 이루어져 있습니다.</p>
 
   <br />
   <p style="margin-top: 15px">예시)</p>
-  <p>- box: [1, 1, 1] n: 1 결과: 1</p>
-  <p>- box: [10, 8, 6] n: 3 = 결과: 12</p>
+  <p>- before: "olleh" after: "hello" 결과: 1</p>
+  <p>- before: "allpe" after: "apple" 결과: 0</p>
 
   <div style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc">
     <p class="code-title">■ 내가 작성한 코드</p>
     <ol style="margin: 0 0 10px 0">
-      <li>각 길이를 n으로 나누고 곱하기</li>
+      <li>after와 before 모두 배열로 바꾼 뒤 정렬하고</li>
+      <li>after 맵 돌면서 같은지 비교</li>
     </ol>
   </div>
   <pre>
     <code class="javascript">   
-function solution(box, n) {
-    var answer = 1;
-    box.map((a)=>answer *= parseInt(a /n))
+function solution(before, after) {
+    var answer = 0;
+    const sortB= before.split('').sort((a,b)=>(a＜b)?1:-1)
+    const sortA= after.split('').sort((a,b)=>(a＜b)?1:-1)
+    const result = sortA.filter((a,i)=>a !== sortB[i])
+    
+    answer = result.length === 0 ? 1 : 0
     return answer;
 }
     </code>
   </pre>
   <p class="code-title">■ 다른 사람 작성 코드</p>
   <ul style="margin: 0 0 10px 0">
-    <li>구조분해</li>
+    <li>before과 after를 배열로 변환 -> 정렬 -> 문자열 후 비교</li>
+    <li>같으면 1 반환 아니면 0 반환</li>
   </ul>
   <pre>
   <code class="javascript">
-function solution(box, n) {
-    let [width, length, height] = box;
-
-    return Math.floor(width / n) * Math.floor(length / n) * Math.floor(height / n);
+function solution(before, after) {
+    return before.split('').sort().join('') === after.split('').sort().join('') ? 1 : 0;
 }
   </code>
 </pre>
 </section>
 <section>
-  <a name="중복된문자제거"> #중복된문자제거</a>
+  <a name="2차원으로만들기"> #2차원으로만들기</a>
   <h3>
-    Q. 문자열 my_string이 매개변수로 주어집니다. my_string에서 중복된 문자를
-    제거하고 하나의 문자만 남긴 문자열을 return하도록 solution 함수를
-    완성해주세요.
+    Q. 정수 배열 num_list와 정수 n이 매개변수로 주어집니다. num_list를 다음
+    설명과 같이 2차원 배열로 바꿔 return하도록 solution 함수를 완성해주세요.
   </h3>
-  <p>- 1 ≤ my_string ≤ 1,000</p>
-  <p>- 대문자와 소문자를 구분합니다.</p>
-  <p>- 공백(" ")도 하나의 문자로 구분합니다.</p>
-  <p>- 중복된 문자 중 가장 앞에 있는 문자를 남깁니다.</p>
+  <p>
+    num_list가 [1, 2, 3, 4, 5, 6, 7, 8] 로 길이가 8이고 n이 2이므로 num_list를 2
+    * 4 배열로 다음과 같이 변경합니다. 2차원으로 바꿀 때에는 num_list의 원소들을
+    앞에서부터 n개씩 나눠 2차원 배열로 변경합니다.
+  </p>
+  <p>- num_list : [1, 2, 3, 4, 5, 6, 7, 8] / n: 2</p>
+  <p>- 결과: [[1, 2], [3, 4], [5, 6], [7, 8]]</p>
+  <br />
+  <p>- num_list의 길이는 n의 배 수개입니다.</p>
+  <p>- 0 ≤ num_list의 길이 ≤ 1000</p>
+  <p>- 2 ≤ n < num_list의 길이</p>
 
   <br />
   <p style="margin-top: 15px">예시)</p>
-  <p>- my_string : "people" 결과: "peol"</p>
-  <p>- my_string : "We are the world" = 결과: "We arthwold"</p>
+  <p>
+    - num_list : [1, 2, 3, 4, 5, 6, 7, 8] n: 2 결과: [[1, 2], [3, 4], [5, 6],
+    [7, 8]]
+  </p>
+  <p>
+    - num_list : [100, 95, 2, 4, 5, 6, 18, 33, 948] n: 3 = 결과: [[100, 95, 2],
+    [4, 5, 6], [18, 33, 948]]
+  </p>
 
   <div style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc">
     <p class="code-title">■ 내가 작성한 코드</p>
     <ol style="margin: 0 0 10px 0">
-      <li>new Set() 을 이용하여 중복제거</li>
-      <li>[...new Set(my_string)] 코드 단축 가능</li>
+      <li>0부터 n번까지 인덱스를 잘라서, answer에 집어넣기</li>
+      <li>배열의 길이를 n으로 나눈 값까지 반복</li>
     </ol>
   </div>
   <pre>
     <code class="javascript">   
-function solution(my_string) {
-    var answer = '';
-    const setNew = new Set([...my_string])
-    answer = [...setNew].join('')
-    return answer;
-}
-    </code>
-  </pre>
-</section>
-<section>
-  <a name="최댓값만들기2"> #최댓값만들기2</a>
-  <h3>
-    Q. 정수 배열 numbers가 매개변수로 주어집니다. numbers의 원소 중 두 개를 곱해
-    만들 수 있는 최댓값을 return하도록 solution 함수를 완성해주세요.
-  </h3>
-  <p>- -10,000 ≤ numbers의 원소 ≤ 10,000</p>
-  <p>- 2 ≤ numbers 의 길이 ≤ 100</p>
-
-  <br />
-  <p style="margin-top: 15px">예시)</p>
-  <p>- numbers: [1, 2, -3, 4, -5] 결과: 15</p>
-  <p>- numbers: [0, -31, 24, 10, 1, 9] = 결과: 240</p>
-  <p>- numbers: [10, 20, 30, 5, 5, 20, 5] = 결과: 600</p>
-  <div style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc">
-    <p class="code-title">■ 내가 작성한 코드</p>
-    <ol style="margin: 0 0 10px 0">
-      <li>numbers 오름차순으로 정렬</li>
-      <li>가장 낮은 수 2개 곱한 값과 가장 높은 수 2개를 곱한 결과를 비교</li>
-    </ol>
-  </div>
-  <pre>
-    <code class="javascript">   
-function solution(numbers) {
-    var answer = 0;
-    const sortArr = numbers.sort((a,b)=>a-b);
-    answer = Math.max(sortArr[0] * sortArr[1] , sortArr[numbers.length - 1] *sortArr[numbers.length - 2])
-    
-    return answer;
-}
-    </code>
-  </pre>
-</section>
-<section>
-  <a name="피자나눠먹기2"> #피자나눠먹기2</a>
-  <h3>
-    Q. 머쓱이네 피자가게는 피자를 여섯 조각으로 잘라 줍니다. 피자를 나눠먹을
-    사람의 수 n이 매개변수로 주어질 때, n명이 주문한 피자를 남기지 않고 모두
-    같은 수의 피자 조각을 먹어야 한다면 최소 몇 판을 시켜야 하는지를 return
-    하도록 solution 함수를 완성해보세요.
-  </h3>
-  <p>- 1 ≤ n ≤ 100</p>
-
-  <br />
-  <p style="margin-top: 15px">예시)</p>
-  <p>- n: 6 결과: 1</p>
-  <p>- n: 10 결과: 5</p>
-  <p>- n: 4 결과: 2</p>
-
-  <div style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc">
-    <p class="code-title">■ 내가 작성한 코드</p>
-    <ol style="margin: 0 0 10px 0">
-      <li>
-        사람수 * 1인당 먹을 수 있는 피자조각을 6으로 나눴을 때 0이 될때까지
-        반복문 돌리기
-      </li>
-      <li>
-        사람수 * 1인당 먹을 수 있는 피자조각을 6으로 나눴을 때 몫 반환
-        (피자판수)
-      </li>
-    </ol>
-  </div>
-  <pre>
-    <code class="javascript">   
-function solution(n) {
-    var answer = 0;
-    let count = 1;
-    while(n * count % 6 != 0){
-        count += 1
+function solution(num_list, n) {
+    var answer = [];
+    for(let i =0;i＜num_list.length / n; i++){
+        const idx = i * n
+        let arr = num_list.slice(idx,idx + n)
+        answer.push(arr)
     }
-    answer = count * n / 6
+    return answer;
+}
+    </code></pre>
+  <p class="code-title">■ 다른 사람 작성 코드</p>
+  <ul style="margin: 0 0 10px 0">
+    <li>i 증감값을 i + n으로 해서, 가독성을 높임</li>
+  </ul>
+  <pre>
+  <code class="javascript">
+function solution(num_list, n) {
+    var answer = [];
+
+    for (let i = 0; i＜num_list.length; i=i+n){
+        answer.push(num_list.slice(i, i+n));
+    }
+
+    return answer;
+}
+  </code>
+</pre>
+</section>
+<section>
+  <a name="잘라서배열로저장"> #잘라서배열로저장</a>
+  <h3>
+    Q. 문자열 my_str과 n이 매개변수로 주어질 때, my_str을 길이 n씩 잘라서 저장한
+    배열을 return하도록 solution 함수를 완성해주세요.
+  </h3>
+  <p>- 1 ≤ my_str의 길이 ≤ 100</p>
+  <p>- 1 ≤ n ≤ my_str의 길이</p>
+  <p>- my_str은 알파벳 소문자, 대문자, 숫자로 이루어져 있습니다.</p>
+
+  <br />
+  <p style="margin-top: 15px">예시)</p>
+  <p>- my_str: "abc1Addfggg4556b" n: 6 결과: ["abc1Ad", "dfggg4", "556b"]</p>
+  <p>- my_str: "abcdef123" n: 3 = 결과: ["abc", "def", "123"]</p>
+  <div style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc">
+    <p class="code-title">■ 내가 작성한 코드</p>
+    <ol style="margin: 0 0 10px 0">
+      <li>my_str의 0번부터 n+i번까지 잘라서 answer에 넣기</li>
+      <li>증감값 : i+=n</li>
+    </ol>
+  </div>
+  <pre>
+    <code class="javascript">   
+function solution(my_str, n) {
+    var answer = [];
+    for(let i =0;i＜my_str.length ;i+=n){
+        const arr = my_str.slice(i,n+i)
+        answer.push(arr)
+    }
+    return answer;
+}
+    </code>
+  </pre>
+</section>
+<section>
+  <a name="종이자르기"> #종이자르기</a>
+  <h3>
+    Q. 머쓱이는 큰 종이를 1 x 1 크기로 자르려고 합니다. 예를 들어 2 x 2 크기의
+    종이를 1 x 1 크기로 자르려면 최소 가위질 세 번이 필요합니다.
+    <br />
+    정수 M, N이 매개변수로 주어질 때, M x N 크기의 종이를 최소로 가위질 해야하는
+    횟수를 return 하도록 solution 함수를 완성해보세요.
+  </h3>
+  <p>- 0 < M, N < 100</p>
+  <p>- 종이를 겹쳐서 자를 수 없습니다.</p>
+
+  <br />
+  <p style="margin-top: 15px">예시)</p>
+  <p>- M: 2 N: 2 결과: 3</p>
+  <p>- M: 2 N: 5 결과: 9</p>
+  <p>- M: 1 N: 1 결과: 0</p>
+
+  <div style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc">
+    <p class="code-title">■ 내가 작성한 코드</p>
+    <ol style="margin: 0 0 10px 0">
+      <li>M : M - 1 (길이보다 1 작은 수로 자를 수 있기 때문에)</li>
+      <li>N : N - 1 * M (세로를 자른 개수 * 가로의 길이)</li>
+    </ol>
+  </div>
+  <pre>
+    <code class="javascript">   
+function solution(M, N) {
+    var answer = 0;
+    answer += M - 1 + (N - 1) * M
     
     return answer;
 }
@@ -170,19 +190,12 @@ function solution(n) {
   </pre>
   <p class="code-title">■ 다른 사람 작성 코드</p>
   <ul style="margin: 0 0 10px 0">
-    <li>
-      피자판 * 6(조각) 을 사람수로 나눈 나머지가 0이 될때까지 반복문 돌리기
-    </li>
-    <li>피자판수 반환</li>
+    <li>가로길이 * 세로길이 - 1</li>
   </ul>
   <pre>
   <code class="javascript">
-function solution(n) {
-    let pizza = 1;
-    while (pizza * 6 % n) {
-        pizza++;
-    }
-    return pizza;
+function solution(M, N) {
+    return M*N-1;
 }
   </code>
 </pre>
