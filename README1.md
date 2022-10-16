@@ -1,204 +1,187 @@
-<li><a href="#A로B만들기">A로B만들기</a></li>
-<li><a href="#2차원으로만들기">2차원으로만들기 </a></li>
-<li><a href="#잘라서배열로저장">잘라서배열로저장</a></li>
-<li><a href="#종이자르기">종이자르기</a></li>
 <li><a href="#모음제거">모음제거</a></li>
 
 ```html
 <section>
-  <a name="A로B만들기"> #A로B만들기</a>
+  <a name="k의개수"> #k의개수</a>
   <h3>
-    Q. 문자열 before와 after가 매개변수로 주어질 때, before의 순서를 바꾸어
-    after를 만들 수 있으면 1을, 만들 수 없으면 0을 return 하도록 solution 함수를
-    완성해보세요.
+    Q. 1부터 13까지의 수에서, 1은 1, 10, 11, 12, 13 이렇게 총 6번 등장합니다.
+    정수 i, j, k가 매개변수로 주어질 때, i부터 j까지 k가 몇 번 등장하는지 return
+    하도록 solution 함수를 완성해주세요.
   </h3>
-  <p>- 0 < before의 길이 == after의 길이 < 1,000</p>
-  <p>- before와 after는 모두 소문자로 이루어져 있습니다.</p>
+  <p>- 1 ≤ i < j ≤ 100,000</p>
+  <p>- 0 ≤ k ≤ 9</p>
 
   <br />
   <p style="margin-top: 15px">예시)</p>
-  <p>- before: "olleh" after: "hello" 결과: 1</p>
-  <p>- before: "allpe" after: "apple" 결과: 0</p>
+  <p>- i: 1 j: 13 k: 1 결과: 6</p>
+  <p>- i: 10 j: 50 k: 5 결과: 5</p>
+  <p>- i: 3 j: 10 k: 2 결과: 0</p>
 
   <div style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc">
     <p class="code-title">■ 내가 작성한 코드</p>
     <ol style="margin: 0 0 10px 0">
-      <li>after와 before 모두 배열로 바꾼 뒤 정렬하고</li>
-      <li>after 맵 돌면서 같은지 비교</li>
+      <li>Array().fill().map() 을 통해 i부터 j까지 배열을 만들고,</li>
+      <li>// Array(배열의 개수) //.fill() 채우기</li>
+      <li>배열을 합치고, 다시 한자리수로 쪼개서 배열로 만들기</li>
+      <li>k와 같은 숫자만 필터링하고, 길이 반환하기</li>
     </ol>
   </div>
   <pre>
     <code class="javascript">   
-function solution(before, after) {
+function solution(i, j, k) {
     var answer = 0;
-    const sortB= before.split('').sort((a,b)=>(a＜b)?1:-1)
-    const sortA= after.split('').sort((a,b)=>(a＜b)?1:-1)
-    const result = sortA.filter((a,i)=>a !== sortB[i])
+    let arr = Array(j - i +1).fill().map((a,idx)=> i+idx).join('').split('')
+    answer = arr.filter((v)=> parseInt(v) === k).length
     
-    answer = result.length === 0 ? 1 : 0
     return answer;
 }
     </code>
   </pre>
   <p class="code-title">■ 다른 사람 작성 코드</p>
   <ul style="margin: 0 0 10px 0">
-    <li>before과 after를 배열로 변환 -> 정렬 -> 문자열 후 비교</li>
-    <li>같으면 1 반환 아니면 0 반환</li>
+    <li>변수로 제공된 i를 활용하여 for문 작성</li>
+    <li>i를 배열로 바꾸고, k를 기준으로 쪼개기</li>
+    <li>길이 -1의 값을 answer에 더해주고 결과값 반환</li>
   </ul>
   <pre>
   <code class="javascript">
-function solution(before, after) {
-    return before.split('').sort().join('') === after.split('').sort().join('') ? 1 : 0;
+function solution(i, j, k) {
+    var answer = 0;
+
+    for(; i<=j; i++) {
+        const x = i.toString().split(k).length-1;
+        answer += x;        
+    }
+
+    return answer;
 }
   </code>
 </pre>
 </section>
 <section>
-  <a name="2차원으로만들기"> #2차원으로만들기</a>
+  <a name="한번만등장한문자"> #한번만등장한문자</a>
   <h3>
-    Q. 정수 배열 num_list와 정수 n이 매개변수로 주어집니다. num_list를 다음
-    설명과 같이 2차원 배열로 바꿔 return하도록 solution 함수를 완성해주세요.
+    Q. 문자열 s가 매개변수로 주어집니다. s에서 한 번만 등장하는 문자를 사전
+    순으로 정렬한 문자열을 return 하도록 solution 함수를 완성해보세요. 한 번만
+    등장하는 문자가 없을 경우 빈 문자열을 return 합니다.
   </h3>
-  <p>
-    num_list가 [1, 2, 3, 4, 5, 6, 7, 8] 로 길이가 8이고 n이 2이므로 num_list를 2
-    * 4 배열로 다음과 같이 변경합니다. 2차원으로 바꿀 때에는 num_list의 원소들을
-    앞에서부터 n개씩 나눠 2차원 배열로 변경합니다.
-  </p>
-  <p>- num_list : [1, 2, 3, 4, 5, 6, 7, 8] / n: 2</p>
-  <p>- 결과: [[1, 2], [3, 4], [5, 6], [7, 8]]</p>
-  <br />
-  <p>- num_list의 길이는 n의 배 수개입니다.</p>
-  <p>- 0 ≤ num_list의 길이 ≤ 1000</p>
-  <p>- 2 ≤ n < num_list의 길이</p>
+  <p>- 0 < s의 길이 < 1,000</p>
+  <p>- s는 소문자로만 이루어져 있습니다.</p>
 
   <br />
   <p style="margin-top: 15px">예시)</p>
-  <p>
-    - num_list : [1, 2, 3, 4, 5, 6, 7, 8] n: 2 결과: [[1, 2], [3, 4], [5, 6],
-    [7, 8]]
-  </p>
-  <p>
-    - num_list : [100, 95, 2, 4, 5, 6, 18, 33, 948] n: 3 = 결과: [[100, 95, 2],
-    [4, 5, 6], [18, 33, 948]]
-  </p>
+  <p>- s : "abcabcadc"결과: "d"</p>
+  <p>- s : "abdc" 결과: "abcd"</p>
+  <p>- s : "hello" 결과: "eho""</p>
 
   <div style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc">
     <p class="code-title">■ 내가 작성한 코드</p>
     <ol style="margin: 0 0 10px 0">
-      <li>0부터 n번까지 인덱스를 잘라서, answer에 집어넣기</li>
-      <li>배열의 길이를 n으로 나눈 값까지 반복</li>
+      <li>중복제거한 문자열 배열 만들기</li>
+      <li>s 배열 필터링 하면서 길이가 1개일 경우 answer에 집어넣기</li>
+      <li>오름차순으로 정렬하고, 문자열로 변환해서 반환</li>
     </ol>
   </div>
   <pre>
     <code class="javascript">   
-function solution(num_list, n) {
+function solution(s) {
     var answer = [];
-    for(let i =0;i＜num_list.length / n; i++){
-        const idx = i * n
-        let arr = num_list.slice(idx,idx + n)
-        answer.push(arr)
-    }
+    const arr = [...new Set(s)]
+    for(let i =0;i＜s.length;i++){
+       const count = s.split('').filter((v)=>v === arr[i]).length
+       count === 1 ? answer.push(arr[i]) : ''
+       }
+    answer = answer.sort().join('')
     return answer;
 }
     </code></pre>
   <p class="code-title">■ 다른 사람 작성 코드</p>
   <ul style="margin: 0 0 10px 0">
-    <li>i 증감값을 i + n으로 해서, 가독성을 높임</li>
+    <li>인덱스 값고, 마지막 인덱스값이 같을 경우 res에 집어넣기</li>
+    <li>오름차순 정렬 후 문자열로 변환 하고 반환</li>
   </ul>
   <pre>
   <code class="javascript">
-function solution(num_list, n) {
-    var answer = [];
-
-    for (let i = 0; i＜num_list.length; i=i+n){
-        answer.push(num_list.slice(i, i+n));
-    }
-
-    return answer;
+function solution(s) {
+    let res = [];
+    for (let c of s) if (s.indexOf(c) === s.lastIndexOf(c)) res.push(c);
+    return res.sort().join('');
 }
   </code>
 </pre>
 </section>
 <section>
-  <a name="잘라서배열로저장"> #잘라서배열로저장</a>
+  <a name="팩토리얼"> #팩토리얼</a>
   <h3>
-    Q. 문자열 my_str과 n이 매개변수로 주어질 때, my_str을 길이 n씩 잘라서 저장한
-    배열을 return하도록 solution 함수를 완성해주세요.
+    Q. i팩토리얼 (i!)은 1부터 i까지 정수의 곱을 의미합니다. 예를들어 5! = 5 * 4
+    * 3 * 2 * 1 = 120 입니다. 정수 n이 주어질 때 다음 조건을 만족하는 가장 큰
+    정수 i를 return 하도록 solution 함수를 완성해주세요.
   </h3>
-  <p>- 1 ≤ my_str의 길이 ≤ 100</p>
-  <p>- 1 ≤ n ≤ my_str의 길이</p>
-  <p>- my_str은 알파벳 소문자, 대문자, 숫자로 이루어져 있습니다.</p>
+  <p>- i! ≤ n</p>
+  <p>- 0 < n ≤ 3,628,800</p>
 
   <br />
   <p style="margin-top: 15px">예시)</p>
-  <p>- my_str: "abc1Addfggg4556b" n: 6 결과: ["abc1Ad", "dfggg4", "556b"]</p>
-  <p>- my_str: "abcdef123" n: 3 = 결과: ["abc", "def", "123"]</p>
+  <p>- n: 3628800 결과: 10</p>
+  <p>- n: 7 결과: 3</p>
   <div style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc">
     <p class="code-title">■ 내가 작성한 코드</p>
     <ol style="margin: 0 0 10px 0">
-      <li>my_str의 0번부터 n+i번까지 잘라서 answer에 넣기</li>
-      <li>증감값 : i+=n</li>
+      <li>최대 팩토리얼인 10까지 반복문 돌리기</li>
+      <li>res 와 i값을 곱하면서 i 팩토리얼 값 구하기</li>
+      <li>res값이 n보다 같거나 작으면 answer 에 i값 저장하기</li>
     </ol>
   </div>
   <pre>
     <code class="javascript">   
-function solution(my_str, n) {
-    var answer = [];
-    for(let i =0;i＜my_str.length ;i+=n){
-        const arr = my_str.slice(i,n+i)
-        answer.push(arr)
-    }
-    return answer;
-}
-    </code>
-  </pre>
-</section>
-<section>
-  <a name="종이자르기"> #종이자르기</a>
-  <h3>
-    Q. 머쓱이는 큰 종이를 1 x 1 크기로 자르려고 합니다. 예를 들어 2 x 2 크기의
-    종이를 1 x 1 크기로 자르려면 최소 가위질 세 번이 필요합니다.
-    <br />
-    정수 M, N이 매개변수로 주어질 때, M x N 크기의 종이를 최소로 가위질 해야하는
-    횟수를 return 하도록 solution 함수를 완성해보세요.
-  </h3>
-  <p>- 0 < M, N < 100</p>
-  <p>- 종이를 겹쳐서 자를 수 없습니다.</p>
-
-  <br />
-  <p style="margin-top: 15px">예시)</p>
-  <p>- M: 2 N: 2 결과: 3</p>
-  <p>- M: 2 N: 5 결과: 9</p>
-  <p>- M: 1 N: 1 결과: 0</p>
-
-  <div style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc">
-    <p class="code-title">■ 내가 작성한 코드</p>
-    <ol style="margin: 0 0 10px 0">
-      <li>M : M - 1 (길이보다 1 작은 수로 자를 수 있기 때문에)</li>
-      <li>N : N - 1 * M (세로를 자른 개수 * 가로의 길이)</li>
-    </ol>
-  </div>
-  <pre>
-    <code class="javascript">   
-function solution(M, N) {
+function solution(n) {
     var answer = 0;
-    answer += M - 1 + (N - 1) * M
-    
+    let res = 1;
+    for(let i = 1; i<=10; i++){  
+        res *= i;
+        if(res <= n) answer = i;
+    }
     return answer;
 }
     </code>
   </pre>
-  <p class="code-title">■ 다른 사람 작성 코드</p>
-  <ul style="margin: 0 0 10px 0">
-    <li>가로길이 * 세로길이 - 1</li>
-  </ul>
+</section>
+<section>
+  <a name="가까운수"> #가까운수</a>
+  <h3>
+    Q. 정수 배열 array와 정수 n이 매개변수로 주어질 때, array에 들어있는 정수 중
+    n과 가장 가까운 수를 return 하도록 solution 함수를 완성해주세요.
+  </h3>
+  <p>- 1 ≤ array의 길이 ≤ 100</p>
+  <p>- 1 ≤ array의 원소 ≤ 100</p>
+  <p>- 1 ≤ n ≤ 100</p>
+  <p>- 가장 가까운 수가 여러 개일 경우 더 작은 수를 return 합니다.</p>
+
+  <br />
+  <p style="margin-top: 15px">예시)</p>
+  <p>- array: [3, 10, 28] n: 20 결과: 28</p>
+  <p>- array: [10, 11, 12] n: 13 결과: 12</p>
+
+  <div style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc">
+    <p class="code-title">■ 내가 작성한 코드</p>
+    <ol style="margin: 0 0 10px 0">
+      <li>array를 map 돌면서 v를 뺏을 때의 절대값 구하기</li>
+      <li>Math.min(...arr)를 사용해서 가장 작은 차이 구하기</li>
+      <li>array -v의 값이 min이랑 같은 것들만 필터링하고, 오름차순 정렬하기</li>
+      <li>가장 앞의 인덱스만 반환하기</li>
+    </ol>
+  </div>
   <pre>
-  <code class="javascript">
-function solution(M, N) {
-    return M*N-1;
+    <code class="javascript">   
+function solution(array, n) {
+    const arr = array.map((v)=>Math.abs(n-v))
+    const min = Math.min(...arr)
+    const minArr = array.filter((v)=> Math.abs(n-v) === min).sort()
+    
+    return minArr[0];
 }
-  </code>
-</pre>
+    </code>
+  </pre>
 </section>
 <section>
   <a name="모음제거"> #모음제거</a>
