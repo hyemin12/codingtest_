@@ -138,6 +138,10 @@
           <li><a href="#한번만등장한문자">한번만등장한문자 </a></li>
           <li><a href="#팩토리얼">팩토리얼</a></li>
           <li><a href="#가까운수">가까운수</a></li>
+          <li><a href="#모스부호">모스부호</a></li>
+          <li><a href="#이진수더하기">이진수더하기</a></li>
+          <li><a href="#공던지기">공던지기</a></li>
+          <li><a href="#영어가싫어요">영어가싫어요</a></li>
 
           <li><a href="#"></a></li>
         </ol>
@@ -5970,7 +5974,7 @@ function solution(s){
             등장합니다. 정수 i, j, k가 매개변수로 주어질 때, i부터 j까지 k가 몇
             번 등장하는지 return 하도록 solution 함수를 완성해주세요.
           </h3>
-          <p>- 1 ≤ i < j ≤ 100,000</p>
+          <p>- 1 ≤ i ＜ j ≤ 100,000</p>
           <p>- 0 ≤ k ≤ 9</p>
 
           <br />
@@ -6012,7 +6016,7 @@ function solution(s){
         function solution(i, j, k) {
             var answer = 0;
         
-            for(; i<=j; i++) {
+            for(; i＜=j; i++) {
                 const x = i.toString().split(k).length-1;
                 answer += x;        
             }
@@ -6030,7 +6034,7 @@ function solution(s){
             완성해보세요. 한 번만 등장하는 문자가 없을 경우 빈 문자열을 return
             합니다.
           </h3>
-          <p>- 0 < s의 길이 < 1,000</p>
+          <p>- 0 ＜ s의 길이 ＜ 1,000</p>
           <p>- s는 소문자로만 이루어져 있습니다.</p>
 
           <br />
@@ -6086,7 +6090,7 @@ function solution(s){
             완성해주세요.
           </h3>
           <p>- i! ≤ n</p>
-          <p>- 0 < n ≤ 3,628,800</p>
+          <p>- 0 ＜ n ≤ 3,628,800</p>
 
           <br />
           <p style="margin-top: 15px">예시)</p>
@@ -6158,6 +6162,232 @@ function solution(s){
         }
             </code>
           </pre>
+        </section>
+        <section>
+          <a name="모스부호"> #모스부호</a>
+          <h3>
+            Q. 머쓱이는 친구에게 모스부호를 이용한 편지를 받았습니다. 그냥은
+            읽을 수 없어 이를 해독하는 프로그램을 만들려고 합니다. 문자열
+            letter가 매개변수로 주어질 때, letter를 영어 소문자로 바꾼 문자열을
+            return 하도록 solution 함수를 완성해보세요.
+          </h3>
+          <p>모스부호는 다음과 같습니다.</p>
+          <p>
+            morse = { <br />
+            '.-':'a','-...':'b','-.-.':'c','-..':'d','.':'e','..-.':'f',<br />
+            '--.':'g','....':'h','..':'i','.---':'j','-.-':'k','.-..':'l',<br />
+            '--':'m','-.':'n','---':'o','.--.':'p','--.-':'q','.-.':'r',<br />
+            '...':'s','-':'t','..-':'u','...-':'v','.--':'w','-..-':'x',<br />
+            '-.--':'y','--..':'z'<br />
+            }
+          </p>
+
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>- letter: ".... . .-.. .-.. ---" 결과: "hello"</p>
+          <p>- letter: ".--. -.-- - .... --- -." 결과: "python"</p>
+
+          <div
+            style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
+          >
+            <p class="code-title">■ 내가 작성한 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>letter 배열로 변환</li>
+              <li>맵 돌면서 arr[index]값을 morse 오브젝트의 값으로 바꾸기</li>
+              <li>// Eg. morse['.-'] -> a</li>
+              <li>바꾼 배열 문자열로 반환</li>
+            </ol>
+          </div>
+          <pre>
+            <code class="javascript">   
+        function solution(letter) {
+            var answer = '';
+            const morse = { 
+            '.-':'a','-...':'b','-.-.':'c','-..':'d','.':'e','..-.':'f',
+            '--.':'g','....':'h','..':'i','.---':'j','-.-':'k','.-..':'l',
+            '--':'m','-.':'n','---':'o','.--.':'p','--.-':'q','.-.':'r',
+            '...':'s','-':'t','..-':'u','...-':'v','.--':'w','-..-':'x',
+            '-.--':'y','--..':'z'
+            }
+            answer = letter.split(' ').map((v) => morse[v]).join('')
+         
+            return answer;
+        }
+            </code>
+          </pre>
+        </section>
+        <section>
+          <a name="이진수더하기"> #이진수더하기</a>
+          <h3>
+            Q. 이진수를 의미하는 두 개의 문자열 bin1과 bin2가 매개변수로 주어질
+            때, 두 이진수의 합을 return하도록 solution 함수를 완성해주세요.
+          </h3>
+          <p>- return 값은 이진수를 의미하는 문자열입니다.</p>
+          <p>- 1 ≤ bin1, bin2의 길이 ≤ 10</p>
+          <p>- bin1과 bin2는 0과 1로만 이루어져 있습니다.</p>
+          <p>- bin1과 bin2는 "0"을 제외하고 0으로 시작하지 않습니다.</p>
+
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>- bin1: "10" bin2: "11" 결과: "101"</p>
+          <p>- bin1: "1001" bin2: "1111" 결과: "11000"</p>
+
+          <div
+            style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
+          >
+            <p class="code-title">■ 내가 작성한 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>parseInt(숫자, n진수)를 사용해서 2진수 10진수로 바꾸기</li>
+              <li>10진수로 더한 값 toString(2) 이용해서 2진수로 바꾸기</li>
+            </ol>
+          </div>
+          <pre>
+            <code class="javascript">   
+        function solution(bin1, bin2) {
+            var answer = 0;
+            const num = parseInt(bin1,2) + parseInt(bin2,2)
+            answer = num.toString(2)
+        
+            return answer;
+        }
+            </code></pre>
+        </section>
+        <section>
+          <a name="공던지기"> #공던지기</a>
+          <h3>
+            Q. 머쓱이는 친구들과 동그랗게 서서 공 던지기 게임을 하고 있습니다.
+            공은 1번부터 던지며 오른쪽으로 한 명을 건너뛰고 그다음 사람에게만
+            던질 수 있습니다. 친구들의 번호가 들어있는 정수 배열 numbers와 정수
+            K가 주어질 때, k번째로 공을 던지는 사람의 번호는 무엇인지 return
+            하도록 solution 함수를 완성해보세요.
+          </h3>
+          <p>- 2 < numbers의 길이 < 100</p>
+          <p>- 0 < k < 1,000</p>
+          <p>- numbers의 첫 번째와 마지막 번호는 실제로 바로 옆에 있습니다.</p>
+          <p>- numbers는 1부터 시작하며 번호는 순서대로 올라갑니다.</p>
+
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>- numbers: [1, 2, 3, 4] k:2 결과: 3</p>
+          <p>- numbers: [1, 2, 3, 4, 5, 6] k:5 결과: 3</p>
+          <p>- numbers: [1, 2, 3] k:3 결과: 2</p>
+          <div
+            style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
+          >
+            <p class="code-title">■ 내가 작성한 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>
+                k-1번까지 반복문 돌리기 (k번째로 공을 던지는 사람을 구해야하기
+                때문)
+              </li>
+              <li>answer + 2 (한명 건너뛰고 던져야하니까)</li>
+              <li>
+                answer이 배열 길이보다 길면 배열 길이에서 answer을 뺀 절대값
+                구하기
+              </li>
+              <li>numbers 배열에서 answer값 찾아서 반환</li>
+            </ol>
+          </div>
+          <pre>
+            <code class="javascript">   
+        function solution(numbers, k) {
+            var answer = 0;
+            for(let i =0;i＜k-1;i++){
+                answer  += 2
+                if(answer >= numbers.length) answer = Math.abs(numbers.length - answer)
+            }
+            answer = numbers[answer]
+            return answer;
+        }
+            </code>
+          </pre>
+        </section>
+        <section>
+          <a name="영어가싫어요"> #영어가싫어요</a>
+          <h3>
+            Q. 영어가 싫은 머쓱이는 영어로 표기되어있는 숫자를 수로 바꾸려고
+            합니다. 문자열 numbers가 매개변수로 주어질 때, numbers를 정수로 바꿔
+            return 하도록 solution 함수를 완성해 주세요.
+          </h3>
+          <p>- numbers는 소문자로만 구성되어 있습니다.</p>
+          <p>
+            - numbers는 "zero", "one", "two", "three", "four", "five", "six",
+            "seven", "eight", "nine" 들이 공백 없이 조합되어 있습니다.
+          </p>
+          <p>- 1 ≤ numbers의 길이 ≤ 50</p>
+          <p>- "zero"는 numbers의 맨 앞에 올 수 없습니다.</p>
+
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>
+            - numbers: "onetwothreefourfivesixseveneightnine" 결과: 123456789
+          </p>
+          <p>- numbers: "onefourzerosixseven" 결과: 14067</p>
+
+          <div
+            style="margin-top: 15px; padding: 10px 0; border: 1px solid #ccc"
+          >
+            <p class="code-title">■ 내가 작성한 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>영어 단어 배열 정의</li>
+              <li>
+                영어 단어만큼 반복해서 영어 단어를 기준으로 자르고, 숫자
+                집어넣기
+              </li>
+              <li>숫자로 변환해서 반환</li>
+              <li>※ 영단어와숫자 참고,,</li>
+            </ol>
+          </div>
+          <pre>
+            <code class="javascript">   
+        function solution(numbers) {
+            var answer = numbers;
+            const engNum =  ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+            
+            for(let i = 0;i＜engNum.length;i++){
+                let arr = answer.split(engNum[i])
+                answer = arr.join(i);
+            }
+            return parseInt(answer);
+        }
+            </code>
+          </pre>
+          <p class="code-title">■ 다른 사람 작성 코드</p>
+          <ul style="margin: 0 0 10px 0">
+            <li>영단어를 배열로 저장</li>
+            <li>
+              forEach이용해서 영단어 문자를 idx로 변경하도록 작성(replaceAll)
+            </li>
+            <li>숫자로 변환 후 반환</li>
+          </ul>
+          <pre>
+          <code class="javascript">
+        function solution(numbers) {
+            let numStr = [ "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" ];
+        
+            numStr.forEach((str, idx) => {
+                numbers = numbers.replaceAll(str, idx);
+            });
+            return Number(numbers);
+        }
+          </code>
+        </pre>
+          <p class="code-title">■ 다른 사람 작성 코드</p>
+          <ul style="margin: 0 0 10px 0">
+            <li>※ 정규표현식</li>
+            <li>배열 d의 value값(i) 만큼 반복하고,</li>
+            <li>numbers에 있는 문자단어를 idx 값으로 바꾸기 (+i)</li>
+          </ul>
+          <pre>
+          <code class="javascript">
+        function solution(numbers) {
+            let d = ['zero', 'one','two','three','four','five','six','seven','eight','nine'];
+            for (let i in d) numbers = numbers.replace(new RegExp(d[i], 'g'), +i);
+            
+            return +numbers;
+        }
+          </code>
+        </pre>
         </section>
       </div>
     </div>
