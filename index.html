@@ -149,6 +149,10 @@
           <li><a href="#문자열밀기">문자열밀기</a></li>
           <li><a href="#다음에올숫자">다음에올숫자</a></li>
           <li><a href="#컨트롤제트">컨트롤제트</a></li>
+          <li><a href="#분수의덧셈">분수의덧셈</a></li>
+          <li><a href="#캐릭터의좌표">캐릭터의좌표</a></li>
+          <li><a href="#로그인성공">로그인성공</a></li>
+          <li><a href="#특이한정렬">특이한정렬</a></li>
 
           <li><a href="#"></a></li>
         </ol>
@@ -6692,8 +6696,8 @@ function solution(my_string) {
             Q. 등차수열 혹은 등비수열 common이 매개변수로 주어질 때, 마지막 원소
             다음으로 올 숫자를 return 하도록 solution 함수를 완성해보세요.
           </h3>
-          <p>- 2 < common의 길이 < 1,000</p>
-          <p>- -1,000 < common의 원소 < 2,000</p>
+          <p>- 2 ＜ common의 길이 ＜ 1,000</p>
+          <p>- -1,000 ＜ common의 원소 ＜ 2,000</p>
           <p>- 등차수열 혹은 등비수열이 아닌 경우는 없습니다.</p>
           <p>- 공비가 0인 경우는 없습니다.</p>
 
@@ -6792,6 +6796,313 @@ function solution(my_string) {
             let arr = [];
             for (let v of s) v === 'Z' ? arr.length ? arr.pop() : '' : arr.push(v);
             return arr.reduce((a,v)=>a+ +v,0);
+        }
+          </code>
+        </pre>
+        </section>
+        <section>
+          <a name="분수의덧셈"> #분수의덧셈</a>
+          <h3>
+            Q. 첫 번째 분수의 분자와 분모를 뜻하는 denum1, num1, 두 번째 분수의
+            분자와 분모를 뜻하는 denum2, num2가 매개변수로 주어집니다. 두 분수를
+            더한 값을 기약 분수로 나타냈을 때 분자와 분모를 순서대로 담은 배열을
+            return 하도록 solution 함수를 완성해보세요..
+          </h3>
+
+          <p>- 0 ＜ denum1, num1, denum2, num2 ＜ 1,000</p>
+
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>- denum1: 1 num1: 2 , denum2: 3 num2: 4 = 결과: [5, 4]</p>
+          <p>- denum1: 9 num1: 2 , denum2: 1 num2: 3 = 결과: [29, 6]</p>
+
+          <div
+            style="margin-top: 15px; padding: 20px 0; border: 1px solid #ccc"
+          >
+            <p class="code-title">■ 내가 작성한 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>분모 : 분수 분모들 곱하기</li>
+              <li>분자 : 분수1 분자 * 분수2 분모 + 분수2 분자 * 분수1</li>
+              <li>
+                분자 분모 중에 작은 값을 시작으로 분수, 분모 모두 나머지가 0이
+                되는 최대공약수 찾기
+              </li>
+              <li>분자 분모 최대 공약수로 나눈 값 반환</li>
+            </ol>
+          </div>
+          <pre>
+          <code class="javascript">
+        function solution(denum1, num1, denum2, num2) {
+            var answer = [];
+            const num = num1 * num2
+            const denum = denum1 * num2 + denum2 * num1
+            for(let i = Math.min(denum,num); i>0;i--){
+                if(denum % i === 0){
+                    if(num % i === 0){
+                        return [denum/i, num/i]
+                    }
+                }
+            }
+            return answer;
+        }
+          </code>
+        </pre>
+          <p class="code-title">■ 다른 사람 작성 코드</p>
+          <ul style="margin: 0 0 10px 0">
+            <li>최대공약수 구하는 함수 작성</li>
+          </ul>
+          <pre>
+          <code class="javascript">
+        function fnGCD(a, b){
+            return (a%b)? fnGCD(b, a%b) : b;
+        }
+        
+        function solution(denum1, num1, denum2, num2) {
+            let denum = denum1*num2 + denum2*num1;
+            let num = num1 * num2;
+            let gcd = fnGCD(denum, num); //최대공약수
+        
+            return [denum/gcd, num/gcd];
+        }
+          </code>
+        </pre>
+        </section>
+        <section>
+          <a name="캐릭터의좌표"> #캐릭터의좌표</a>
+          <h3>
+            Q. 머쓱이는 RPG게임을 하고 있습니다. 게임에는 up, down, left, right
+            방향키가 있으며 각 키를 누르면 위, 아래, 왼쪽, 오른쪽으로 한 칸씩
+            이동합니다. 예를 들어 [0,0]에서 up을 누른다면 캐릭터의 좌표는 [0,
+            1], down을 누른다면 [0, -1], left를 누른다면 [-1, 0], right를
+            누른다면 [1, 0]입니다. 머쓱이가 입력한 방향키의 배열 keyinput와 맵의
+            크기 board이 매개변수로 주어집니다. 캐릭터는 항상 [0,0]에서 시작할
+            때 키 입력이 모두 끝난 뒤에 캐릭터의 좌표 [x, y]를 return하도록
+            solution 함수를 완성해주세요.
+          </h3>
+          <p>
+            [0, 0]은 board의 정 중앙에 위치합니다. 예를 들어 board의 가로 크기가
+            9라면 캐릭터는 왼쪽으로 최대 [-4, 0]까지 오른쪽으로 최대 [4, 0]까지
+            이동할 수 있습니다.
+          </p>
+
+          <p>- board은 [가로 크기, 세로 크기] 형태로 주어집니다.</p>
+          <p>- board의 가로 크기와 세로 크기는 홀수입니다.</p>
+          <p>- board의 크기를 벗어난 방향키 입력은 무시합니다.</p>
+          <p>- 0 ≤ keyinput의 길이 ≤ 50</p>
+          <p>- 1 ≤ board[0] ≤ 99</p>
+          <p>- 1 ≤ board[1] ≤ 99</p>
+          <p>- keyinput은 항상 up, down, left, right만 주어집니다.</p>
+
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>
+            - keyinput: ["left", "right", "up", "right", "right"] board: [11,
+            11] = 결과: [2, 1]
+          </p>
+          <p>
+            - keyinput: ["down", "down", "down", "down", "down"] board: [7, 9] =
+            결과: [0, -4]
+          </p>
+
+          <div
+            style="margin-top: 15px; padding: 20px 0; border: 1px solid #ccc"
+          >
+            <p class="code-title">■ 내가 작성한 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>keyinput[i] 입력 값에 따라 answer의 위치 바꾸기</li>
+              <li>
+                anwer[i]가 가로 크기, 세로 크기를 벗어날 경우, answer값을
+                반환하는 조건문 작성
+              </li>
+              <li>
+                ※if문 말고 switch문으로 작성했으면, 보기 더 편했을 것 같음
+              </li>
+            </ol>
+          </div>
+          <pre>
+          <code class="javascript">
+        function solution(keyinput, board) {
+          var answer = [0,0];
+          const range = [Math.floor(board[0]/2),Math.floor(board[1]/2)]
+        
+          for(let i =0; i＜keyinput.length; i++){
+            if(keyinput[i] === "left") {
+                answer[0] > range[0]*-1 ? answer[0] -= 1 : answer[0]
+            }
+            if(keyinput[i] === "right") {
+                answer[0] < range[0] ? answer[0] += 1 : answer[0]
+            }
+            if(keyinput[i] === "down") {
+                answer[1] > range[1]*-1 ? answer[1] -= 1 : answer[1]
+            }
+            if(keyinput[i] === "up") {
+                answer[1] < range[1] ? answer[1] += 1 : answer[1]
+            }
+          }
+          return answer;
+        }
+          </code>
+        </pre>
+        </section>
+        <section>
+          <a name="로그인성공"> #로그인성공</a>
+          <h3>
+            Q. 머쓱이는 프로그래머스에 로그인하려고 합니다. 머쓱이가 입력한
+            아이디와 패스워드가 담긴 배열 id_pw와 회원들의 정보가 담긴 2차원
+            배열 db가 주어질 때, 다음과 같이 로그인 성공, 실패에 따른 메시지를
+            return하도록 solution 함수를 완성해주세요.
+          </h3>
+          <p>
+            아이디와 비밀번호가 모두 일치하는 회원정보가 있으면 "login"을
+            return합니다.
+          </p>
+          <p>
+            로그인이 실패했을 때 아이디가 일치하는 회원이 없다면 “fail”를,
+            아이디는 일치하지만 비밀번호가 일치하는 회원이 없다면 “wrong pw”를
+            return 합니다.
+          </p>
+          <br />
+          <p>- 회원들의 아이디는 문자열입니다.</p>
+          <p>- 회원들의 아이디는 알파벳 소문자와 숫자로만 이루어져 있습니다.</p>
+          <p>- 회원들의 비밀번호는 같을 수 있지만 아이디는 같을 수 없습니다.</p>
+          <p>- id_pw의 길이는 2입니다.</p>
+          <p>- id_pw와 db의 원소는 [아이디, 패스워드] 형태입니다.</p>
+          <p>- 1 ≤ 아이디의 길이 ≤ 15</p>
+          <p>- 1 ≤ 비밀번호의 길이 ≤ 6</p>
+          <p>1 ≤ db의 길이 ≤ 10</p>
+          <p>db의 원소의 길이는 2입니다.</p>
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>
+            - id_pw: ["meosseugi", "1234"] db: [["rardss", "123"], ["yyoom",
+            "1234"], ["meosseugi", "1234"]] = 결과: login
+          </p>
+          <p>
+            - id_pw: ["programmer01", "15789"] db: [["programmer02", "111111"],
+            ["programmer00", "134"], ["programmer01", "1145"]] = 결과: wrong
+          </p>
+          <p>
+            - id_pw: ["rabbit04", "98761"] db: [["jaja11", "98761"],
+            ["krong0313", "29440"], ["rabbit00", "111333"]] = 결과: fail
+          </p>
+
+          <div
+            style="margin-top: 15px; padding: 20px 0; border: 1px solid #ccc"
+          >
+            <p class="code-title">■ 내가 작성한 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>db 길이 만큼 반복문 돌리기</li>
+              <li>초기값을 fail로 설정</li>
+              <li>아이디가 같으면 비밀번호 일치 여부 확인</li>
+              <li>같을 경우 login 반환, 다를경우 wrond pw 반환</li>
+              <li>아이디가 같은 것이 없을 경우 초기값 fail 반환</li>
+            </ol>
+          </div>
+          <pre>
+          <code class="javascript">
+        function solution(id_pw, db) {
+            var answer = 'fail';
+            const id = id_pw[0]
+            const pw = id_pw[1]
+        
+            for(let i =0; i＜db.length;i++){
+                if(db[i][0] === id){
+                    db[i][1] === pw ? answer = 'login' : answer =  'wrong pw'
+                }
+            }
+            return answer;
+        }
+          </code>
+        </pre>
+          <p class="code-title">■ 다른 사람 작성 코드</p>
+          <ul style="margin: 0 0 10px 0">
+            <li>
+              1. find로 아이디와 일치하는 값 구하고, 비밀번호 일치여부 판별
+            </li>
+            <li>2. filter로 아이디와 일치값 구하고, 비밀번호 일치여부 판별</li>
+          </ul>
+          <pre>
+          <code class="javascript">
+        // 1번
+        function solution(id_pw, db) {
+            const [id, pw] = id_pw;
+            if (!db.find(([_id]) => _id === id)) return 'fail';
+            return db.find(([_id, _pw]) => _id === id && _pw === pw) ? 'login' : 'wrong pw';
+        }
+        
+        // 2번
+        function solution(id_pw, db) {
+            db = db.filter(v=>v[0]===id_pw[0]);
+        
+            if (!db.length) return 'fail';
+        
+            for (let d of db) if (d[1] === id_pw[1]) return 'login';
+        
+            return 'wrong pw';
+        }
+          </code>
+        </pre>
+        </section>
+        <section>
+          <a name="특이한정렬"> #특이한정렬</a>
+          <h3>
+            Q. 정수 n을 기준으로 n과 가까운 수부터 정렬하려고 합니다. 이때
+            n으로부터의 거리가 같다면 더 큰 수를 앞에 오도록 배치합니다. 정수가
+            담긴 배열 numlist와 정수 n이 주어질 때 numlist의 원소를 n으로부터
+            가까운 순서대로 정렬한 배열을 return하도록 solution 함수를
+            완성해주세요.
+          </h3>
+
+          <p>- 1 ≤ n ≤ 10,000</p>
+          <p>- 1 ≤ numlist의 원소 ≤ 10,000</p>
+          <p>- 1 ≤ numlist의 길이 ≤ 100</p>
+          <p>- numlist는 중복된 원소를 갖지 않습니다.</p>
+
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>- numlist: [1, 2, 3, 4, 5, 6] n: 4 = 결과: [4, 5, 3, 6, 2, 1]</p>
+          <p>
+            - numlist: [10000,20,36,47,40,6,10,7000] n: 30 = 결과: [36, 40, 20,
+            47, 10, 6, 7000, 10000]
+          </p>
+
+          <div
+            style="margin-top: 15px; padding: 20px 0; border: 1px solid #ccc"
+          >
+            <p class="code-title">■ 내가 작성한 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>numlist를 맵 돌면서 [v, Math.abs(v-n)] 저장하기</li>
+              <li>Math.abs() : 통해서 절대값구함</li>
+              <li>거리차을 통해서 정렬하기 (거리차 : (a[1],b[1]))</li>
+              <li>
+                만약 거리차이 같다면 원래 숫자로 비교하기 (원래숫자 :
+                (a[0],b[0]))
+              </li>
+              <li>정렬한 배열 맵돌면서 원래 숫자만 남기기</li>
+            </ol>
+          </div>
+          <pre>
+          <code class="javascript">
+        function solution(numlist, n) {
+            var answer = [];
+            const sortArr = numlist.map((v)=> [v, Math.abs(v - n)]).sort((a,b)=> a[1] === b[1] ? b[0] - a[0]  : a[1] - b[1])
+        
+            answer = sortArr.map((v)=> v[0])
+        
+            return answer;
+        }
+          </code>
+        </pre>
+          <p class="code-title">■ 다른 사람 작성 코드</p>
+          <ul style="margin: 0 0 10px 0">
+            <li>numlist 정렬</li>
+            <li>조건1. 거리차 = Math.abs(a - n) - Math.abs(b - n)</li>
+            <li>조건2. 원래숫자 = b - a</li>
+          </ul>
+          <pre>
+          <code class="javascript">
+        function solution(numlist, n) {
+          return numlist.sort((a, b) => Math.abs(a - n) - Math.abs(b - n) || b - a);
         }
           </code>
         </pre>
