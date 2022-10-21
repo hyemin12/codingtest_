@@ -1,5 +1,3 @@
-<li><a href="#분수의덧셈">분수의덧셈</a></li>
-<li><a href="#캐릭터의좌표">캐릭터의좌표</a></li>
 <li><a href="#로그인성공">로그인성공</a></li>
 <li><a href="#특이한정렬">특이한정렬</a></li>
 
@@ -22,20 +20,6 @@
   <p>- A: [1, 4, 2] B: [5, 4, 4] = 결과: 29</p>
   <p>- A: [1,2] B: [3,4] = 결과: 10</p>
 
-  <div style="margin-top: 15px; padding: 20px 0; border: 1px solid #ccc">
-    <p class="code-title">■ 내가 작성한 코드</p>
-    <ol style="margin: 0 0 10px 0">
-      <li>
-        A 올림 차순으로 정렬(낮은 순서대로), B: 내림차순으로 정렬(높은 순서대로)
-      </li>
-      <li>가장 낮은 수 * 가장 높은 수</li>
-    </ol>
-  </div>
-  <pre>
-  <code class="javascript">
-
-  </code>
-</pre>
   <hr />
   <br />
 

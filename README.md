@@ -8,11 +8,19 @@
   <br />
   <p style="margin-top: 15px">예시)</p>
   <p>- = 결과:</p>
+  <div style="margin-top: 15px; padding: 20px 0; border: 1px solid #ccc">
+    <p class="code-title">■ 내가 작성한 코드</p>
+    <ol style="margin: 0 0 10px 0">
+      <li></li>
+    </ol>
+  </div>
+  <pre>
+  <code class="javascript">
 
-  <h4>공부한내용</h4>
-  <p>-</p>
-  <p style="color:green; margin-left:10px">// 주석</p>
+  </code>
+</pre>
 </section>
+<p style="color:green; margin-left:10px">// 주석</p>
 ```
 
 ```html
