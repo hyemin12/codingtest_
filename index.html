@@ -156,6 +156,7 @@
           <li><a href="#직사각형넓이구하기">직사각형넓이구하기</a></li>
           <li><a href="#등수매기기">등수매기기</a></li>
           <li><a href="#삼각형의완성조건2">삼각형의완성조건2</a></li>
+          <li><a href="#치킨쿠폰">치킨쿠폰</a></li>
 
           <li><a href="#"></a></li>
         </ol>
@@ -7296,6 +7297,73 @@ function solution(sides) {
 }
   </code>
 </pre>
+        </section>
+        <section>
+          <a name="치킨쿠폰"> #치킨쿠폰</a>
+          <h3>
+            Q. 프로그래머스 치킨은 치킨을 시켜먹으면 한 마리당 쿠폰을 한 장
+            발급합니다. 쿠폰을 열 장 모으면 치킨을 한 마리 서비스로 받을 수
+            있고, 서비스 치킨에도 쿠폰이 발급됩니다. 시켜먹은 치킨의 수
+            chicken이 매개변수로 주어질 때 받을 수 있는 최대 서비스 치킨의 수를
+            return하도록 solution 함수를 완성해주세요.
+          </h3>
+          <p>chicken은 정수입니다.</p>
+          <p>0 ≤ chicken ≤ 1,000,000</p>
+
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>- chicken: 100 = 결과: 11</p>
+          <p>- chicken: 1081 = 결과: 120</p>
+          <p>- chicken: 1999 = 결과: 222</p>
+          <div
+            style="margin-top: 15px; padding: 20px 0; border: 1px solid #ccc"
+          >
+            <p class="code-title">■ 내가 작성한 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>서비스 치킨 = 치킨을 10으로 나눈 몫</li>
+              <li>쿠폰 = 치킨을 10으로 나눈 나머지</li>
+              <li>새로운 치킨 = 서비스치킨 + 쿠폰 개수</li>
+              <li>시켜먹은 치킨의 수 합 = 주문한 치킨</li>
+            </ol>
+          </div>
+          <pre>
+          <code class="javascript">
+        function solution(chicken) {
+            var answer = 0;
+            let coupon= 0
+            
+            while(chicken >= 10){
+                const service = Math.floor(chicken / 10)
+                const coupon = Math.floor(chicken % 10)
+                chicken = service + coupon
+                answer += service
+                }
+            return answer;
+        }
+          </code>
+        </pre>
+          <p class="code-title">■ 다른사람 작성코드</p>
+          <ol style="margin: 0 0 10px 0">
+            <li>서비스치킨 = 치킨을 10으로 나눈 몫</li>
+            <li>
+              서비스치킨+쿠폰 = 치킨을 10으로 나눈 몫 + 치킨 10으로 나눈 나머지
+            </li>
+          </ol>
+
+          <pre>
+          <code class="javascript">
+        function solution(chicken) {
+            var answer = 0;
+        
+            while(chicken >= 10) {
+                answer += Math.floor(chicken / 10);
+                chicken = Math.floor(chicken / 10) + chicken % 10;
+            }
+        
+            return answer;
+        }
+          </code>
+        </pre>
         </section>
       </div>
     </div>
