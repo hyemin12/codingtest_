@@ -21,21 +21,14 @@
 </pre>
 </section>
 <p style="color:green; margin-left:10px">// 주석</p>
-```
+<p class="code-title">■ 다른 사람 작성 코드</p>
+<ul style="margin: 0 0 10px 0">
+  <li>A,B 정렬</li>
+  <li>reduce로 결과값 구하기</li>
+</ul>
+<pre>
+  <code class="javascript">
 
-```html
-<h2 id="result"></h2>
-<h2 id="result2"></h2>
-```
-
-```css
-body {
-  font-family: system-ui;
-  color: #333;
-  text-align: center;
-}
-```
-
-```js
-document.getElementById("result").innerText = `'설명' = ${solution(값)}`;
+  </code>
+</pre>
 ```
