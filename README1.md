@@ -1,4 +1,4 @@
-<li><a href="#안전지대">안전지대</a></li>
+<li><a href="#연속된수의합">연속된수의합</a></li>
 
 ```html
 
@@ -6,81 +6,99 @@
 
 ```html
 <section>
-  <a name="안전지대"> #안전지대</a>
+  <a name="연속된수의합"> #연속된수의합</a>
   <h3>
-    Q. 한 개 이상의 항의 합으로 이루어진 식을 다항식이라고 합니다. 다항식을
-    계산할 때는 동류항끼리 계산해 정리합니다. 덧셈으로 이루어진 다항식
-    polynomial이 매개변수로 주어질 때, 동류항끼리 더한 결괏값을 문자열로 return
-    하도록 solution 함수를 완성해보세요. 같은 식이라면 가장 짧은 수식을 return
-    합니다.
+    Q. 연속된 세 개의 정수를 더해 12가 되는 경우는 3, 4, 5입니다. 두 정수 num과
+    total이 주어집니다. 연속된 수 num개를 더한 값이 total이 될 때, 정수 배열을
+    오름차순으로 담아 return하도록 solution함수를 완성해보세요.
   </h3>
 
-  <p>- 0 < polynomial에 있는 수 < 100</p>
-  <p>- polynomial에 변수는 'x'만 존재합니다.</p>
-  <p>- polynomial은 0부터 9까지의 정수, 공백, ‘x’, ‘+'로 이루어져 있습니다.</p>
-  <p>- 항과 연산기호 사이에는 항상 공백이 존재합니다.</p>
-  <p>- 공백은 연속되지 않으며 시작이나 끝에는 공백이 없습니다.</p>
-  <p>- 하나의 항에서 변수가 숫자 앞에 오는 경우는 없습니다.</p>
-  <p>- " + 3xx + + x7 + "와 같은 잘못된 입력은 주어지지 않습니다.</p>
-  <p>- "012x + 001"처럼 0을 제외하고는 0으로 시작하는 수는 없습니다.</p>
-  <p>- 문자와 숫자 사이의 곱하기는 생략합니다.</p>
-  <p>- polynomial에는 일차 항과 상수항만 존재합니다.</p>
-  <p>- 계수 1은 생략합니다.</p>
-  <p>- 결괏값에 상수항은 마지막에 둡니다.</p>
-  <p>- 0 < polynomial의 길이 < 50</p>
+  <p>- 1 ≤ num ≤ 100</p>
+  <p>- 0 ≤ total ≤ 1000</p>
+  <p>
+    - num개의 연속된 수를 더하여 total이 될 수 없는 테스트 케이스는 없습니다.
+  </p>
 
   <br />
   <p style="margin-top: 15px">예시)</p>
-  <p>- polynomial: "3x + 7 + x" = 결과: "4x + 7"</p>
-  <p>- polynomial: "x + x + x" = 결과: "3x"</p>
+  <p>- num: 3 total: 12 = 결과: [3, 4, 5]</p>
+  <p>- num: 5 total: 15 = 결과: [1, 2, 3, 4, 5]</p>
+  <p>- num: 4 total: 14 = 결과: [2, 3, 4, 5]</p>
+  <p>- num: 5 total: 5 = 결과: [-1, 0, 1, 2, 3]</p>
 
   <hr />
   <br />
   <div style="margin-top: 15px; padding: 20px 0; border: 1px solid #ccc">
     <p class="code-title">■ 내가 작성한 코드</p>
     <ol style="margin: 0 0 10px 0">
-      <li>주어진 문자열 더하기를 기준으로 나누고 배열로 변환하기</li>
-      <li>x가 포함된 배열만, 필터링해서 xArr에 저장하기</li>
       <li>
-        xArr 맵돌면서 x일 경우에는 1만 반환, 아닐 경우에는 x를 없애고 숫자만
-        반환
+        ※ for문을 작성해서 total 값을 만드는 i 값을 구하는 코드를 작성했으나,
+        음수로 부터의 값은 구할 수 없어서 while문을 이용해서 코드를 작성함
       </li>
-      <li>x 값 모두 더해서 xCount에 저장하기</li>
-      <li>배열에 x가 포함되지 않은 수만 필터링해서 numArr에 저장하기</li>
+      <li>num 길이를 가진 배열에 맵돌면서 index + 1 한 값으로 채우기</li>
+      <li>채워진 배열의 총합 구해서 sum에 저장하기</li>
+      <li>sum이 total 값이랑 같아질때까지 반복문 돌리기</li>
+      <li>sum이 total보다 작으면 시작숫자를 1부터 더하기</li>
+      <li>sum이 total보다 크면 시작숫자를 1부터 빼면서 계산하기</li>
       <li>
-        numArr의 길이가 1이면 첫번째 인덱스값 반환, 아닐 경우에는 숫자만 모두
-        더한 값 저장
+        시작숫자를 구했다면 num 길이만큼 배열을 만들고, 맵돌면서 index값 +
+        시작숫자로 채우기
       </li>
-      <li>x = countX 가 0보다 작으면 빈 문자열 반환</li>
-      <li>countX가 1보다 큰 경우에는 countX 반환, 1인경우에는 빈문자열 반환</li>
-      <li>num = countNum이 0보다 크면 countNum 반환 아닐경우 빈 문자열 반환</li>
-      <li>plus = x가 빈 문자열이 아니고, num도 빈 문자열이 아닐 경우 반환</li>
-      <li>x + plus + num 반환</li>
+      <li>answer 반환</li>
     </ol>
+    <ul>
+      <li>// for 문</li>
+      <li>
+        배열의 총합 = (배열 첫번째 숫자 + 배열 마지막 숫자) * 배열의 길이 / 2
+      </li>
+      <li>1 부터 시작하는 배열의 총합 구하기 ((1 + num) * num) / 2</li>
+      <li>total = 초기값 + num * index</li>
+      <li>
+        시작 숫자 (index)가 구해지면 num 배열만큼 맵돌면서 시작숫자 + ∂로 더해서
+        배열 채우기
+      </li>
+      <li>
+        <a href="https://bubblebubble.tistory.com/22" target="_blank"
+          >참고 블로그
+        </a>
+      </li>
+    </ul>
   </div>
   <pre>
   <code class="javascript">
-function solution(polynomial) {
-    const arr = polynomial.split(' + ')
-    
-    // x값 계산
-    const xArr = arr.filter((v)=>v.includes('x'))
-    if(xArr.length > 0){
-        var countX = xArr.map((a)=> a === 'x' ? '1': a.replace('x','')).reduce((acc,cur) => acc*1 + cur*1)
-     }
-    
-    // 숫자 계산
-    const numArr = arr.filter((v)=> !v.includes('x'))
-    if(numArr.length>0){
-      var countNum =  numArr.length === 1 ? Number(numArr[0]) : numArr.reduce((acc,cur)=> acc*1 + cur*1)
+  // for문 코드
+  function solution(polynomial) {
+    var answer = []
+    const standard = ((1 + num) * num) / 2
+    for(let i = 0 ; i< num; i++){
+        if(standard + num * i === total){
+            answer = Array(num).fill().map((v, idx)=>{return i+idx + 1})
+        } 
     }
-  
-   const x = countX > 0 ? `${countX > 1 ? countX : ''}x` : '';
-   const num = countNum > 0 ? countNum : '';
-   const plus = x !== '' && num !== '' ? ' + ' : '';
-                
-    return x + plus + num;
-}
+     return answer;
+  }
+  </code>
+    <code class="javascript">
+  // while문 코드
+  function solution(polynomial) {
+    var answer = [];
+    let firstNum = 1;
+
+    let sum = new Array(num).fill().map((v,idx)=> idx + 1).reduce((acc,cur) => acc+cur)
+    while(sum!==total){
+
+    if( sum < total){
+      firstNum ++
+    }
+    else{
+      firstNum --
+    }
+
+    sum = new Array(num).fill().map((a,i)=>firstNum + i).reduce((acc,cur)=>acc+cur)
+    } 
+     answer = Array(num).fill().map((a,idx)=> idx + firstNum)
+     return answer;
+  }
   </code>
 </pre>
   <p class="code-title">■ 다른 사람 작성 코드</p>
