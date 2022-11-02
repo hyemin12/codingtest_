@@ -1,100 +1,68 @@
-<li><a href="#안전지대">안전지대</a></li>
+<li><a href="#신고결과받기">신고결과받기</a></li>
 
 ```html
 <section>
-  <a name="안전지대"> #안전지대</a>
+  <a name="신고결과받기"> #신고결과받기</a>
   <h3>
-    Q. 지뢰가 매설된 지역의 지도 board가 매개변수로 주어질 때, 안전한 지역의 칸
-    수를 return하도록 solution 함수를 완성해주세요.
+    Q. 이용자의 ID가 담긴 문자열 배열 id_list, 각 이용자가 신고한 이용자의 ID
+    정보가 담긴 문자열 배열 report, 정지 기준이 되는 신고 횟수 k가 매개변수로
+    주어질 때, 각 유저별로 처리 결과 메일을 받은 횟수를 배열에 담아 return
+    하도록 solution 함수를 완성해주세요.
   </h3>
   <br />
+
+  <p>- 1 ≤ babbling의 길이 ≤ 100</p>
+  <p>- 1 ≤ babbling[i]의 길이 ≤ 15</p>
   <p>
-    다음 그림과 같이 지뢰가 있는 지역과 지뢰에 인접한 위, 아래, 좌, 우 대각선
-    칸을 모두 위험지역으로 분류합니다.
+    - babbling의 원소에서 "aya", "ye", "woo", "ma"는 각각 최대 한 번씩만
+    등장합니다.
   </p>
-  <img
-    src="https://velog.velcdn.com/images/kwb020312/post/0fc0997d-9a93-47d1-b51d-53bc46214690/image.png"
-  />
-  <p>
-    지뢰는 2차원 배열 board에 1로 표시되어 있고 board에는 지뢰가 매설 된 지역
-    1과, 지뢰가 없는 지역 0만 존재합니다.
-  </p>
-  <br />
-  <p>- board는 n * n 배열입니다.</p>
-  <p>- 1 ≤ n ≤ 100</p>
-  <p>- 지뢰는 1로 표시되어 있습니다.</p>
-  <p>- board에는 지뢰가 있는 지역 1과 지뢰가 없는 지역 0만 존재합니다.</p>
+  <p>- 문자열은 알파벳 소문자로만 이루어져 있습니다.</p>
 
   <br />
   <p style="margin-top: 15px">예시)</p>
-  <p>
-    - board: [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 1, 0,
-    0], [0, 0, 0, 0, 0]] = 결과: 16
-  </p>
-  <p>
-    - board: [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 1, 1,
-    0], [0, 0, 0, 0, 0]] = 결과: 13
-  </p>
-  <p>
-    - board: [[1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1], [1, 1,
-    1, 1, 1, 1], [1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1]] = 결과: 0
-  </p>
+  <p>- babbling: ["aya", "yee", "u", "maa", "wyeoo"] = 결과: 1</p>
+  <p>- babbling: ["ayaye", "uuuma", "ye", "yemawoo", "ayaa"] = 결과:3</p>
 
   <br />
   <div style="margin-top: 15px; padding: 20px 0; border: 1px solid #ccc">
     <p class="code-title">■ 내가 작성한 코드</p>
     <ol style="margin: 0 0 10px 0">
-      <li>폭탄이 있는 위치 찾기</li>
-      <li>폭탄이 있는 주변의 값 2로 바꾸기</li>
-      <li>칸이 0이면 answer값 더하기</li>
-      <li>※ 주변의 값을 2로 바꾸기 코드 작성이 어렵...</li>
+      <li>babbling을 맵 돌면서 발음할 수 있는 발음을 기준으로 나누기</li>
+      <li>발음할 수 있다면 '' 이 반환됨</li>
+      <li>''을 가진 값만 필터링 하고, 길이 반환하기</li>
     </ol>
   </div>
   <pre>
   <code class="javascript">
-function solution(board) {
+function solution(babbling) {
     var answer = 0;
-
-    for(let i =0; i＜board.length;i++){
-        for(let j =0; j＜board[i].length;j++){
-
-        if(board[i][j] ===1){
-  
-            // 위
-            if(i !== 0 && j !== 0 && board[i-1][j-1] !== 1 ) {
-                board[i-1][j-1] = 2
-            }
-            if(i !== 0 && board[i-1][j] !== 1 ) {
-                board[i-1][j] = 2   
-            }
-            if(i !== 0 && j !== board[i].length-1 && board[i-1][j+1] !== 1 ) {
-                board[i-1][j+1] = 2
-            }
-
-            // 중간
-            if(j !== 0 && board[i][j-1] !== 1 && board[i][j-1] !== 1) {
-                board[i][j-1] = 2
-            }
-            if(j !== board[i].length-1 && board[i][j+1] !== 1) {
-                board[i][j+1] = 2
-            }
-
-            // 아래
-            if(i !== board.length-1 && j !== 0 && board[i+1][j-1] !== 1 ) {
-                board[i+1][j-1] = 2
-            }
-            if(i !== board.length-1 && board[i+1][j] !== 1 && board[i+1][j] !== 1) {
-                board[i+1][j] = 2
-            }
-            if(i !== board.length-1 && j !== board[i].length-1 && board[i+1][j+1] !== 1) {
-                board[i+1][j+1] = 2
-          }     
-        }
-      }
-    }            
-    board.map((v)=> v.map((a)=>a === 0 ? answer++ : ''))
-
+    
+   const split = babbling.map((word) => 
+        word.split(/aya|ye|woo|ma/).join('')    
+    )
+   answer = split.filter((v)=> v === '').length
+    
     return answer;
+}
+  </code>
+</pre>
+  <p class="code-title">■ 다른 사람 작성 코드</p>
+  <ul style="margin: 0 0 10px 0">
+    <li>
+      map 사용안하고 forEach + 조건문을 사용하면 보다 깔끔한 코드 작성 가능
+    </li>
+  </ul>
+  <pre>
+  <code class="javascript">
+function solution(babbling) {
+    let counter = 0;
+    babbling.forEach(element => {
+        if (element.split(/aya|ye|woo|ma/g).join('') === '') {
+            counter++;
+        }
+    });
+    return counter;
 }
   </code>
 </pre>
