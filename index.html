@@ -167,6 +167,7 @@
           <li><a href="#유한소수판별하기">유한소수판별하기</a></li>
           <li><a href="#안전지대">안전지대</a></li>
           <li><a href="#옹알이">옹알이</a></li>
+          <li><a href="#평행">평행</a></li>
 
           <li><a href="#"></a></li>
         </ol>
@@ -8295,6 +8296,97 @@ function solution(sides) {
                 }
             });
             return counter;
+        }
+          </code>
+        </pre>
+        </section>
+        <section>
+          <a name="평행"> #평행</a>
+          <h3>
+            Q. 주어진 네 개의 점을 두 개씩 이었을 때, 두 직선이 평행이 되는
+            경우가 있으면 1을 없으면 0을 return 하도록 solution 함수를
+            완성해보세요.
+          </h3>
+          <br />
+          <p>
+            점 네 개의 좌표를 담은 이차원 배열 dots가 다음과 같이 매개변수로
+            주어집니다.
+          </p>
+          <p>- [[x1, y1], [x2, y2], [x3, y3], [x4, y4]]</p>
+          <br />
+
+          <p>- 0 ≤ dots의 원소 ≤ 100</p>
+          <p>- dots의 길이 = 4</p>
+          <p>- dots의 원소의 길이 = 2</p>
+          <p>- dots의 원소는 [x, y] 형태이며 x, y는 정수입니다.</p>
+          <p>- 서로 다른 두개 이상의 점이 겹치는 경우는 없습니다.</p>
+          <p>- 두 직선이 겹치는 경우(일치하는 경우)에도 1을 return 해주세요.</p>
+          <p>
+            - 임의의 두 점을 이은 직선이 x축 또는 y축과 평행한 경우는 주어지지
+            않습니다.
+          </p>
+
+          <br />
+          <p style="margin-top: 15px">예시)</p>
+          <p>- dots: [[1, 4], [9, 2], [3, 8], [11, 6]] = 결과: 1</p>
+          <p>- dots: [[3, 5], [4, 1], [2, 4], [5, 10]] = 결과: 0</p>
+
+          <br />
+          <div
+            style="margin-top: 15px; padding: 20px 0; border: 1px solid #ccc"
+          >
+            <p class="code-title">■ 내가 작성한 코드</p>
+            <ol style="margin: 0 0 10px 0">
+              <li>※ 기울기 비교해서 중복 값이 있다면 1 반환하기</li>
+              <li>i : 현재 인덱스값, j : 다음 인덱스값</li>
+              <li>dot[i][0] : x값, dot[i][1] : y값</li>
+              <li>angle : x길이 / y길이</li>
+              <li>angle배열에 집어넣기</li>
+              <li>
+                angle 배열에 angle이 들어있는지 필터링하기,길이값이 2라면 1 반환
+              </li>
+            </ol>
+          </div>
+          <pre>
+          <code class="javascript">
+        function solution(dots) {
+            const angleArr = []
+            for(let i =0; i＜dots.length;i++){
+                for(let j = i + 1 ; j＜dots.length;j++){
+                  const angle = (dots[i][1] - dots[j][1])
+                  / (dots[i][0] - dots[j][0])
+                 
+                 angleArr.push(angle)
+                 if(angleArr.filter((v)=> v === angle).length === 2){
+                     return 1
+                 }
+               }
+            }
+            return 0;
+        }
+          </code>
+        </pre>
+          <p class="code-title">■ 다른 사람 작성 코드</p>
+          <ul style="margin: 0 0 10px 0">
+            <li>
+              기울기를 구하는 값을 별도의 함수로 작성해서 각각의 좌표가 같으면
+              return 시키기
+            </li>
+          </ul>
+          <pre>
+          <code class="javascript">
+        function solution(dots) {
+            if (calculateSlope(dots[0], dots[1]) === calculateSlope(dots[2], dots[3]))
+                return 1;
+            if (calculateSlope(dots[0], dots[2]) === calculateSlope(dots[1], dots[3]))
+                return 1;
+            if (calculateSlope(dots[0], dots[3]) === calculateSlope(dots[1], dots[2]))
+                return 1;
+            return 0;
+        }
+        
+        function calculateSlope(arr1, arr2) {
+            return (arr2[1] - arr1[1]) / (arr2[0] - arr1[0]);
         }
           </code>
         </pre>
